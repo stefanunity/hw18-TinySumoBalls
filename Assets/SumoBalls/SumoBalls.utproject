@@ -49,7 +49,8 @@
         { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementPlayer" },
         { "Id": "3a3d6d942e4b462b8c179981be5666c6", "Name": "MovementAI" },
         { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
-        { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" }
+        { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" },
+        { "Id": "1cd9e46e59fe4908a5824526293d20df", "Name": "MenuSystem" }
     ],
     "Structs": [],
     "Enums": [
@@ -65,10 +66,11 @@
     "Systems": [
         { "Id": "c65ec262e361456d8445bb1077148c14", "Name": "PlayerInputSystem" },
         { "Id": "8bc5a67b302148a8ab4556119a5ae083", "Name": "AIInputSystem" },
-        { "Id": "b8cd443904ff40c0a6d9c65fe10d0f48", "Name": "GameManagerSystem" }
+        { "Id": "b8cd443904ff40c0a6d9c65fe10d0f48", "Name": "GameManagerSystem" },
+        { "Id": "3998febc14d6491781556b463c3af125", "Name": "MenuInputSystem" }
     ],
     "Assets": [],
-    "StartupEntityGroup": { "Id": "4b52eb87e8b0406692089585d92d8714", "Name": "NewEntityGroup" }
+    "StartupEntityGroup": { "Id": "4b52eb87e8b0406692089585d92d8714", "Name": "Gameplay" }
 },
 {
     "$TypeId": 3,
@@ -120,6 +122,16 @@
     }],
     "DefaultValue": {
         "Type": { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" }
+    }
+},
+{
+    "$TypeId": 3,
+    "Id": "1cd9e46e59fe4908a5824526293d20df",
+    "Name": "MenuSystem",
+    "TypeCode": "Component",
+    "Fields": [],
+    "DefaultValue": {
+        "Type": { "Id": "1cd9e46e59fe4908a5824526293d20df", "Name": "NewComponent" }
     }
 },
 {
@@ -557,7 +569,7 @@
     "Id": "93b40144076547c0a5838ced33cc9e44",
     "Name": "StartMenu",
     "Entities": [
-        { "$TypeId": 9, "Id": "186d4cb1f70748d8a9097bdd4c7a0d60", "Name": "Scaler" },
+        { "$TypeId": 9, "Id": "186d4cb1f70748d8a9097bdd4c7a0d60", "Name": "MenuScaler" },
         { "$TypeId": 9, "Id": "209fdc56a1474f9b8aa9b351635b0697", "Name": "StartNoAI" },
         { "$TypeId": 9, "Id": "4fc358240043499d80ee5b9f181b25f7", "Name": "StartAI" }
     ]
@@ -565,7 +577,7 @@
 {
     "$TypeId": 5,
     "Id": "186d4cb1f70748d8a9097bdd4c7a0d60",
-    "Name": "Scaler",
+    "Name": "MenuScaler",
     "Enabled": true,
     "Components": [{
         "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
@@ -578,6 +590,8 @@
                 }
             }
         }
+    }, {
+        "Type": { "Id": "1cd9e46e59fe4908a5824526293d20df", "Name": "MenuSystem" }
     }]
 },
 {
@@ -606,7 +620,7 @@
     }, {
         "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
         "Properties": {
-            "text": "StartNoAI",
+            "text": "1: StartNoAI",
             "fontSize": 40,
             "color": {
                 "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
@@ -632,6 +646,7 @@
             "localPosition": {
                 "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
                 "Properties": {
+                    "x": -25,
                     "y": -20
                 }
             },
@@ -647,7 +662,7 @@
     }, {
         "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
         "Properties": {
-            "text": "StartAI",
+            "text": "2: StartAI",
             "fontSize": 40,
             "color": {
                 "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
@@ -712,6 +727,22 @@
     "Options": 5,
     "Components": [
         { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" }
+    ],
+    "ExecuteAfter": [
+        { "Id": "6fa7e5feec05fec093042f2a2b9802d4", "Name": "UserCodeStart" }
+    ],
+    "ExecuteBefore": [
+        { "Id": "d016ec3bfdc5a53540e9c71942ee414c", "Name": "UserCodeEnd" }
+    ]
+},
+{
+    "$TypeId": 7,
+    "Id": "3998febc14d6491781556b463c3af125",
+    "Name": "MenuInputSystem",
+    "Options": 3,
+    "TextAsset": { "$TypeId": 10, "Guid": "8ccbb85e9401c3d48a1daa23e8006ee7", "FileId": 4900000, "Type": 3 },
+    "Components": [
+        { "Id": "1cd9e46e59fe4908a5824526293d20df", "Name": "MenuSystem" }
     ],
     "ExecuteAfter": [
         { "Id": "6fa7e5feec05fec093042f2a2b9802d4", "Name": "UserCodeStart" }
