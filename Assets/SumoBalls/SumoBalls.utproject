@@ -110,7 +110,9 @@
         { "$TypeId": 9, "Id": "41bc26b88b224af3bd3bb6e7eaeaca13", "Name": "Wall_N" },
         { "$TypeId": 9, "Id": "b1f699a9834b4238a9d943a19ed3a2c2", "Name": "Wall_S" },
         { "$TypeId": 9, "Id": "9aa0e01d5137433ebd0e507e63d462d2", "Name": "Wall_E" },
-        { "$TypeId": 9, "Id": "ce514d19f7914184acfe8dc966d77065", "Name": "Wall_W" }
+        { "$TypeId": 9, "Id": "ce514d19f7914184acfe8dc966d77065", "Name": "Wall_W" },
+        { "$TypeId": 9, "Id": "ed636de84be8448ab6bcb1b3e3fc98d6", "Name": "Enemy 1" },
+        { "$TypeId": 9, "Id": "18140d16546948009a4709810b85c696", "Name": "Enemy 2" }
     ]
 },
 {
@@ -169,6 +171,11 @@
         "Properties": {
             "sprite": { "$TypeId": 10, "Guid": "999a4370662aa4f9c99f9e93cad4449b", "FileId": 21300000, "Type": 3 }
         }
+    }, {
+        "Type": { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
+        "Properties": {
+            "speed": 5
+        }
     }]
 },
 {
@@ -214,6 +221,11 @@
         "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
         "Properties": {
             "sprite": { "$TypeId": 10, "Guid": "92d624e6105b2490e8dfd86fe4d5c1a7", "FileId": 21300000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
+        "Properties": {
+            "speed": 5
         }
     }]
 },
@@ -325,6 +337,120 @@
     }]
 },
 {
+    "$TypeId": 5,
+    "Id": "ed636de84be8448ab6bcb1b3e3fc98d6",
+    "Name": "Enemy 1",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": -0.76,
+                    "y": 1.54
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
+    }, {
+        "Type": { "Id": "15999c23d7007d7522e11a6ab8be3d27", "Name": "RectCollider" },
+        "Properties": {
+            "bodyType": {
+                "$TypeId": 8,
+                "Type": { "Id": "a4afdb83c635db286370870d059ac493", "Name": "BodyType" },
+                "Id": "b7982cbb4f5c78bfdd458bffbe9e1276",
+                "Name": "BulletDynamic",
+                "Value": 3
+            },
+            "friction": 0,
+            "restitution": 1,
+            "density": 1,
+            "width": 1,
+            "height": 1
+        }
+    }, {
+        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
+        "Properties": {
+            "sprite": { "$TypeId": 10, "Guid": "999a4370662aa4f9c99f9e93cad4449b", "FileId": 21300000, "Type": 3 },
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 1,
+                    "g": 0,
+                    "b": 0,
+                    "a": 1
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "3a3d6d942e4b462b8c179981be5666c6", "Name": "MovementAI" }
+    }, {
+        "Type": { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
+        "Properties": {
+            "speed": 5
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "18140d16546948009a4709810b85c696",
+    "Name": "Enemy 2",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": -2.094,
+                    "y": 1.502
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
+    }, {
+        "Type": { "Id": "15999c23d7007d7522e11a6ab8be3d27", "Name": "RectCollider" },
+        "Properties": {
+            "bodyType": {
+                "$TypeId": 8,
+                "Type": { "Id": "a4afdb83c635db286370870d059ac493", "Name": "BodyType" },
+                "Id": "b7982cbb4f5c78bfdd458bffbe9e1276",
+                "Name": "BulletDynamic",
+                "Value": 3
+            },
+            "friction": 0,
+            "restitution": 1,
+            "density": 1,
+            "width": 1,
+            "height": 1
+        }
+    }, {
+        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
+        "Properties": {
+            "sprite": { "$TypeId": 10, "Guid": "999a4370662aa4f9c99f9e93cad4449b", "FileId": 21300000, "Type": 3 },
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1514984,
+                    "g": 0,
+                    "b": 0.6132076,
+                    "a": 1
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "3a3d6d942e4b462b8c179981be5666c6", "Name": "MovementAI" }
+    }, {
+        "Type": { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
+        "Properties": {
+            "speed": 5
+        }
+    }]
+},
+{
     "$TypeId": 7,
     "Id": "c65ec262e361456d8445bb1077148c14",
     "Name": "PlayerInputSystem",
@@ -348,9 +474,14 @@
     "Name": "AIInputSystem",
     "Options": 3,
     "TextAsset": { "$TypeId": 10, "Guid": "4140a4d8280da6c4487874cdcb183d4a", "FileId": 4900000, "Type": 3 },
-    "Components": [],
+    "Components": [
+        { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
+        { "Id": "3a3d6d942e4b462b8c179981be5666c6", "Name": "MovementAI" },
+        { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
+    ],
     "ExecuteAfter": [
-        { "Id": "6fa7e5feec05fec093042f2a2b9802d4", "Name": "UserCodeStart" }
+        { "Id": "624141ac039664daa461faa7328b16fc", "Name": "InputHandler" }
     ],
     "ExecuteBefore": [
         { "Id": "b7f7f4fdfc819e904ab2a0193ed1f613", "Name": "Physics2DSystem" }

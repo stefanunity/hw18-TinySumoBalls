@@ -51,5 +51,6 @@ if (movementChanged)
 {
     direction.normalize();
     direction.multiplyScalar(movement.speed() * dt);
-    velocity2d.add(direction);
+    direction.add(velocity2d.velocity());
+    velocity2d.setVelocity(direction);
 }
