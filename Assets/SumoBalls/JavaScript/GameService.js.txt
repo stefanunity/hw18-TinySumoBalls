@@ -1,0 +1,27 @@
+const UIManager = {}
+
+game.GameManagerSystem.update = function (scheduler, world) {
+    world.forEachEntity([game.GameManager], function (entity, manager) {
+        switch (manager.State()) {
+            case game.GameState.Init:
+                ut.Flow.Service.instantiate("Sumo.UI.UI");
+                manager.setState(game.GameState.Gameplay);
+                break;
+            case game.GameState.Gameplay:
+                if (ut.Runtime.Input.getMouseButtonDown(0)) {
+                    // UIManager = ut.Flow.Service.destroyAll("Sumo.UI.UI");
+                    console.log("Game Over!");
+                    // ut.Flow.Service.instantiate("ui.Gameplay");
+                    manager.setState(game.GameState.GameOver);
+                }
+                break;
+            case game.GameState.GameOver:
+                if (ut.Runtime.Input.getMouseButtonDown(0)) {
+                    console.log("======================================");
+                    console.log(JSON.stringify(UIManager));
+
+                }
+                break;
+        }
+    });
+}
