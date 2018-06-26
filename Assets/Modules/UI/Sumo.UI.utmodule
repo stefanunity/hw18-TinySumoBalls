@@ -9,20 +9,25 @@
         { "Id": "ce3f1bd7050540b70d450a606e226ea2", "Name": "UTiny.Shared" },
         { "Id": "e46c24fb4d9a01e79b109bbcf6d24260", "Name": "UTiny.UILayout" },
         { "Id": "30097418841f56d73400bf82ee859ac9", "Name": "UTiny.Core2D" },
-        { "Id": "ea76d964fb5f442e936eb51fc3368792", "Name": "Sumo.UI" }
+        { "Id": "ea76d964fb5f442e936eb51fc3368792", "Name": "Sumo.UI" },
+        { "Id": "77db3a3f0ecf4c26a7ba12a90a61e639", "Name": "UTiny.Text" }
     ],
     "Configurations": [],
     "Components": [
-        { "Id": "54e2ac9c9dc54c399a6e1524cba3d08b", "Name": "Slider" }
+        { "Id": "54e2ac9c9dc54c399a6e1524cba3d08b", "Name": "Slider" },
+        { "Id": "868e763a244449fda077e9d07913fb37", "Name": "Score" }
     ],
     "Structs": [],
     "Enums": [],
     "EntityGroups": [
         { "Id": "3e71f7eb575549de8d00a89e62ca47d4", "Name": "UI" }
     ],
-    "Scripts": [],
+    "Scripts": [
+        { "Id": "77a36f5b9b924859b05b70cf6c94a623", "Name": "UIService" }
+    ],
     "Systems": [
-        { "Id": "4497f8d97c5747699582c323fcec661f", "Name": "SliderSystem" }
+        { "Id": "4497f8d97c5747699582c323fcec661f", "Name": "SliderSystem" },
+        { "Id": "055b304018de49e980d5ab409d3fe4e4", "Name": "UIManagerSystem" }
     ],
     "Assets": [],
     "StartupEntityGroup": { "Id": "3e71f7eb575549de8d00a89e62ca47d4", "Name": "NewEntityGroup" }
@@ -46,13 +51,69 @@
     }
 },
 {
+    "$TypeId": 3,
+    "Id": "868e763a244449fda077e9d07913fb37",
+    "Name": "Score",
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "a1aab0c1dc6549448a6b1650828b4e19",
+        "Name": "Score1",
+        "FieldType": { "Id": "7112767112f747e2a340404a5ceb31b5", "Name": "UInt8" }
+    }, {
+        "Id": "e6133af5c3634dae991e1ba0e1f18c37",
+        "Name": "Score2",
+        "FieldType": { "Id": "7112767112f747e2a340404a5ceb31b5", "Name": "UInt8" }
+    }, {
+        "Id": "bd3c0decb0a44e5983cdabf51fea188d",
+        "Name": "TextRenderer1",
+        "FieldType": { "Id": "5a182d9d039d4dfd8fa96132d05f9ee7", "Name": "EntityReference" }
+    }, {
+        "Id": "2cd821855ee04a01af25145b152787a2",
+        "Name": "TextRenderer2",
+        "FieldType": { "Id": "5a182d9d039d4dfd8fa96132d05f9ee7", "Name": "EntityReference" }
+    }, {
+        "Id": "22f4f29273b94ff6b5e3987beb2b84e4",
+        "Name": "Slider",
+        "FieldType": { "Id": "5a182d9d039d4dfd8fa96132d05f9ee7", "Name": "EntityReference" }
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "868e763a244449fda077e9d07913fb37", "Name": "Score" }
+    }
+},
+{
     "$TypeId": 4,
     "Id": "3e71f7eb575549de8d00a89e62ca47d4",
     "Name": "UI",
     "Entities": [
+        { "$TypeId": 9, "Id": "10de347883fa4b7db5af714024a289e8", "Name": "Score" },
         { "$TypeId": 9, "Id": "29b974e646e5483f965edd6cd72a34a4", "Name": "Slider" },
-        { "$TypeId": 9, "Id": "930fa89486d94263a9eb0b6b49638ec6", "Name": "SliderBg" }
+        { "$TypeId": 9, "Id": "930fa89486d94263a9eb0b6b49638ec6", "Name": "SliderBg" },
+        { "$TypeId": 9, "Id": "0ad39b2d536f4db284ee9e2e31625f34", "Name": "Score1" },
+        { "$TypeId": 9, "Id": "9661602449eb4a50938ddf09aeaf9d15", "Name": "Score2" }
     ]
+},
+{
+    "$TypeId": 5,
+    "Id": "10de347883fa4b7db5af714024a289e8",
+    "Name": "Score",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 1000
+        }
+    }, {
+        "Type": { "Id": "868e763a244449fda077e9d07913fb37", "Name": "Score" },
+        "Properties": {
+            "TextRenderer1": { "$TypeId": 9, "Id": "0ad39b2d536f4db284ee9e2e31625f34", "Name": "Score1" },
+            "TextRenderer2": { "$TypeId": 9, "Id": "9661602449eb4a50938ddf09aeaf9d15", "Name": "Score2" },
+            "Slider": { "$TypeId": 9, "Id": "29b974e646e5483f965edd6cd72a34a4", "Name": "Slider" }
+        }
+    }]
 },
 {
     "$TypeId": 5,
@@ -67,7 +128,8 @@
                 "Properties": {
                     "y": 9
                 }
-            }
+            },
+            "parent": { "$TypeId": 9, "Id": "10de347883fa4b7db5af714024a289e8", "Name": "Score" }
         }
     }, {
         "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
@@ -104,7 +166,7 @@
     }, {
         "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
         "Properties": {
-            "order": 1010
+            "order": 1
         }
     }]
 },
@@ -135,14 +197,121 @@
                 "Properties": {
                     "y": 9
                 }
-            }
+            },
+            "parent": { "$TypeId": 9, "Id": "10de347883fa4b7db5af714024a289e8", "Name": "Score" }
         }
     }, {
         "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
         "Properties": {
-            "order": 1000
+            "order": 0
         }
     }]
+},
+{
+    "$TypeId": 5,
+    "Id": "0ad39b2d536f4db284ee9e2e31625f34",
+    "Name": "Score1",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": -1.575,
+                    "y": 8.95,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.01,
+                    "y": 0.01
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "10de347883fa4b7db5af714024a289e8", "Name": "Score" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "0",
+            "fontSize": 60,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 3
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "9661602449eb4a50938ddf09aeaf9d15",
+    "Name": "Score2",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1.575,
+                    "y": 8.95,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.01,
+                    "y": 0.01
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "10de347883fa4b7db5af714024a289e8", "Name": "Score" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "0",
+            "fontSize": 60,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 3
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }]
+},
+{
+    "$TypeId": 6,
+    "Id": "77a36f5b9b924859b05b70cf6c94a623",
+    "Name": "UIService",
+    "TextAsset": { "$TypeId": 10, "Guid": "0b61ac886b0b94f4ea5e5a47882e0422", "FileId": 4900000, "Type": 3 }
 },
 {
     "$TypeId": 7,
@@ -152,6 +321,22 @@
     "TextAsset": { "$TypeId": 10, "Guid": "409475f471e3f423897352a9a12772b6", "FileId": 4900000, "Type": 3 },
     "Components": [
         { "Id": "54e2ac9c9dc54c399a6e1524cba3d08b", "Name": "Slider" }
+    ],
+    "ExecuteAfter": [
+        { "Id": "6fa7e5feec05fec093042f2a2b9802d4", "Name": "UserCodeStart" }
+    ],
+    "ExecuteBefore": [
+        { "Id": "d016ec3bfdc5a53540e9c71942ee414c", "Name": "UserCodeEnd" }
+    ]
+},
+{
+    "$TypeId": 7,
+    "Id": "055b304018de49e980d5ab409d3fe4e4",
+    "Name": "UIManagerSystem",
+    "Options": 7,
+    "TextAsset": { "$TypeId": 10, "Guid": "964ffb291260144fa91dd5d0dda48c76", "FileId": 4900000, "Type": 3 },
+    "Components": [
+        { "Id": "868e763a244449fda077e9d07913fb37", "Name": "Score" }
     ],
     "ExecuteAfter": [
         { "Id": "6fa7e5feec05fec093042f2a2b9802d4", "Name": "UserCodeStart" }
