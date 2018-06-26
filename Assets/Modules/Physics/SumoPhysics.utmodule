@@ -1,0 +1,66 @@
+﻿[{
+    "$TypeId": 2,
+    "Id": "8f2d1d250fc44206a40af691c1da4eba",
+    "Name": "SumoPhysics",
+    "Namespace": "Sumo.Physics",
+    "Dependencies": [
+        { "Id": "a1b50987659c653138795a8f4079fc10", "Name": "UTiny.Math" },
+        { "Id": "2af0cd3b47a732bf738688ceab312689", "Name": "UTiny.Core" },
+        { "Id": "ce3f1bd7050540b70d450a606e226ea2", "Name": "UTiny.Shared" },
+        { "Id": "259902b84b3ed0f7213a1b5e37040709", "Name": "UTiny.Physics2D" },
+        { "Id": "30097418841f56d73400bf82ee859ac9", "Name": "UTiny.Core2D" }
+    ],
+    "Configurations": [],
+    "Components": [
+        { "Id": "a89ed5bc29f74a1fae5304517a6f9cfd", "Name": "CircleCollider" }
+    ],
+    "Structs": [],
+    "Enums": [],
+    "EntityGroups": [],
+    "Scripts": [
+        { "Id": "872d49a38be442cbaccd2f728766d0ca", "Name": "CircleColliderCollisionSystem" }
+    ],
+    "Systems": [
+        { "Id": "eaab648c07fa4e8f90125c2739453ca1", "Name": "CircleColliderCollisionSystem" }
+    ],
+    "Assets": []
+},
+{
+    "$TypeId": 3,
+    "Id": "a89ed5bc29f74a1fae5304517a6f9cfd",
+    "Name": "CircleCollider",
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "813f8d5ed2584ce58937dc211b2fc7ec",
+        "Name": "radius",
+        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" }
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "a89ed5bc29f74a1fae5304517a6f9cfd", "Name": "CircleCollider" },
+        "Properties": {
+            "radius": 1
+        }
+    }
+},
+{
+    "$TypeId": 6,
+    "Id": "872d49a38be442cbaccd2f728766d0ca",
+    "Name": "CircleColliderCollisionSystem",
+    "TextAsset": { "$TypeId": 10, "Guid": "e5f6098d7b52ff040b91f654d355c78d", "FileId": 4900000, "Type": 3 }
+},
+{
+    "$TypeId": 7,
+    "Id": "eaab648c07fa4e8f90125c2739453ca1",
+    "Name": "CircleColliderCollisionSystem",
+    "Options": 7,
+    "TextAsset": { "$TypeId": 10, "Guid": "e5f6098d7b52ff040b91f654d355c78d", "FileId": 4900000, "Type": 3 },
+    "Components": [
+        { "Id": "a89ed5bc29f74a1fae5304517a6f9cfd", "Name": "CircleCollider" },
+        { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" },
+        { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }
+    ],
+    "ExecuteAfter": [
+        { "Id": "b7f7f4fdfc819e904ab2a0193ed1f613", "Name": "Physics2DSystem" }
+    ],
+    "ExecuteBefore": []
+}]

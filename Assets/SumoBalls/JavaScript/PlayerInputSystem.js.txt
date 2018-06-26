@@ -4,43 +4,51 @@ var movementChanged = false;
 
 if (movementplayer.playerID() === 0)
 {
-    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.W)) {
+    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.W))
+    {
         direction.y += 1;
         movementChanged = true;
     }
 
-    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.S)) {
+    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.S))
+    {
         direction.y -= 1;
         movementChanged = true;
     }
 
-    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.D)) {
+    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.D))
+    {
         direction.x += 1;
         movementChanged = true;
     }
 
-    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.A)) {
+    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.A))
+    {
         direction.x -= 1;
         movementChanged = true;
     }
 } else if (movementplayer.playerID() === 1)
 {
-    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.I)) {
+    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.I))
+    {
         direction.y += 1;
         movementChanged = true;
     }
 
-    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.K)) {
+    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.K))
+    {
         direction.y -= 1;
         movementChanged = true;
     }
 
-    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.J)) {
+    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.L))
+    {
         direction.x += 1;
         movementChanged = true;
     }
 
-    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.L)) {
+    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.J))
+    {
         direction.x -= 1;
         movementChanged = true;
     }
