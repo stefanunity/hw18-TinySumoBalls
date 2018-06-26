@@ -1,0 +1,19 @@
+const spriteSizeX = 6.3;
+const spriteSizeY = 0.62;
+const offset = -3.15;
+
+
+let value = slider.value();
+let maxValue = slider.maxValue();
+
+let percentage = value / maxValue;
+let sizeX = spriteSizeX * percentage;
+
+
+let options = entity.getComponent(ut.Core2D.Sprite2DRendererOptions);
+options.setSize(new Vector2(sizeX, spriteSizeY));
+
+let newPos = offset - (offset * percentage);
+let transform = entity.getComponent(ut.Core2D.Transform);
+let originalPos = transform.localPosition();
+transform.setLocalPosition(new Vector3(newPos, originalPos.y, originalPos.z));

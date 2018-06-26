@@ -1,0 +1,5 @@
+var dt = sched.deltaTime();
+var direction = transform.worldPosition();
+direction.normalize();
+direction.multiplyScalar(movement.speed() * dt * -1);
+velocity2d.add(direction);

@@ -1,0 +1,66 @@
+﻿[{
+    "$TypeId": 2,
+    "Id": "ea76d964fb5f442e936eb51fc3368792",
+    "Name": "Sumo.UI",
+    "Namespace": "UiModule",
+    "Dependencies": [
+        { "Id": "a1b50987659c653138795a8f4079fc10", "Name": "UTiny.Math" },
+        { "Id": "2af0cd3b47a732bf738688ceab312689", "Name": "UTiny.Core" },
+        { "Id": "ce3f1bd7050540b70d450a606e226ea2", "Name": "UTiny.Shared" }
+    ],
+    "Configurations": [],
+    "Components": [
+        { "Id": "54e2ac9c9dc54c399a6e1524cba3d08b", "Name": "Slider" }
+    ],
+    "Structs": [],
+    "Enums": [],
+    "EntityGroups": [
+        { "Id": "3e71f7eb575549de8d00a89e62ca47d4", "Name": "UI" }
+    ],
+    "Scripts": [],
+    "Systems": [
+        { "Id": "4497f8d97c5747699582c323fcec661f", "Name": "SliderSystem" }
+    ],
+    "Assets": [],
+    "StartupEntityGroup": { "Id": "3e71f7eb575549de8d00a89e62ca47d4", "Name": "NewEntityGroup" }
+},
+{
+    "$TypeId": 3,
+    "Id": "54e2ac9c9dc54c399a6e1524cba3d08b",
+    "Name": "Slider",
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "5801dd3f87ab415cb6bace52660034e0",
+        "Name": "value",
+        "FieldType": { "Id": "7112767112f747e2a340404a5ceb31b5", "Name": "UInt8" }
+    }, {
+        "Id": "a63a048f881e4440899a5e47e68f2b07",
+        "Name": "maxValue",
+        "FieldType": { "Id": "7112767112f747e2a340404a5ceb31b5", "Name": "UInt8" }
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "54e2ac9c9dc54c399a6e1524cba3d08b", "Name": "Slider" }
+    }
+},
+{
+    "$TypeId": 4,
+    "Id": "3e71f7eb575549de8d00a89e62ca47d4",
+    "Name": "UI",
+    "Entities": []
+},
+{
+    "$TypeId": 7,
+    "Id": "4497f8d97c5747699582c323fcec661f",
+    "Name": "SliderSystem",
+    "Options": 3,
+    "TextAsset": { "$TypeId": 10, "Guid": "409475f471e3f423897352a9a12772b6", "FileId": 4900000, "Type": 3 },
+    "Components": [
+        { "Id": "54e2ac9c9dc54c399a6e1524cba3d08b", "Name": "Slider" }
+    ],
+    "ExecuteAfter": [
+        { "Id": "6fa7e5feec05fec093042f2a2b9802d4", "Name": "UserCodeStart" }
+    ],
+    "ExecuteBefore": [
+        { "Id": "d016ec3bfdc5a53540e9c71942ee414c", "Name": "UserCodeEnd" }
+    ]
+}]

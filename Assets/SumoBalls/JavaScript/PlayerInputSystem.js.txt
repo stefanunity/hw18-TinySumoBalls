@@ -1,0 +1,55 @@
+var dt = sched.deltaTime();
+var direction = new Vector2(0, 0);
+var movementChanged = false;
+
+if (movementplayer.playerID() === 0)
+{
+    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.W)) {
+        direction.y += 1;
+        movementChanged = true;
+    }
+
+    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.S)) {
+        direction.y -= 1;
+        movementChanged = true;
+    }
+
+    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.D)) {
+        direction.x += 1;
+        movementChanged = true;
+    }
+
+    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.A)) {
+        direction.x -= 1;
+        movementChanged = true;
+    }
+} else if (movementplayer.playerID() === 1)
+{
+    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.I)) {
+        direction.y += 1;
+        movementChanged = true;
+    }
+
+    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.K)) {
+        direction.y -= 1;
+        movementChanged = true;
+    }
+
+    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.J)) {
+        direction.x += 1;
+        movementChanged = true;
+    }
+
+    if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.L)) {
+        direction.x -= 1;
+        movementChanged = true;
+    }
+}
+
+
+if (movementChanged)
+{
+    direction.normalize();
+    direction.multiplyScalar(movement.speed() * dt);
+    velocity2d.add(direction);
+}

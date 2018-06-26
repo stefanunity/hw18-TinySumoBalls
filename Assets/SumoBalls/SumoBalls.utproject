@@ -1,0 +1,382 @@
+﻿[{
+    "$TypeId": 1,
+    "Id": "db54b13c889d46e0857fd81e4786ee34",
+    "Name": "SumoBalls",
+    "Version": 1,
+    "Settings": {
+        "CanvasWidth": 1920,
+        "CanvasHeight": 1080,
+        "EmbedAssets": true,
+        "CanvasAutoResize": true,
+        "DefaultTextureSettings": {
+            "Embedded": true,
+            "JpgCompressionQuality": 75,
+            "WebPCompressionQuality": 60
+        },
+        "DefaultAudioClipSettings": {
+            "Embedded": true
+        },
+        "LocalWSServerPort": 17700,
+        "LocalHTTPServerPort": 19050,
+        "MemorySize": 16,
+        "IncludeWSClient": true,
+        "RunBabel": true,
+        "LinkToSource": true
+    },
+    "Module": { "Id": "0d01b4b875a84dca881955c727ad07ae", "Name": "Main" },
+    "Configuration": { "$TypeId": 9, "Id": "7fe240be91c142eba79f79323710fa20", "Name": "Configuration" }
+},
+{
+    "$TypeId": 2,
+    "Id": "0d01b4b875a84dca881955c727ad07ae",
+    "Name": "Main",
+    "Namespace": "game",
+    "Options": 4,
+    "Dependencies": [
+        { "Id": "30097418841f56d73400bf82ee859ac9", "Name": "UTiny.Core2D" },
+        { "Id": "eae58004250dcd15a6c834b07677ca28", "Name": "UTiny.HTML" },
+        { "Id": "a1b50987659c653138795a8f4079fc10", "Name": "UTiny.Math" },
+        { "Id": "2af0cd3b47a732bf738688ceab312689", "Name": "UTiny.Core" },
+        { "Id": "ce3f1bd7050540b70d450a606e226ea2", "Name": "UTiny.Shared" },
+        { "Id": "259902b84b3ed0f7213a1b5e37040709", "Name": "UTiny.Physics2D" },
+        { "Id": "0d01b4b875a84dca881955c727ad07ae", "Name": "Main" }
+    ],
+    "Configurations": [],
+    "Components": [
+        { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementPlayer" },
+        { "Id": "3a3d6d942e4b462b8c179981be5666c6", "Name": "MovementAI" },
+        { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" }
+    ],
+    "Structs": [],
+    "Enums": [],
+    "EntityGroups": [
+        { "Id": "4b52eb87e8b0406692089585d92d8714", "Name": "Gameplay" }
+    ],
+    "Scripts": [],
+    "Systems": [
+        { "Id": "c65ec262e361456d8445bb1077148c14", "Name": "PlayerInputSystem" },
+        { "Id": "8bc5a67b302148a8ab4556119a5ae083", "Name": "AIInputSystem" }
+    ],
+    "Assets": [],
+    "StartupEntityGroup": { "Id": "4b52eb87e8b0406692089585d92d8714", "Name": "NewEntityGroup" }
+},
+{
+    "$TypeId": 3,
+    "Id": "5734579d005f4dc8af924375b0f2e547",
+    "Name": "MovementPlayer",
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "9c6f7aa6eeb449c5b42b116dfd14aac1",
+        "Name": "playerID",
+        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementPlayer" }
+    }
+},
+{
+    "$TypeId": 3,
+    "Id": "3a3d6d942e4b462b8c179981be5666c6",
+    "Name": "MovementAI",
+    "TypeCode": "Component",
+    "Fields": [],
+    "DefaultValue": {
+        "Type": { "Id": "3a3d6d942e4b462b8c179981be5666c6", "Name": "MovementAI" }
+    }
+},
+{
+    "$TypeId": 3,
+    "Id": "259a7a70533f45f19e85706ca64a9467",
+    "Name": "Movement",
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "71f8ee5569fd4b968cd1b8d80a1ac9b7",
+        "Name": "speed",
+        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" }
+    }
+},
+{
+    "$TypeId": 4,
+    "Id": "4b52eb87e8b0406692089585d92d8714",
+    "Name": "Gameplay",
+    "Entities": [
+        { "$TypeId": 9, "Id": "046d0cc2972f48c28762ca96d7c3484e", "Name": "Camera" },
+        { "$TypeId": 9, "Id": "a54cd0ed98bc4be4b34fdda57ef709b8", "Name": "Player 1" },
+        { "$TypeId": 9, "Id": "9b7a2c3a3abf4a2281a626abca031d30", "Name": "Player 2" },
+        { "$TypeId": 9, "Id": "6ebbd44482454e129bc91b55e6b79b0d", "Name": "Walls" },
+        { "$TypeId": 9, "Id": "41bc26b88b224af3bd3bb6e7eaeaca13", "Name": "Wall_N" },
+        { "$TypeId": 9, "Id": "b1f699a9834b4238a9d943a19ed3a2c2", "Name": "Wall_S" },
+        { "$TypeId": 9, "Id": "9aa0e01d5137433ebd0e507e63d462d2", "Name": "Wall_E" },
+        { "$TypeId": 9, "Id": "ce514d19f7914184acfe8dc966d77065", "Name": "Wall_W" }
+    ]
+},
+{
+    "$TypeId": 5,
+    "Id": "046d0cc2972f48c28762ca96d7c3484e",
+    "Name": "Camera",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }
+    }, {
+        "Type": { "Id": "12692383f3fef3bb74c209888c5b0939", "Name": "Camera2D" },
+        "Properties": {
+            "halfVerticalSize": 10,
+            "backgroundColor": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "a": 1
+                }
+            },
+            "depth": -1
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "a54cd0ed98bc4be4b34fdda57ef709b8",
+    "Name": "Player 1",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }
+    }, {
+        "Type": { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementPlayer" }
+    }, {
+        "Type": { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
+    }, {
+        "Type": { "Id": "15999c23d7007d7522e11a6ab8be3d27", "Name": "RectCollider" },
+        "Properties": {
+            "bodyType": {
+                "$TypeId": 8,
+                "Type": { "Id": "a4afdb83c635db286370870d059ac493", "Name": "BodyType" },
+                "Id": "b7982cbb4f5c78bfdd458bffbe9e1276",
+                "Name": "BulletDynamic",
+                "Value": 3
+            },
+            "friction": 0,
+            "restitution": 1,
+            "density": 1,
+            "width": 1,
+            "height": 1
+        }
+    }, {
+        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
+        "Properties": {
+            "sprite": { "$TypeId": 10, "Guid": "999a4370662aa4f9c99f9e93cad4449b", "FileId": 21300000, "Type": 3 }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "9b7a2c3a3abf4a2281a626abca031d30",
+    "Name": "Player 2",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": -1.588,
+                    "y": 0.021
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementPlayer" },
+        "Properties": {
+            "playerID": 1
+        }
+    }, {
+        "Type": { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
+    }, {
+        "Type": { "Id": "15999c23d7007d7522e11a6ab8be3d27", "Name": "RectCollider" },
+        "Properties": {
+            "bodyType": {
+                "$TypeId": 8,
+                "Type": { "Id": "a4afdb83c635db286370870d059ac493", "Name": "BodyType" },
+                "Id": "b7982cbb4f5c78bfdd458bffbe9e1276",
+                "Name": "BulletDynamic",
+                "Value": 3
+            },
+            "friction": 0,
+            "restitution": 1,
+            "density": 1,
+            "width": 1,
+            "height": 1
+        }
+    }, {
+        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
+        "Properties": {
+            "sprite": { "$TypeId": 10, "Guid": "92d624e6105b2490e8dfd86fe4d5c1a7", "FileId": 21300000, "Type": 3 }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "6ebbd44482454e129bc91b55e6b79b0d",
+    "Name": "Walls",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "41bc26b88b224af3bd3bb6e7eaeaca13",
+    "Name": "Wall_N",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "y": 10
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "6ebbd44482454e129bc91b55e6b79b0d", "Name": "Entity" }
+        }
+    }, {
+        "Type": { "Id": "15999c23d7007d7522e11a6ab8be3d27", "Name": "RectCollider" },
+        "Properties": {
+            "width": 100,
+            "height": 1
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "b1f699a9834b4238a9d943a19ed3a2c2",
+    "Name": "Wall_S",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "y": -10
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "6ebbd44482454e129bc91b55e6b79b0d", "Name": "Entity" }
+        }
+    }, {
+        "Type": { "Id": "15999c23d7007d7522e11a6ab8be3d27", "Name": "RectCollider" },
+        "Properties": {
+            "width": 100,
+            "height": 1
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "9aa0e01d5137433ebd0e507e63d462d2",
+    "Name": "Wall_E",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 10,
+                    "y": 0
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "6ebbd44482454e129bc91b55e6b79b0d", "Name": "Entity" }
+        }
+    }, {
+        "Type": { "Id": "15999c23d7007d7522e11a6ab8be3d27", "Name": "RectCollider" },
+        "Properties": {
+            "width": 1,
+            "height": 100
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "ce514d19f7914184acfe8dc966d77065",
+    "Name": "Wall_W",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": -10,
+                    "y": 0
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "6ebbd44482454e129bc91b55e6b79b0d", "Name": "Entity" }
+        }
+    }, {
+        "Type": { "Id": "15999c23d7007d7522e11a6ab8be3d27", "Name": "RectCollider" },
+        "Properties": {
+            "width": 1,
+            "height": 100
+        }
+    }]
+},
+{
+    "$TypeId": 7,
+    "Id": "c65ec262e361456d8445bb1077148c14",
+    "Name": "PlayerInputSystem",
+    "Options": 3,
+    "TextAsset": { "$TypeId": 10, "Guid": "d82188a80027baa4298cdaa3ec79b531", "FileId": 4900000, "Type": 3 },
+    "Components": [
+        { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
+        { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementPlayer" },
+        { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
+    ],
+    "ExecuteAfter": [
+        { "Id": "624141ac039664daa461faa7328b16fc", "Name": "InputHandler" }
+    ],
+    "ExecuteBefore": [
+        { "Id": "b7f7f4fdfc819e904ab2a0193ed1f613", "Name": "Physics2DSystem" }
+    ]
+},
+{
+    "$TypeId": 7,
+    "Id": "8bc5a67b302148a8ab4556119a5ae083",
+    "Name": "AIInputSystem",
+    "Options": 3,
+    "TextAsset": { "$TypeId": 10, "Guid": "4140a4d8280da6c4487874cdcb183d4a", "FileId": 4900000, "Type": 3 },
+    "Components": [],
+    "ExecuteAfter": [
+        { "Id": "6fa7e5feec05fec093042f2a2b9802d4", "Name": "UserCodeStart" }
+    ],
+    "ExecuteBefore": [
+        { "Id": "b7f7f4fdfc819e904ab2a0193ed1f613", "Name": "Physics2DSystem" }
+    ]
+},
+{
+    "$TypeId": 5,
+    "Id": "7fe240be91c142eba79f79323710fa20",
+    "Name": "Configuration",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "575fe161bc06950c954480d04c70c9ab", "Name": "DisplayInfo" },
+        "Properties": {
+            "width": 1920,
+            "height": 1080,
+            "autoSizeToFrame": true
+        }
+    }, {
+        "Type": { "Id": "38283a6cef9faa790b5c9936163d59e3", "Name": "Physics2DConfig" },
+        "Properties": {
+            "gravity": {
+                "Type": { "Id": "3abb69286ddfc2d1c617a173c1eeb35d", "Name": "Vector2" },
+                "Properties": {
+                    "y": 0
+                }
+            }
+        }
+    }]
+}]

@@ -5,6 +5,8 @@
 [Bb]uilds/
 Assets/AssetStoreTools*
 [Pp]ackages/
+UTiny/*
+UTinyExport/*
 
 # Visual Studio cache directory
 .vs/
