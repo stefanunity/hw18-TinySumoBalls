@@ -37,4 +37,8 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-Assets/Modules/UTinyTemp.meta
+Assets/Modules/UTinyTemp*
+Assets/UTinyTemp*
+Assets/UTinyTemp.meta
+Assets/UTinyTemp/UTinyProject-DoNotEdit.unity
+Assets/UTinyTemp/UTinyProject-DoNotEdit.unity.meta
