@@ -131,6 +131,10 @@
         "Name": "Init",
         "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
     }, {
+        "Id": "d44794f034134f67a45017c622c76370",
+        "Name": "StartMenu",
+        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
+    }, {
         "Id": "83d092e5c7514748b4e13ceba0b96068",
         "Name": "Gameplay",
         "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
@@ -142,8 +146,9 @@
     "DefaultValue": {
         "Type": { "Id": "77fd93442d854ef28963349a3644e8de", "Name": "GameState" },
         "Properties": {
-            "Gameplay": 1,
-            "GameOver": 2
+            "StartMenu": 1,
+            "Gameplay": 2,
+            "GameOver": 3
         }
     }
 },

@@ -7,6 +7,17 @@ game.GameManagerSystem.update = function (scheduler, world) {
          case game.GameState.Init:
             InitGame(world, manager);
             break;
+
+         case game.GameState.StartMenu:
+            manager.setState(game.GameState.StartMenu);
+            console.log("StartMenu");
+            if (ut.Runtime.Input.getMouseButtonDown(0)) {
+
+               console.log("switch to gameplay");
+
+               manager.setState(game.GameState.Gameplay);
+            }
+            break;
          case game.GameState.Gameplay:
             if (ut.Runtime.Input.getMouseButtonDown(0)) {
                // UIManager = ut.Flow.Service.destroyAll("Sumo.UI.UI");
