@@ -55,7 +55,8 @@
         { "Id": "77fd93442d854ef28963349a3644e8de", "Name": "GameState" }
     ],
     "EntityGroups": [
-        { "Id": "4b52eb87e8b0406692089585d92d8714", "Name": "Gameplay" }
+        { "Id": "4b52eb87e8b0406692089585d92d8714", "Name": "Gameplay" },
+        { "Id": "93b40144076547c0a5838ced33cc9e44", "Name": "StartMenu" }
     ],
     "Scripts": [
         { "Id": "8ba620fb0f14454a9a9b42cd75b1e606", "Name": "GameService" }
@@ -549,6 +550,12 @@
     "Components": [{
         "Type": { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" }
     }]
+},
+{
+    "$TypeId": 4,
+    "Id": "93b40144076547c0a5838ced33cc9e44",
+    "Name": "StartMenu",
+    "Entities": []
 },
 {
     "$TypeId": 6,
