@@ -41,7 +41,8 @@
         { "Id": "259902b84b3ed0f7213a1b5e37040709", "Name": "UTiny.Physics2D" },
         { "Id": "0d01b4b875a84dca881955c727ad07ae", "Name": "Main" },
         { "Id": "3aa8828c0eaa4fb0a2faaa1ee3f85c59", "Name": "UTiny.Flow" },
-        { "Id": "ea76d964fb5f442e936eb51fc3368792", "Name": "Sumo.UI" }
+        { "Id": "ea76d964fb5f442e936eb51fc3368792", "Name": "Sumo.UI" },
+        { "Id": "77db3a3f0ecf4c26a7ba12a90a61e639", "Name": "UTiny.Text" }
     ],
     "Configurations": [],
     "Components": [
@@ -555,7 +556,111 @@
     "$TypeId": 4,
     "Id": "93b40144076547c0a5838ced33cc9e44",
     "Name": "StartMenu",
-    "Entities": []
+    "Entities": [
+        { "$TypeId": 9, "Id": "186d4cb1f70748d8a9097bdd4c7a0d60", "Name": "Scaler" },
+        { "$TypeId": 9, "Id": "209fdc56a1474f9b8aa9b351635b0697", "Name": "StartNoAI" },
+        { "$TypeId": 9, "Id": "4fc358240043499d80ee5b9f181b25f7", "Name": "StartAI" }
+    ]
+},
+{
+    "$TypeId": 5,
+    "Id": "186d4cb1f70748d8a9097bdd4c7a0d60",
+    "Name": "Scaler",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.1,
+                    "y": 0.1
+                }
+            }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "209fdc56a1474f9b8aa9b351635b0697",
+    "Name": "StartNoAI",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "y": 30
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "186d4cb1f70748d8a9097bdd4c7a0d60", "Name": "Scaler" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "StartNoAI",
+            "fontSize": 40,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.6886792,
+                    "g": 0.1916607,
+                    "b": 0.2194114,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "4fc358240043499d80ee5b9f181b25f7",
+    "Name": "StartAI",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "y": -20
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "186d4cb1f70748d8a9097bdd4c7a0d60", "Name": "Scaler" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "StartAI",
+            "fontSize": 40,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.6886792,
+                    "g": 0.1916607,
+                    "b": 0.2194114,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }]
 },
 {
     "$TypeId": 6,
