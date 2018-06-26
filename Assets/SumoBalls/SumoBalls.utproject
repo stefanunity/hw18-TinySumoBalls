@@ -58,7 +58,8 @@
     ],
     "EntityGroups": [
         { "Id": "4b52eb87e8b0406692089585d92d8714", "Name": "Gameplay" },
-        { "Id": "93b40144076547c0a5838ced33cc9e44", "Name": "StartMenu" }
+        { "Id": "93b40144076547c0a5838ced33cc9e44", "Name": "StartMenu" },
+        { "Id": "8d782d7f1e9e4e3e9a12c99ea446b386", "Name": "Bootstrap" }
     ],
     "Scripts": [
         { "Id": "8ba620fb0f14454a9a9b42cd75b1e606", "Name": "GameService" }
@@ -70,7 +71,7 @@
         { "Id": "3998febc14d6491781556b463c3af125", "Name": "MenuInputSystem" }
     ],
     "Assets": [],
-    "StartupEntityGroup": { "Id": "4b52eb87e8b0406692089585d92d8714", "Name": "Gameplay" }
+    "StartupEntityGroup": { "Id": "8d782d7f1e9e4e3e9a12c99ea446b386", "Name": "NewEntityGroup" }
 },
 {
     "$TypeId": 3,
@@ -131,7 +132,7 @@
     "TypeCode": "Component",
     "Fields": [],
     "DefaultValue": {
-        "Type": { "Id": "1cd9e46e59fe4908a5824526293d20df", "Name": "NewComponent" }
+        "Type": { "Id": "1cd9e46e59fe4908a5824526293d20df", "Name": "MenuSystem" }
     }
 },
 {
@@ -171,7 +172,6 @@
     "Id": "4b52eb87e8b0406692089585d92d8714",
     "Name": "Gameplay",
     "Entities": [
-        { "$TypeId": 9, "Id": "046d0cc2972f48c28762ca96d7c3484e", "Name": "Camera" },
         { "$TypeId": 9, "Id": "a54cd0ed98bc4be4b34fdda57ef709b8", "Name": "Player 1" },
         { "$TypeId": 9, "Id": "9b7a2c3a3abf4a2281a626abca031d30", "Name": "Player 2" },
         { "$TypeId": 9, "Id": "6ebbd44482454e129bc91b55e6b79b0d", "Name": "Walls" },
@@ -181,40 +181,8 @@
         { "$TypeId": 9, "Id": "ce514d19f7914184acfe8dc966d77065", "Name": "Wall_W" },
         { "$TypeId": 9, "Id": "ed636de84be8448ab6bcb1b3e3fc98d6", "Name": "Enemy 1" },
         { "$TypeId": 9, "Id": "18140d16546948009a4709810b85c696", "Name": "Enemy 2" },
-        { "$TypeId": 9, "Id": "f535df7db2804611bfa45b8a4ec689a3", "Name": "Entity" },
-        { "$TypeId": 9, "Id": "9df4483d835a474581dba89977f1cf48", "Name": "GameManger" }
+        { "$TypeId": 9, "Id": "f535df7db2804611bfa45b8a4ec689a3", "Name": "Entity" }
     ]
-},
-{
-    "$TypeId": 5,
-    "Id": "046d0cc2972f48c28762ca96d7c3484e",
-    "Name": "Camera",
-    "Enabled": true,
-    "Components": [{
-        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }
-    }, {
-        "Type": { "Id": "12692383f3fef3bb74c209888c5b0939", "Name": "Camera2D" },
-        "Properties": {
-            "halfVerticalSize": 10,
-            "backgroundColor": {
-                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
-                "Properties": {
-                    "r": 0.1647059,
-                    "g": 0.1686275,
-                    "b": 0.1647059,
-                    "a": 1
-                }
-            },
-            "clearFlags": {
-                "$TypeId": 8,
-                "Type": { "Id": "76a06ddd38e99125d930e77c6a287872", "Name": "CameraClearFlags" },
-                "Id": "9faedc246f34513076701ef66b5ad74f",
-                "Name": "SolidColor",
-                "Value": 1
-            },
-            "depth": -1
-        }
-    }]
 },
 {
     "$TypeId": 5,
@@ -556,15 +524,6 @@
     }]
 },
 {
-    "$TypeId": 5,
-    "Id": "9df4483d835a474581dba89977f1cf48",
-    "Name": "GameManger",
-    "Enabled": true,
-    "Components": [{
-        "Type": { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" }
-    }]
-},
-{
     "$TypeId": 4,
     "Id": "93b40144076547c0a5838ced33cc9e44",
     "Name": "StartMenu",
@@ -675,6 +634,55 @@
             },
             "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
         }
+    }]
+},
+{
+    "$TypeId": 4,
+    "Id": "8d782d7f1e9e4e3e9a12c99ea446b386",
+    "Name": "Bootstrap",
+    "Entities": [
+        { "$TypeId": 9, "Id": "046d0cc2972f48c28762ca96d7c3484e", "Name": "Camera" },
+        { "$TypeId": 9, "Id": "9df4483d835a474581dba89977f1cf48", "Name": "GameManger" }
+    ]
+},
+{
+    "$TypeId": 5,
+    "Id": "046d0cc2972f48c28762ca96d7c3484e",
+    "Name": "Camera",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }
+    }, {
+        "Type": { "Id": "12692383f3fef3bb74c209888c5b0939", "Name": "Camera2D" },
+        "Properties": {
+            "halfVerticalSize": 10,
+            "backgroundColor": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "clearFlags": {
+                "$TypeId": 8,
+                "Type": { "Id": "76a06ddd38e99125d930e77c6a287872", "Name": "CameraClearFlags" },
+                "Id": "9faedc246f34513076701ef66b5ad74f",
+                "Name": "SolidColor",
+                "Value": 1
+            },
+            "depth": -1
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "9df4483d835a474581dba89977f1cf48",
+    "Name": "GameManger",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" }
     }]
 },
 {
