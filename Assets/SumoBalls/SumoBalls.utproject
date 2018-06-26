@@ -42,7 +42,8 @@
         { "Id": "0d01b4b875a84dca881955c727ad07ae", "Name": "Main" },
         { "Id": "3aa8828c0eaa4fb0a2faaa1ee3f85c59", "Name": "UTiny.Flow" },
         { "Id": "ea76d964fb5f442e936eb51fc3368792", "Name": "Sumo.UI" },
-        { "Id": "77db3a3f0ecf4c26a7ba12a90a61e639", "Name": "UTiny.Text" }
+        { "Id": "77db3a3f0ecf4c26a7ba12a90a61e639", "Name": "UTiny.Text" },
+        { "Id": "8f2d1d250fc44206a40af691c1da4eba", "Name": "SumoPhysics" }
     ],
     "Configurations": [],
     "Components": [
@@ -201,22 +202,6 @@
     }, {
         "Type": { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
     }, {
-        "Type": { "Id": "15999c23d7007d7522e11a6ab8be3d27", "Name": "RectCollider" },
-        "Properties": {
-            "bodyType": {
-                "$TypeId": 8,
-                "Type": { "Id": "a4afdb83c635db286370870d059ac493", "Name": "BodyType" },
-                "Id": "b7982cbb4f5c78bfdd458bffbe9e1276",
-                "Name": "BulletDynamic",
-                "Value": 3
-            },
-            "friction": 0,
-            "restitution": 1,
-            "density": 1,
-            "width": 1,
-            "height": 1
-        }
-    }, {
         "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
         "Properties": {
             "sprite": { "$TypeId": 10, "Guid": "999a4370662aa4f9c99f9e93cad4449b", "FileId": 21300000, "Type": 3 }
@@ -225,6 +210,11 @@
         "Type": { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
         "Properties": {
             "speed": 5
+        }
+    }, {
+        "Type": { "Id": "a89ed5bc29f74a1fae5304517a6f9cfd", "Name": "CircleCollider" },
+        "Properties": {
+            "radius": 0.6
         }
     }]
 },
@@ -252,22 +242,6 @@
     }, {
         "Type": { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
     }, {
-        "Type": { "Id": "15999c23d7007d7522e11a6ab8be3d27", "Name": "RectCollider" },
-        "Properties": {
-            "bodyType": {
-                "$TypeId": 8,
-                "Type": { "Id": "a4afdb83c635db286370870d059ac493", "Name": "BodyType" },
-                "Id": "b7982cbb4f5c78bfdd458bffbe9e1276",
-                "Name": "BulletDynamic",
-                "Value": 3
-            },
-            "friction": 0,
-            "restitution": 1,
-            "density": 1,
-            "width": 1,
-            "height": 1
-        }
-    }, {
         "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
         "Properties": {
             "sprite": { "$TypeId": 10, "Guid": "92d624e6105b2490e8dfd86fe4d5c1a7", "FileId": 21300000, "Type": 3 }
@@ -276,6 +250,11 @@
         "Type": { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
         "Properties": {
             "speed": 5
+        }
+    }, {
+        "Type": { "Id": "a89ed5bc29f74a1fae5304517a6f9cfd", "Name": "CircleCollider" },
+        "Properties": {
+            "radius": 0.6
         }
     }]
 },
@@ -405,22 +384,6 @@
     }, {
         "Type": { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
     }, {
-        "Type": { "Id": "15999c23d7007d7522e11a6ab8be3d27", "Name": "RectCollider" },
-        "Properties": {
-            "bodyType": {
-                "$TypeId": 8,
-                "Type": { "Id": "a4afdb83c635db286370870d059ac493", "Name": "BodyType" },
-                "Id": "b7982cbb4f5c78bfdd458bffbe9e1276",
-                "Name": "BulletDynamic",
-                "Value": 3
-            },
-            "friction": 0,
-            "restitution": 1,
-            "density": 1,
-            "width": 1,
-            "height": 1
-        }
-    }, {
         "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
         "Properties": {
             "sprite": { "$TypeId": 10, "Guid": "999a4370662aa4f9c99f9e93cad4449b", "FileId": 21300000, "Type": 3 },
@@ -440,6 +403,11 @@
         "Type": { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
         "Properties": {
             "speed": 5
+        }
+    }, {
+        "Type": { "Id": "a89ed5bc29f74a1fae5304517a6f9cfd", "Name": "CircleCollider" },
+        "Properties": {
+            "radius": 0.6
         }
     }]
 },
@@ -462,22 +430,6 @@
     }, {
         "Type": { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
     }, {
-        "Type": { "Id": "15999c23d7007d7522e11a6ab8be3d27", "Name": "RectCollider" },
-        "Properties": {
-            "bodyType": {
-                "$TypeId": 8,
-                "Type": { "Id": "a4afdb83c635db286370870d059ac493", "Name": "BodyType" },
-                "Id": "b7982cbb4f5c78bfdd458bffbe9e1276",
-                "Name": "BulletDynamic",
-                "Value": 3
-            },
-            "friction": 0,
-            "restitution": 1,
-            "density": 1,
-            "width": 1,
-            "height": 1
-        }
-    }, {
         "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
         "Properties": {
             "sprite": { "$TypeId": 10, "Guid": "999a4370662aa4f9c99f9e93cad4449b", "FileId": 21300000, "Type": 3 },
@@ -497,6 +449,11 @@
         "Type": { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
         "Properties": {
             "speed": 5
+        }
+    }, {
+        "Type": { "Id": "a89ed5bc29f74a1fae5304517a6f9cfd", "Name": "CircleCollider" },
+        "Properties": {
+            "radius": 0.6
         }
     }]
 },
