@@ -150,6 +150,10 @@
         "Name": "StartMenu",
         "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
     }, {
+        "Id": "f4e8a8be486e4471a175e8ac3e4d323c",
+        "Name": "InitGameplay",
+        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
+    }, {
         "Id": "83d092e5c7514748b4e13ceba0b96068",
         "Name": "Gameplay",
         "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
@@ -162,6 +166,7 @@
         "Type": { "Id": "77fd93442d854ef28963349a3644e8de", "Name": "GameState" },
         "Properties": {
             "StartMenu": 1,
+            "InitGameplay": 4,
             "Gameplay": 2,
             "GameOver": 3
         }
@@ -181,7 +186,7 @@
         { "$TypeId": 9, "Id": "ce514d19f7914184acfe8dc966d77065", "Name": "Wall_W" },
         { "$TypeId": 9, "Id": "ed636de84be8448ab6bcb1b3e3fc98d6", "Name": "Enemy 1" },
         { "$TypeId": 9, "Id": "18140d16546948009a4709810b85c696", "Name": "Enemy 2" },
-        { "$TypeId": 9, "Id": "f535df7db2804611bfa45b8a4ec689a3", "Name": "Entity" }
+        { "$TypeId": 9, "Id": "f535df7db2804611bfa45b8a4ec689a3", "Name": "BattleAreaSprite" }
     ]
 },
 {
@@ -498,7 +503,7 @@
 {
     "$TypeId": 5,
     "Id": "f535df7db2804611bfa45b8a4ec689a3",
-    "Name": "Entity",
+    "Name": "BattleAreaSprite",
     "Enabled": true,
     "Components": [{
         "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
