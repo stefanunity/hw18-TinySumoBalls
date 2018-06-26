@@ -60,11 +60,20 @@
     "Name": "Slider",
     "Enabled": true,
     "Components": [{
-        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "y": 9
+                }
+            }
+        }
     }, {
         "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
         "Properties": {
             "sprite": { "$TypeId": 10, "Guid": "2257d916b2d774fa1ab6b465eadea50c", "FileId": 21300000, "Type": 3 },
+            "alignToPixels": true,
             "color": {
                 "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
                 "Properties": {
@@ -91,6 +100,11 @@
                     "y": 0.62
                 }
             }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 1010
         }
     }]
 },
@@ -119,10 +133,14 @@
             "localPosition": {
                 "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
                 "Properties": {
-                    "y": 0
+                    "y": 9
                 }
-            },
-            "parent": { "$TypeId": 9, "Id": "29b974e646e5483f965edd6cd72a34a4", "Name": "Entity" }
+            }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 1000
         }
     }]
 },

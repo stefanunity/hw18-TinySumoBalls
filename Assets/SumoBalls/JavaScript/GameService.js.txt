@@ -1,27 +1,51 @@
-const UIManager = {}
+let UIManager = {}
+let sliderValue = 0;
 
 game.GameManagerSystem.update = function (scheduler, world) {
-    world.forEachEntity([game.GameManager], function (entity, manager) {
-        switch (manager.State()) {
-            case game.GameState.Init:
-                ut.Flow.Service.instantiate("Sumo.UI.UI");
-                manager.setState(game.GameState.Gameplay);
-                break;
-            case game.GameState.Gameplay:
-                if (ut.Runtime.Input.getMouseButtonDown(0)) {
-                    // UIManager = ut.Flow.Service.destroyAll("Sumo.UI.UI");
-                    console.log("Game Over!");
-                    // ut.Flow.Service.instantiate("ui.Gameplay");
-                    manager.setState(game.GameState.GameOver);
-                }
-                break;
-            case game.GameState.GameOver:
-                if (ut.Runtime.Input.getMouseButtonDown(0)) {
-                    console.log("======================================");
-                    console.log(JSON.stringify(UIManager));
+   world.forEachEntity([game.GameManager], function (entity, manager) {
+      switch (manager.State()) {
+         case game.GameState.Init:
+            InitGame(world, manager);
+            break;
+         case game.GameState.Gameplay:
+            if (ut.Runtime.Input.getMouseButtonDown(0)) {
+               // UIManager = ut.Flow.Service.destroyAll("Sumo.UI.UI");
+               console.log("Game Over!");
+               // ut.Flow.Service.instantiate("ui.Gameplay");
+               manager.setState(game.GameState.GameOver);
+            }
+            break;
+         case game.GameState.GameOver:
 
-                }
-                break;
-        }
-    });
+            GameOver(world);
+            if (ut.Runtime.Input.getMouseButtonDown(0)) {
+               console.log("======================================");
+               if (sliderValue < 10) {
+                  sliderValue++;
+               } else {
+                  sliderValue = 0;
+               }
+               // console.log(JSON.stringify(UIManager));
+               console.log(sliderValue);
+            }
+            break;
+      }
+   });
+}
+
+const InitGame = function (world, manager) {
+   UIManager = ut.Flow.Service.instantiate("Sumo.UI.UI");
+   world.forEachEntity([Sumo.UI.Slider], function (entity, manager) {
+      let slider = entity.getComponent(Sumo.UI.Slider);
+      slider.setValue(0);
+   });
+   manager.setState(game.GameState.Gameplay);
+
+}
+
+const GameOver = function (world) {
+   world.forEachEntity([Sumo.UI.Slider], function (entity, manager) {
+      let slider = entity.getComponent(Sumo.UI.Slider);
+      slider.setValue(sliderValue);
+   });
 }
