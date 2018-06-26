@@ -41,7 +41,8 @@
         { "Id": "259902b84b3ed0f7213a1b5e37040709", "Name": "UTiny.Physics2D" },
         { "Id": "0d01b4b875a84dca881955c727ad07ae", "Name": "Main" },
         { "Id": "3aa8828c0eaa4fb0a2faaa1ee3f85c59", "Name": "UTiny.Flow" },
-        { "Id": "ea76d964fb5f442e936eb51fc3368792", "Name": "Sumo.UI" }
+        { "Id": "ea76d964fb5f442e936eb51fc3368792", "Name": "Sumo.UI" },
+        { "Id": "77db3a3f0ecf4c26a7ba12a90a61e639", "Name": "UTiny.Text" }
     ],
     "Configurations": [],
     "Components": [

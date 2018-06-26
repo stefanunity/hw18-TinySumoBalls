@@ -5,6 +5,10 @@ const offset = -3.15;
 
 let value = slider.value();
 let maxValue = slider.maxValue();
+if (value === 0 && maxValue === 0) {
+   value = 1;
+   maxValue = 2;
+}
 
 let percentage = value / maxValue;
 let sizeX = spriteSizeX * percentage;
