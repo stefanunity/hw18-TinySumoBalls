@@ -1,0 +1,26 @@
+Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
+   world.forEachEntity([Sumo.UI.Score], function (entity, score) {
+      score.setScore1(0);
+      score.setScore2(0);
+
+      //update text
+      score.TextRenderer1()
+         .getComponent(ut.Text.TextRenderer)
+         .setText(score.Score1().toString());
+      score.TextRenderer2()
+         .getComponent(ut.Text.TextRenderer)
+         .setText(score.Score2().toString());
+
+      // update Slider
+      // we set the current score to player 1 
+      score.Slider()
+         .getComponent(Sumo.UI.Slider)
+         .setValue(score.Score1());
+
+      // we set the max to both players so that the slider can automatically calculate the percentage of the pink bar
+      score.Slider()
+         .getComponent(Sumo.UI.Slider)
+         .setMaxValue(score.Score1() + score.Score2());
+
+   });
+};
