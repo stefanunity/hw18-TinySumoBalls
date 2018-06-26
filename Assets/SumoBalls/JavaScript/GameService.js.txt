@@ -10,13 +10,20 @@ game.GameManagerSystem.update = function (scheduler, world) {
 
                   case game.GameState.StartMenu:
 
-                        StartMenu(world, manager);
-                        if (ut.Runtime.Input.getMouseButtonDown(0)) {
+                        if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.Alpha1)) {
+                              console.log("1: StartNoAI");
+                              Gameplay(world, manager);
+                              manager.setState(game.GameState.Gameplay);
+                        }
+
+                        if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.Alpha2)) {
+                              console.log("2: StartAI");
                               Gameplay(world, manager);
                               manager.setState(game.GameState.Gameplay);
                         }
                         break;
                   case game.GameState.Gameplay:
+
                         if (ut.Runtime.Input.getMouseButtonDown(0)) {
                               // UIManager = ut.Flow.Service.destroyAll("Sumo.UI.UI");
                               console.log("Game Over!");
@@ -50,6 +57,7 @@ const InitGame = function (world, manager) {
             let slider = entity.getComponent(Sumo.UI.Slider);
             slider.setValue(0);
       }); */
+      StartMenu(world, manager);
       manager.setState(game.GameState.StartMenu);
 }
 
