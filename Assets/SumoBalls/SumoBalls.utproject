@@ -192,6 +192,10 @@
         "Id": "d31e21864dbe411080838e429bd76ef7",
         "Name": "alive",
         "FieldType": { "Id": "2b477f505af74487b7092b5617d88d3f", "Name": "Boolean" }
+    }, {
+        "Id": "a1cf1faa1deb46039891c99808957b8e",
+        "Name": "startPosition",
+        "FieldType": { "Id": "3abb69286ddfc2d1c617a173c1eeb35d", "Name": "Vector2" }
     }],
     "DefaultValue": {
         "Type": { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" },
