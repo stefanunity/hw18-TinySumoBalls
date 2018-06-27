@@ -130,12 +130,7 @@
         "FieldType": { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
     }],
     "DefaultValue": {
-        "Type": { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" },
-        "Properties": {
-            "gameSettings": {
-                "Type": { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
-            }
-        }
+        "Type": { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" }
     }
 },
 {
@@ -456,7 +451,7 @@
     }, {
         "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
         "Properties": {
-            "text": "1: StartNoAI",
+            "text": "1: Human Balls",
             "fontSize": 40,
             "color": {
                 "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
@@ -482,7 +477,7 @@
             "localPosition": {
                 "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
                 "Properties": {
-                    "x": -25,
+                    "x": 10,
                     "y": -20
                 }
             },
@@ -498,7 +493,7 @@
     }, {
         "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
         "Properties": {
-            "text": "2: StartAI",
+            "text": "2: Balls of Steel",
             "fontSize": 40,
             "color": {
                 "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
@@ -585,8 +580,7 @@
     "Name": "Player",
     "Enabled": true,
     "Components": [{
-        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
-        "Properties": {}
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }
     }, {
         "Type": { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
     }, {
