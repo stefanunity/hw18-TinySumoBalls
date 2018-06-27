@@ -114,14 +114,14 @@ const GameOver = function (world, manager)
 
 const SpawnPlayers = function (world, manager)
 {
-   world.forEachEntity([game.MovementPlayer], function (entity, manager)
-   {
-      entity.destroy();
-   });
-   world.forEachEntity([game.MovementAI], function (entity, manager)
-   {
-      entity.destroy();
-   });
+   // Destroy players
+   DespawnPlayers(world, manager);
+
+   // Load random colors and faces for players
+   let playerAssets = ut.Flow.Service.instantiate('game.PlayerAssets');
+   let sprites = playerAssets.root.getComponent(game.PlayerSprites);
+   let colors = sprites.colors();
+   let faces = sprites.faces();
 
    const spawnRadius = 2.5;
    let gameSettings = manager.gameSettings();
@@ -132,10 +132,20 @@ const SpawnPlayers = function (world, manager)
       let group = ut.Flow.Service.instantiate('game.Player');
       let newPlayer = group.root;
 
+      // Set position to be in a circle
       let transform = newPlayer.getComponent(ut.Core2D.Transform);
       let position = new Vector3(Math.cos(angleStep * i) * spawnRadius, Math.sin(angleStep * i) * spawnRadius, 0);
       transform.setLocalPosition(position);
 
+      // Set colors
+      let ballSpriteRenderer = newPlayer.getComponent(ut.Core2D.Sprite2DRenderer);
+      ballSpriteRenderer.setColor(colors[Math.floor(Math.random() * colors.length)])
+
+      // Set faces
+      let faceSpriteRenderer = transform.find("Face").getComponent(ut.Core2D.Sprite2DRenderer);
+      faceSpriteRenderer.setSprite(faces[Math.floor(Math.random() * faces.length)])
+
+      // Set controls depending on if it's human or AI
       if (i < gameSettings.humanCount)
       {
          let playerControl = newPlayer.getOrAddComponent(game.MovementPlayer);
@@ -146,4 +156,16 @@ const SpawnPlayers = function (world, manager)
          let aiControl = newPlayer.getOrAddComponent(game.MovementAI);
       }
    }
+}
+
+const DespawnPlayers = function (world, manager) 
+{
+   world.forEachEntity([game.MovementPlayer], function (entity, manager)
+   {
+      entity.getComponent(ut.Core2D.Transform).destroyTree(true);
+   });
+   world.forEachEntity([game.MovementAI], function (entity, manager)
+   {
+      entity.getComponent(ut.Core2D.Transform).destroyTree(true);
+   });
 }
