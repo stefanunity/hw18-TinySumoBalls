@@ -54,13 +54,14 @@
         { "Id": "1cd9e46e59fe4908a5824526293d20df", "Name": "MenuSystem" },
         { "Id": "7bfa0e0fd33746cfad1194bd3ece7ffb", "Name": "PlayerSprites" },
         { "Id": "6556039b8ff343e48b85dc50945eb057", "Name": "Button" },
-        { "Id": "955dc8dc2c2f482984476e7a1dc29b90", "Name": "RoundManager" }
+        { "Id": "955dc8dc2c2f482984476e7a1dc29b90", "Name": "GameplayManager" }
     ],
     "Structs": [
         { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
     ],
     "Enums": [
-        { "Id": "77fd93442d854ef28963349a3644e8de", "Name": "GameState" }
+        { "Id": "77fd93442d854ef28963349a3644e8de", "Name": "GameState" },
+        { "Id": "a7fe346cad70408e9978aae038834be0", "Name": "GameplayState" }
     ],
     "EntityGroups": [
         { "Id": "4b52eb87e8b0406692089585d92d8714", "Name": "Gameplay" },
@@ -71,7 +72,7 @@
     ],
     "Scripts": [
         { "Id": "8ba620fb0f14454a9a9b42cd75b1e606", "Name": "GameService" },
-        { "Id": "11bc761e0f0643edac33be52599cbcfa", "Name": "RoundService" }
+        { "Id": "11bc761e0f0643edac33be52599cbcfa", "Name": "GameplayService" }
     ],
     "Systems": [
         { "Id": "c65ec262e361456d8445bb1077148c14", "Name": "PlayerInputSystem" },
@@ -183,16 +184,20 @@
 {
     "$TypeId": 3,
     "Id": "955dc8dc2c2f482984476e7a1dc29b90",
-    "Name": "RoundManager",
+    "Name": "GameplayManager",
     "TypeCode": "Component",
     "Fields": [{
         "Id": "a960415772864bbf9661e48bbb265116",
         "Name": "scores",
         "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" },
         "Array": true
+    }, {
+        "Id": "2c6cd293a2304747b61f71061ff3d1bb",
+        "Name": "NewField",
+        "FieldType": { "Id": "a7fe346cad70408e9978aae038834be0", "Name": "GameplayState" }
     }],
     "DefaultValue": {
-        "Type": { "Id": "955dc8dc2c2f482984476e7a1dc29b90", "Name": "RoundManager" }
+        "Type": { "Id": "955dc8dc2c2f482984476e7a1dc29b90", "Name": "GameplayManager" }
     }
 },
 {
@@ -251,6 +256,33 @@
     }
 },
 {
+    "$TypeId": 3,
+    "Id": "a7fe346cad70408e9978aae038834be0",
+    "Name": "GameplayState",
+    "TypeCode": "Enum",
+    "BaseType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" },
+    "Fields": [{
+        "Id": "afb3297e5a0a42fb9b7d6afb8d5dfd60",
+        "Name": "Init",
+        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
+    }, {
+        "Id": "54806aa2f6484a53b9e47af383bb35e7",
+        "Name": "Fight",
+        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
+    }, {
+        "Id": "b534d0fb932c43d9a5c6389b0e219b55",
+        "Name": "End",
+        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "a7fe346cad70408e9978aae038834be0", "Name": "GameplayState" },
+        "Properties": {
+            "Fight": 1,
+            "End": 2
+        }
+    }
+},
+{
     "$TypeId": 4,
     "Id": "4b52eb87e8b0406692089585d92d8714",
     "Name": "Gameplay",
@@ -261,7 +293,7 @@
         { "$TypeId": 9, "Id": "9aa0e01d5137433ebd0e507e63d462d2", "Name": "Wall_E" },
         { "$TypeId": 9, "Id": "ce514d19f7914184acfe8dc966d77065", "Name": "Wall_W" },
         { "$TypeId": 9, "Id": "f535df7db2804611bfa45b8a4ec689a3", "Name": "BattleAreaSprite" },
-        { "$TypeId": 9, "Id": "c74f2d0958084b4aa050ea91dc101779", "Name": "RoundManager" }
+        { "$TypeId": 9, "Id": "c74f2d0958084b4aa050ea91dc101779", "Name": "GameplayManager" }
     ]
 },
 {
@@ -402,10 +434,10 @@
 {
     "$TypeId": 5,
     "Id": "c74f2d0958084b4aa050ea91dc101779",
-    "Name": "RoundManager",
+    "Name": "GameplayManager",
     "Enabled": true,
     "Components": [{
-        "Type": { "Id": "955dc8dc2c2f482984476e7a1dc29b90", "Name": "RoundManager" }
+        "Type": { "Id": "955dc8dc2c2f482984476e7a1dc29b90", "Name": "GameplayManager" }
     }]
 },
 {
@@ -802,7 +834,7 @@
 {
     "$TypeId": 6,
     "Id": "11bc761e0f0643edac33be52599cbcfa",
-    "Name": "RoundService",
+    "Name": "GameplayService",
     "TextAsset": { "$TypeId": 10, "Guid": "868eaa83e53a4634b81018196de5b111", "FileId": 4900000, "Type": 3 }
 },
 {
@@ -894,7 +926,7 @@
     "Name": "RoundManagerSystem",
     "Options": 5,
     "Components": [
-        { "Id": "955dc8dc2c2f482984476e7a1dc29b90", "Name": "RoundManager" }
+        { "Id": "955dc8dc2c2f482984476e7a1dc29b90", "Name": "GameplayManager" }
     ],
     "ExecuteAfter": [
         { "Id": "6fa7e5feec05fec093042f2a2b9802d4", "Name": "UserCodeStart" }
