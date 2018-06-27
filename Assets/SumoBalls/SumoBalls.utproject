@@ -67,7 +67,8 @@
         { "Id": "93b40144076547c0a5838ced33cc9e44", "Name": "StartMenu" },
         { "Id": "8d782d7f1e9e4e3e9a12c99ea446b386", "Name": "Bootstrap" },
         { "Id": "2a231b746c874e9aa342360b03c9e8ef", "Name": "Player" },
-        { "Id": "5a559fe683824b5d927d672aa395aa01", "Name": "PlayerAssets" }
+        { "Id": "5a559fe683824b5d927d672aa395aa01", "Name": "PlayerAssets" },
+        { "Id": "391d800b763c4e77b5879313693df50d", "Name": "Gameover" }
     ],
     "Scripts": [
         { "Id": "8ba620fb0f14454a9a9b42cd75b1e606", "Name": "GameService" }
@@ -790,6 +791,255 @@
                     { "$TypeId": 10, "Guid": "92d624e6105b2490e8dfd86fe4d5c1a7", "FileId": 21300000, "Type": 3 }
                 ]
             }
+        }
+    }]
+},
+{
+    "$TypeId": 4,
+    "Id": "391d800b763c4e77b5879313693df50d",
+    "Name": "Gameover",
+    "Entities": [
+        { "$TypeId": 9, "Id": "409fe85ec224476e90d57f6b971abe82", "Name": "MenuScaler1" },
+        { "$TypeId": 9, "Id": "5cc9eec9604e44f5844cae9d89fae215", "Name": "Header" },
+        { "$TypeId": 9, "Id": "89aea8e86b0841d1ac06ae59cfd226ee", "Name": "Credits" },
+        { "$TypeId": 9, "Id": "e45f5465ccbf4ca8a8a9e67810eb847b", "Name": "Dominykas" },
+        { "$TypeId": 9, "Id": "907fbe8f4a484a36ae01db3c5f00a886", "Name": "Mykolas" },
+        { "$TypeId": 9, "Id": "a9acc09b749f465e91026c46df6cc0d3", "Name": "Stefan" }
+    ]
+},
+{
+    "$TypeId": 5,
+    "Id": "409fe85ec224476e90d57f6b971abe82",
+    "Name": "MenuScaler1",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "y": -4
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.1,
+                    "y": 0.1
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "1cd9e46e59fe4908a5824526293d20df", "Name": "MenuSystem" }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "5cc9eec9604e44f5844cae9d89fae215",
+    "Name": "Header",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": -6,
+                    "y": 100
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "409fe85ec224476e90d57f6b971abe82", "Name": "MenuScaler1" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Tiny Sumo Balls",
+            "fontSize": 40,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "89aea8e86b0841d1ac06ae59cfd226ee",
+    "Name": "Credits",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": -6,
+                    "y": 60
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "409fe85ec224476e90d57f6b971abe82", "Name": "MenuScaler1" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Credits",
+            "fontSize": 20,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "e45f5465ccbf4ca8a8a9e67810eb847b",
+    "Name": "Dominykas",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": -6,
+                    "y": 35
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "409fe85ec224476e90d57f6b971abe82", "Name": "MenuScaler1" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Dominykas Kiauleikis",
+            "fontSize": 20,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "907fbe8f4a484a36ae01db3c5f00a886",
+    "Name": "Mykolas",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": -6,
+                    "y": 10
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "409fe85ec224476e90d57f6b971abe82", "Name": "MenuScaler1" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Mykolas Mankevicius",
+            "fontSize": 20,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "a9acc09b749f465e91026c46df6cc0d3",
+    "Name": "Stefan",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": -6,
+                    "y": -15
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "409fe85ec224476e90d57f6b971abe82", "Name": "MenuScaler1" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Stefan Schubert",
+            "fontSize": 20,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
         }
     }]
 },
