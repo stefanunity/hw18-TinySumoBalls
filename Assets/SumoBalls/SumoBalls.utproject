@@ -64,7 +64,8 @@
         { "Id": "4b52eb87e8b0406692089585d92d8714", "Name": "Gameplay" },
         { "Id": "93b40144076547c0a5838ced33cc9e44", "Name": "StartMenu" },
         { "Id": "8d782d7f1e9e4e3e9a12c99ea446b386", "Name": "Bootstrap" },
-        { "Id": "2a231b746c874e9aa342360b03c9e8ef", "Name": "Player" }
+        { "Id": "2a231b746c874e9aa342360b03c9e8ef", "Name": "Player" },
+        { "Id": "5a559fe683824b5d927d672aa395aa01", "Name": "PlayerAssets" }
     ],
     "Scripts": [
         { "Id": "8ba620fb0f14454a9a9b42cd75b1e606", "Name": "GameService" }
@@ -635,8 +636,7 @@
     "Name": "Player",
     "Entities": [
         { "$TypeId": 9, "Id": "a54cd0ed98bc4be4b34fdda57ef709b8", "Name": "Player" },
-        { "$TypeId": 9, "Id": "254aa4a40b294af9ab427a16a38c32e4", "Name": "Face" },
-        { "$TypeId": 9, "Id": "43dbb0f548d14f9482bec175f8d6158b", "Name": "PlayerSprites" }
+        { "$TypeId": 9, "Id": "254aa4a40b294af9ab427a16a38c32e4", "Name": "Face" }
     ]
 },
 {
@@ -688,6 +688,14 @@
             "order": 1
         }
     }]
+},
+{
+    "$TypeId": 4,
+    "Id": "5a559fe683824b5d927d672aa395aa01",
+    "Name": "PlayerAssets",
+    "Entities": [
+        { "$TypeId": 9, "Id": "43dbb0f548d14f9482bec175f8d6158b", "Name": "PlayerSprites" }
+    ]
 },
 {
     "$TypeId": 5,
