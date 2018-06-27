@@ -15,12 +15,15 @@
     "Configurations": [],
     "Components": [
         { "Id": "54e2ac9c9dc54c399a6e1524cba3d08b", "Name": "Slider" },
-        { "Id": "868e763a244449fda077e9d07913fb37", "Name": "Score" }
+        { "Id": "868e763a244449fda077e9d07913fb37", "Name": "Score" },
+        { "Id": "e0927300bf914b2893059886be73397e", "Name": "HumanCountUI" },
+        { "Id": "57fb1eab645149209d897f3a03086fd0", "Name": "AiCountUI" }
     ],
     "Structs": [],
     "Enums": [],
     "EntityGroups": [
-        { "Id": "3e71f7eb575549de8d00a89e62ca47d4", "Name": "UI" }
+        { "Id": "3e71f7eb575549de8d00a89e62ca47d4", "Name": "UI" },
+        { "Id": "38c356705cff492cbf849939c1c2a8af", "Name": "StartMenu" }
     ],
     "Scripts": [
         { "Id": "77a36f5b9b924859b05b70cf6c94a623", "Name": "UIService" }
@@ -78,6 +81,50 @@
     }],
     "DefaultValue": {
         "Type": { "Id": "868e763a244449fda077e9d07913fb37", "Name": "Score" }
+    }
+},
+{
+    "$TypeId": 3,
+    "Id": "e0927300bf914b2893059886be73397e",
+    "Name": "HumanCountUI",
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "24618aaf7f14420ca34f6b4d899fde03",
+        "Name": "MinusBtn",
+        "FieldType": { "Id": "5a182d9d039d4dfd8fa96132d05f9ee7", "Name": "EntityReference" }
+    }, {
+        "Id": "6b92aa1ed5034a4a821e126b15f3629b",
+        "Name": "PlusBtn",
+        "FieldType": { "Id": "5a182d9d039d4dfd8fa96132d05f9ee7", "Name": "EntityReference" }
+    }, {
+        "Id": "35566f2fb87243479b2e7aa4c402ab6f",
+        "Name": "CountTxt",
+        "FieldType": { "Id": "5a182d9d039d4dfd8fa96132d05f9ee7", "Name": "EntityReference" }
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "e0927300bf914b2893059886be73397e", "Name": "HumanCountUI" }
+    }
+},
+{
+    "$TypeId": 3,
+    "Id": "57fb1eab645149209d897f3a03086fd0",
+    "Name": "AiCountUI",
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "b2095bbb68da4203bafb900a6820fd85",
+        "Name": "MinusBtn",
+        "FieldType": { "Id": "5a182d9d039d4dfd8fa96132d05f9ee7", "Name": "EntityReference" }
+    }, {
+        "Id": "cb044c109f324a0e804fc24710d03456",
+        "Name": "PlusBtn",
+        "FieldType": { "Id": "5a182d9d039d4dfd8fa96132d05f9ee7", "Name": "EntityReference" }
+    }, {
+        "Id": "a84c945418664a34b3363f08d9819e6e",
+        "Name": "CountTxt",
+        "FieldType": { "Id": "5a182d9d039d4dfd8fa96132d05f9ee7", "Name": "EntityReference" }
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "57fb1eab645149209d897f3a03086fd0", "Name": "AiCountUI" }
     }
 },
 {
@@ -293,6 +340,325 @@
                     "r": 0.1647059,
                     "g": 0.1686275,
                     "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 3
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }]
+},
+{
+    "$TypeId": 4,
+    "Id": "38c356705cff492cbf849939c1c2a8af",
+    "Name": "StartMenu",
+    "Entities": [
+        { "$TypeId": 9, "Id": "c68b7531af6d4e7c8b14cb7956589e8c", "Name": "Title" },
+        { "$TypeId": 9, "Id": "057cb3deec0b4db3be88cd769daf0c78", "Name": "PlayBtn" },
+        { "$TypeId": 9, "Id": "37bd093e4b2b492bb452bd2e9e79da8b", "Name": "Human" },
+        { "$TypeId": 9, "Id": "f5e3350242494d018ef4ed15208fd48a", "Name": "HumanMinusBtn" },
+        { "$TypeId": 9, "Id": "7932c0d97d4f49fc9a4de3336dfdf768", "Name": "HumanPlusBtn" },
+        { "$TypeId": 9, "Id": "14c1ffc5c9c44688a617546e749e1e6b", "Name": "HumanCountTxt" },
+        { "$TypeId": 9, "Id": "c97c9e77b7cd4728bcf678563d0c37e2", "Name": "Ai" },
+        { "$TypeId": 9, "Id": "d17cc327fc13482b957d1d4b3e6ea910", "Name": "AiMinusBtn" },
+        { "$TypeId": 9, "Id": "ed3f88f2be9e493ea88dcc01d03d0ed4", "Name": "AiPlusBtn" },
+        { "$TypeId": 9, "Id": "78a6c68b90f74f59bdf68ea5dd42c0c0", "Name": "AiCountTxt" }
+    ]
+},
+{
+    "$TypeId": 5,
+    "Id": "c68b7531af6d4e7c8b14cb7956589e8c",
+    "Name": "Title",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": -4.12,
+                    "y": 2.39
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
+        "Properties": {
+            "sprite": { "$TypeId": 10, "Guid": "54199e3a65c744c53aba5802169e147b", "FileId": 21300000, "Type": 3 }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "057cb3deec0b4db3be88cd769daf0c78",
+    "Name": "PlayBtn",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": -1.87,
+                    "y": -1.42
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
+        "Properties": {
+            "sprite": { "$TypeId": 10, "Guid": "514f0effd674a4c54a2ad703d0e05c46", "FileId": 21300000, "Type": 3 }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "37bd093e4b2b492bb452bd2e9e79da8b",
+    "Name": "Human",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 3,
+                    "y": 4.5
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
+        "Properties": {
+            "sprite": { "$TypeId": 10, "Guid": "4ba6fab50ae254fbf899acff537062e5", "FileId": 21300000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "e0927300bf914b2893059886be73397e", "Name": "HumanCountUI" },
+        "Properties": {
+            "MinusBtn": { "$TypeId": 9, "Id": "f5e3350242494d018ef4ed15208fd48a", "Name": "HumanMinusBtn" },
+            "PlusBtn": { "$TypeId": 9, "Id": "7932c0d97d4f49fc9a4de3336dfdf768", "Name": "HumanPlusBtn" },
+            "CountTxt": { "$TypeId": 9, "Id": "14c1ffc5c9c44688a617546e749e1e6b", "Name": "HumanCountTxt" }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "f5e3350242494d018ef4ed15208fd48a",
+    "Name": "HumanMinusBtn",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": -1.5,
+                    "y": -1.5
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "37bd093e4b2b492bb452bd2e9e79da8b", "Name": "Human" }
+        }
+    }, {
+        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
+        "Properties": {
+            "sprite": { "$TypeId": 10, "Guid": "b719c867765bf40e29b320691540fae5", "FileId": 21300000, "Type": 3 }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "7932c0d97d4f49fc9a4de3336dfdf768",
+    "Name": "HumanPlusBtn",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1.5,
+                    "y": -1.5
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "37bd093e4b2b492bb452bd2e9e79da8b", "Name": "Human" }
+        }
+    }, {
+        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
+        "Properties": {
+            "sprite": { "$TypeId": 10, "Guid": "e94954507861848c1a2c74446eb0d581", "FileId": 21300000, "Type": 3 }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "14c1ffc5c9c44688a617546e749e1e6b",
+    "Name": "HumanCountTxt",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.01200008,
+                    "y": -1.64,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.01,
+                    "y": 0.01
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "37bd093e4b2b492bb452bd2e9e79da8b", "Name": "Human" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "1",
+            "fontSize": 100,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.9372549,
+                    "g": 0.945098,
+                    "b": 0.9294118,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 3
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "c97c9e77b7cd4728bcf678563d0c37e2",
+    "Name": "Ai",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 3,
+                    "y": 1.5
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
+        "Properties": {
+            "sprite": { "$TypeId": 10, "Guid": "73e05755c3ec543f5b579ca1d039a8ac", "FileId": 21300000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "57fb1eab645149209d897f3a03086fd0", "Name": "AiCountUI" },
+        "Properties": {
+            "MinusBtn": { "$TypeId": 9, "Id": "d17cc327fc13482b957d1d4b3e6ea910", "Name": "AiMinusBtn" },
+            "PlusBtn": { "$TypeId": 9, "Id": "ed3f88f2be9e493ea88dcc01d03d0ed4", "Name": "AiPlusBtn" },
+            "CountTxt": { "$TypeId": 9, "Id": "78a6c68b90f74f59bdf68ea5dd42c0c0", "Name": "AiCountTxt" }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "d17cc327fc13482b957d1d4b3e6ea910",
+    "Name": "AiMinusBtn",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": -1.5,
+                    "y": -1.5
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "c97c9e77b7cd4728bcf678563d0c37e2", "Name": "Robot" }
+        }
+    }, {
+        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
+        "Properties": {
+            "sprite": { "$TypeId": 10, "Guid": "b719c867765bf40e29b320691540fae5", "FileId": 21300000, "Type": 3 }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "ed3f88f2be9e493ea88dcc01d03d0ed4",
+    "Name": "AiPlusBtn",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1.5,
+                    "y": -1.5
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "c97c9e77b7cd4728bcf678563d0c37e2", "Name": "Robot" }
+        }
+    }, {
+        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
+        "Properties": {
+            "sprite": { "$TypeId": 10, "Guid": "e94954507861848c1a2c74446eb0d581", "FileId": 21300000, "Type": 3 }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "78a6c68b90f74f59bdf68ea5dd42c0c0",
+    "Name": "AiCountTxt",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.01200008,
+                    "y": -1.591,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.01,
+                    "y": 0.01
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "c97c9e77b7cd4728bcf678563d0c37e2", "Name": "Robot" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "1",
+            "fontSize": 100,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.9372549,
+                    "g": 0.945098,
+                    "b": 0.9294118,
                     "a": 1
                 }
             },
