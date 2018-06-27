@@ -24,7 +24,7 @@ Sumo.Physics.CircleColliderCollisionSystem.update = function (scheduler, world)
                   let tangent = new Vector2(-normalizedOffset.y, normalizedOffset.x);
 
                   let positionFixup = new Vector2(normalizedOffset.x * penetration, normalizedOffset.y * penetration);
-                  positionFixup.multiplyScalar(-0.5);
+                  positionFixup.multiplyScalar(-0.51);
 
                   let otherVelocity = othervelocity2d.velocity();
 
