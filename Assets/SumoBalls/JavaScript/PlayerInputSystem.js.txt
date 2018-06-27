@@ -2,7 +2,7 @@ var dt = sched.deltaTime();
 var direction = new Vector2(0, 0);
 var movementChanged = false;
 
-if (movementplayer.playerID() === 0)
+if (movementinput.inputID() === 0)
 {
     if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.W))
     {
@@ -27,7 +27,7 @@ if (movementplayer.playerID() === 0)
         direction.x -= 1;
         movementChanged = true;
     }
-} else if (movementplayer.playerID() === 1)
+} else if (movementinput.inputID() === 1)
 {
     if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.I))
     {

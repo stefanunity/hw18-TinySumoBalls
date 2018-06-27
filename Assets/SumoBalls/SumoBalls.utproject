@@ -47,7 +47,7 @@
     ],
     "Configurations": [],
     "Components": [
-        { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementPlayer" },
+        { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementInput" },
         { "Id": "3a3d6d942e4b462b8c179981be5666c6", "Name": "MovementAI" },
         { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
         { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" },
@@ -87,15 +87,15 @@
 {
     "$TypeId": 3,
     "Id": "5734579d005f4dc8af924375b0f2e547",
-    "Name": "MovementPlayer",
+    "Name": "MovementInput",
     "TypeCode": "Component",
     "Fields": [{
         "Id": "9c6f7aa6eeb449c5b42b116dfd14aac1",
-        "Name": "playerID",
+        "Name": "inputID",
         "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
     }],
     "DefaultValue": {
-        "Type": { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementPlayer" }
+        "Type": { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementInput" }
     }
 },
 {
@@ -813,7 +813,7 @@
     "TextAsset": { "$TypeId": 10, "Guid": "d82188a80027baa4298cdaa3ec79b531", "FileId": 4900000, "Type": 3 },
     "Components": [
         { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
-        { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementPlayer" },
+        { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementInput" },
         { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
     ],
     "ExecuteAfter": [
