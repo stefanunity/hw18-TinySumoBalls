@@ -1,4 +1,4 @@
-game.GameManagerSystem.update = function (scheduler, world)
+game.GameplayManagerSystem.update = function (scheduler, world)
 {
    world.forEachEntity([game.GameplayManager], function (entity, manager)
    {

@@ -80,7 +80,7 @@
         { "Id": "b8cd443904ff40c0a6d9c65fe10d0f48", "Name": "GameManagerSystem" },
         { "Id": "3998febc14d6491781556b463c3af125", "Name": "MenuInputSystem" },
         { "Id": "0600aaa143f243028e631deeed7c0480", "Name": "ButtonClickSystem" },
-        { "Id": "fe0422ae08aa47a7a45b8dae81af3748", "Name": "RoundManagerSystem" }
+        { "Id": "fe0422ae08aa47a7a45b8dae81af3748", "Name": "GameplayManagerSystem" }
     ],
     "Assets": [],
     "StartupEntityGroup": { "Id": "8d782d7f1e9e4e3e9a12c99ea446b386", "Name": "NewEntityGroup" }
@@ -437,7 +437,15 @@
     "Name": "GameplayManager",
     "Enabled": true,
     "Components": [{
-        "Type": { "Id": "955dc8dc2c2f482984476e7a1dc29b90", "Name": "GameplayManager" }
+        "Type": { "Id": "955dc8dc2c2f482984476e7a1dc29b90", "Name": "GameplayManager" },
+        "Properties": {
+            "scores": {
+                "Type": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" },
+                "Items": [
+                    0
+                ]
+            }
+        }
     }]
 },
 {
@@ -923,7 +931,7 @@
 {
     "$TypeId": 7,
     "Id": "fe0422ae08aa47a7a45b8dae81af3748",
-    "Name": "RoundManagerSystem",
+    "Name": "GameplayManagerSystem",
     "Options": 5,
     "Components": [
         { "Id": "955dc8dc2c2f482984476e7a1dc29b90", "Name": "GameplayManager" }
