@@ -1,209 +1,169 @@
 let UIManager = {}
 let sliderValue = 0;
 
-game.GameManagerSystem.update = function (scheduler, world)
-{
-   world.forEachEntity([game.GameManager], function (entity, manager)
-   {
-      switch (manager.State())
-      {
+game.GameManagerSystem.update = function (scheduler, world) {
+      world.forEachEntity([game.GameManager], function (entity, manager) {
+            switch (manager.State()) {
 
-         case game.GameState.Init:
-            ut.Flow.Service.instantiate('Sumo.UI.StartMenu');
-            manager.setState(game.GameState.StartMenu);
-            break;
-         case game.GameState.StartMenu:
-            StartMenuUpdate(world, manager);
-            break;
-         case game.GameState.InitGameplay:
-            InitGameplay(world, manager);
-            break;
-         case game.GameState.Gameplay:
-            GameplayUpdate(world, manager);
-            break;
-         case game.GameState.GameOver:
-
-            GameOver(world, manager);
-
-            break;
-      }
-   });
-}
-
-
-
-
-const StartMenuUpdate = function (world, manager)
-{
-   if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.Alpha1))
-   {
-      console.log("1: StartNoAI");
-      var gameSettings = manager.gameSettings();
-      gameSettings.aiCount = 0;
-      manager.setGameSettings(gameSettings);
-      manager.setState(game.GameState.InitGameplay);
-   }
-
-   if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.Alpha2))
-   {
-      console.log("2: StartAI");
-      var gameSettings = manager.gameSettings();
-      gameSettings.aiCount = 4;
-      manager.setGameSettings(gameSettings);
-      manager.setState(game.GameState.InitGameplay);
-   }
-}
-
-
-const InitGameplay = function (world, manager)
-{
-   ut.Flow.Service.destroyAll('game.StartMenu');
-   ut.Flow.Service.instantiate('game.Gameplay');
-
-   UIManager = ut.Flow.Service.instantiate("Sumo.UI.UI");
-   world.forEachEntity([Sumo.UI.Score], function (entity, manager)
-   {
-      let score = entity.getComponent(Sumo.UI.Score);
-      score.setScore1(0);
-      score.setScore2(0);
-   });
-
-   SpawnPlayers(world, manager);
-
-   manager.setState(game.GameState.Gameplay);
-}
-
-const GameplayUpdate = function (world, manager)
-{
-   world.forEachEntity([Sumo.UI.Slider], function (entity, manager)
-   {
-      let slider = entity.getComponent(Sumo.UI.Slider);
-      slider.setValue(sliderValue);
-   });
-
-   let livePlayers = 0;
-   world.forEachEntity([game.Player], function (entity, player)
-   {
-      if (player.alive())
-      {
-         livePlayers++;
-      }
-   });
-
-   let gameOver = false;
-   if (livePlayers <= 1)
-   {
-      world.forEachEntity([game.Player], function (entity, player)
-      {
-         ResetPlayerPosition(entity, player);
-         if (player.alive())
-         {
-            let score = player.score();
-            score++;
-            player.setScore(score);
-            if (score >= 3)
-            {
-               gameOver = true;
+                  case game.GameState.Init:
+                        ut.Flow.Service.instantiate('Sumo.UI.StartMenu');
+                        manager.setState(game.GameState.StartMenu);
+                        break;
+                  case game.GameState.StartMenu:
+                        StartMenuUpdate(world, manager);
+                        break;
+                  case game.GameState.InitGameplay:
+                        InitGameplay(world, manager);
+                        break;
+                  case game.GameState.Gameplay:
+                        GameplayUpdate(world, manager);
+                        break;
+                  case game.GameState.GameOver:
+                        GameOver(world, manager);
+                        break;
             }
-         }
-         player.setAlive(true);
+      });
+}
+
+
+
+
+const StartMenuUpdate = function (world, manager) {
+      if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.Alpha1)) {
+            console.log("1: StartNoAI");
+            var gameSettings = manager.gameSettings();
+            gameSettings.aiCount = 0;
+            manager.setGameSettings(gameSettings);
+            manager.setState(game.GameState.InitGameplay);
+      }
+
+      if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.Alpha2)) {
+            console.log("2: StartAI");
+            var gameSettings = manager.gameSettings();
+            gameSettings.aiCount = 4;
+            manager.setGameSettings(gameSettings);
+            manager.setState(game.GameState.InitGameplay);
+      }
+}
+
+
+const InitGameplay = function (world, manager) {
+      ut.Flow.Service.destroyAll('game.StartMenu');
+      ut.Flow.Service.instantiate('game.Gameplay');
+
+      UIManager = ut.Flow.Service.instantiate("Sumo.UI.UI");
+      world.forEachEntity([Sumo.UI.Score], function (entity, manager) {
+            let score = entity.getComponent(Sumo.UI.Score);
+            score.setScore1(0);
+            score.setScore2(0);
       });
 
-      if (gameOver)
-      {
-         console.log("Game Over!");
-         manager.setState(game.GameState.GameOver);
-         SpawnPlayers(world, manager);
-      }
-   }
+      SpawnPlayers(world, manager);
+
+      manager.setState(game.GameState.Gameplay);
 }
 
-const GameOver = function (world, manager)
-{
-   if (ut.Runtime.Input.getMouseButtonDown(0))
-   {
-      console.log("======================================");
-      if (sliderValue < 10)
-      {
-         sliderValue++;
-      } else
-      {
-         sliderValue = 0;
-      }
-      // console.log(JSON.stringify(UIManager));
-      console.log(sliderValue);
-   }
+const GameplayUpdate = function (world, manager) {
+      world.forEachEntity([Sumo.UI.Slider], function (entity, manager) {
+            let slider = entity.getComponent(Sumo.UI.Slider);
+            slider.setValue(sliderValue);
+      });
 
-   if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.Alpha1))
-   {
-      console.log("1: StartNoAI");
-      manager.setState(game.GameState.Init);
-   }
+      let livePlayers = 0;
+      world.forEachEntity([game.Player], function (entity, player) {
+            if (player.alive()) {
+                  livePlayers++;
+            }
+      });
+
+      let gameOver = false;
+      if (livePlayers <= 1) {
+            world.forEachEntity([game.Player], function (entity, player) {
+                  ResetPlayerPosition(entity, player);
+                  if (player.alive()) {
+                        let score = player.score();
+                        score++;
+                        player.setScore(score);
+                        if (score >= 3) {
+                              gameOver = true;
+                        }
+                  }
+                  player.setAlive(true);
+            });
+
+            if (gameOver) {
+                  console.log("Game Over!");
+                  manager.setState(game.GameState.GameOver);
+                  SpawnPlayers(world, manager);
+                  ut.Flow.Service.instantiate('game.Gameover');
+            }
+      }
+}
+
+const GameOver = function (world, manager) {
+      if (ut.Runtime.Input.getMouseButtonDown(0)) {
+            ut.Flow.Service.destroyAll('game.Gameover');
+            manager.setState(game.GameState.Init);
+      }
+
 }
 
 
-const SpawnPlayers = function (world, manager)
-{
-   // Destroy players
-   DespawnPlayers(world, manager);
+const SpawnPlayers = function (world, manager) {
+      // Destroy players
+      DespawnPlayers(world, manager);
 
-   // Load random colors and faces for players
-   let playerAssets = ut.Flow.Service.instantiate('game.PlayerAssets');
-   let sprites = playerAssets.root.getComponent(game.PlayerSprites);
-   let colors = sprites.colors();
-   let faces = sprites.faces();
+      // Load random colors and faces for players
+      let playerAssets = ut.Flow.Service.instantiate('game.PlayerAssets');
+      let sprites = playerAssets.root.getComponent(game.PlayerSprites);
+      let colors = sprites.colors();
+      let faces = sprites.faces();
 
-   const spawnRadius = 2.5;
-   let gameSettings = manager.gameSettings();
-   let playerCount = gameSettings.aiCount + gameSettings.humanCount;
-   let angleStep = Math.PI * 2 / playerCount;
-   for (let i = 0; i < playerCount; i++)
-   {
-      let group = ut.Flow.Service.instantiate('game.Player');
-      let entity = group.root;
+      const spawnRadius = 2.5;
+      let gameSettings = manager.gameSettings();
+      let playerCount = gameSettings.aiCount + gameSettings.humanCount;
+      let angleStep = Math.PI * 2 / playerCount;
+      for (let i = 0; i < playerCount; i++) {
+            let group = ut.Flow.Service.instantiate('game.Player');
+            let entity = group.root;
+            let transform = entity.getComponent(ut.Core2D.Transform);
+
+            // Set position to be in a circle
+            let player = entity.getComponent(game.Player);
+            player.setStartPosition(new Vector2(Math.cos(angleStep * i) * spawnRadius, Math.sin(angleStep * i) * spawnRadius));
+            ResetPlayerPosition(entity, player);
+
+            // Set colors
+            let ballSpriteRenderer = entity.getComponent(ut.Core2D.Sprite2DRenderer);
+            ballSpriteRenderer.setColor(colors[Math.floor(Math.random() * colors.length)])
+
+            // Set faces
+            let faceSpriteRenderer = transform.find("Face").getComponent(ut.Core2D.Sprite2DRenderer);
+            faceSpriteRenderer.setSprite(faces[Math.floor(Math.random() * faces.length)])
+
+            // Set controls depending on if it's human or AI
+            if (i < gameSettings.humanCount) {
+                  let inputControl = entity.getOrAddComponent(game.MovementInput);
+                  inputControl.setInputID(i);
+            } else {
+                  let aiControl = entity.getOrAddComponent(game.MovementAI);
+            }
+      }
+}
+
+const DespawnPlayers = function (world, manager) {
+      world.forEachEntity([game.Player], function (entity, manager) {
+            entity.getComponent(ut.Core2D.Transform).destroyTree(true);
+      });
+}
+
+const ResetPlayerPosition = function (entity, player) {
       let transform = entity.getComponent(ut.Core2D.Transform);
+      let position = player.startPosition();
+      transform.setLocalPosition(new Vector3(position.x, position.y));
+      let velocity2D = entity.getOrAddComponent(ut.Physics2D.Velocity2D);
+      velocity2D.setVelocity(new Vector2(0, 0));
 
-      // Set position to be in a circle
-      let player = entity.getComponent(game.Player);
-      player.setStartPosition(new Vector2(Math.cos(angleStep * i) * spawnRadius, Math.sin(angleStep * i) * spawnRadius));
-      ResetPlayerPosition(entity, player);
-
-      // Set colors
-      let ballSpriteRenderer = entity.getComponent(ut.Core2D.Sprite2DRenderer);
-      ballSpriteRenderer.setColor(colors[Math.floor(Math.random() * colors.length)])
-
-      // Set faces
-      let faceSpriteRenderer = transform.find("Face").getComponent(ut.Core2D.Sprite2DRenderer);
-      faceSpriteRenderer.setSprite(faces[Math.floor(Math.random() * faces.length)])
-
-      // Set controls depending on if it's human or AI
-      if (i < gameSettings.humanCount)
-      {
-         let inputControl = entity.getOrAddComponent(game.MovementInput);
-         inputControl.setInputID(i);
-      } else
-      {
-         let aiControl = entity.getOrAddComponent(game.MovementAI);
-      }
-   }
-}
-
-const DespawnPlayers = function (world, manager)
-{
-   world.forEachEntity([game.Player], function (entity, manager)
-   {
-      entity.getComponent(ut.Core2D.Transform).destroyTree(true);
-   });
-}
-
-const ResetPlayerPosition = function (entity, player)
-{
-   let transform = entity.getComponent(ut.Core2D.Transform);
-   let position = player.startPosition();
-   transform.setLocalPosition(new Vector3(position.x, position.y));
-   let velocity2D = entity.getOrAddComponent(ut.Physics2D.Velocity2D);
-   velocity2D.setVelocity(new Vector2(0, 0));
-
-   console.log("reset position");
-   console.log(player);
+      console.log("reset position");
+      console.log(player);
 }
