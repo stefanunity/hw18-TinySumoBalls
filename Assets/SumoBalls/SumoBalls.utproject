@@ -53,14 +53,17 @@
         { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" },
         { "Id": "1cd9e46e59fe4908a5824526293d20df", "Name": "MenuSystem" }
     ],
-    "Structs": [],
+    "Structs": [
+        { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
+    ],
     "Enums": [
         { "Id": "77fd93442d854ef28963349a3644e8de", "Name": "GameState" }
     ],
     "EntityGroups": [
         { "Id": "4b52eb87e8b0406692089585d92d8714", "Name": "Gameplay" },
         { "Id": "93b40144076547c0a5838ced33cc9e44", "Name": "StartMenu" },
-        { "Id": "8d782d7f1e9e4e3e9a12c99ea446b386", "Name": "Bootstrap" }
+        { "Id": "8d782d7f1e9e4e3e9a12c99ea446b386", "Name": "Bootstrap" },
+        { "Id": "2a231b746c874e9aa342360b03c9e8ef", "Name": "Player" }
     ],
     "Scripts": [
         { "Id": "8ba620fb0f14454a9a9b42cd75b1e606", "Name": "GameService" }
@@ -121,9 +124,18 @@
         "Id": "810ef4aec78c47d6b280363b9f3bfa02",
         "Name": "State",
         "FieldType": { "Id": "77fd93442d854ef28963349a3644e8de", "Name": "GameState" }
+    }, {
+        "Id": "4bbca02ae5af45a7a905cf8cf3b5f650",
+        "Name": "gameSettings",
+        "FieldType": { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
     }],
     "DefaultValue": {
-        "Type": { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" }
+        "Type": { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" },
+        "Properties": {
+            "gameSettings": {
+                "Type": { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
+            }
+        }
     }
 },
 {
@@ -134,6 +146,24 @@
     "Fields": [],
     "DefaultValue": {
         "Type": { "Id": "1cd9e46e59fe4908a5824526293d20df", "Name": "MenuSystem" }
+    }
+},
+{
+    "$TypeId": 3,
+    "Id": "04fe2884e6b749579a1813397a1d1058",
+    "Name": "GameSettings",
+    "TypeCode": "Struct",
+    "Fields": [{
+        "Id": "880734cc2bc24d7689063450d8571cc1",
+        "Name": "humanCount",
+        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
+    }, {
+        "Id": "e075995d84a24544b7a18073de7a2c66",
+        "Name": "aiCount",
+        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
     }
 },
 {
@@ -178,85 +208,13 @@
     "Id": "4b52eb87e8b0406692089585d92d8714",
     "Name": "Gameplay",
     "Entities": [
-        { "$TypeId": 9, "Id": "a54cd0ed98bc4be4b34fdda57ef709b8", "Name": "Player 1" },
-        { "$TypeId": 9, "Id": "9b7a2c3a3abf4a2281a626abca031d30", "Name": "Player 2" },
         { "$TypeId": 9, "Id": "6ebbd44482454e129bc91b55e6b79b0d", "Name": "Walls" },
         { "$TypeId": 9, "Id": "41bc26b88b224af3bd3bb6e7eaeaca13", "Name": "Wall_N" },
         { "$TypeId": 9, "Id": "b1f699a9834b4238a9d943a19ed3a2c2", "Name": "Wall_S" },
         { "$TypeId": 9, "Id": "9aa0e01d5137433ebd0e507e63d462d2", "Name": "Wall_E" },
         { "$TypeId": 9, "Id": "ce514d19f7914184acfe8dc966d77065", "Name": "Wall_W" },
-        { "$TypeId": 9, "Id": "ed636de84be8448ab6bcb1b3e3fc98d6", "Name": "Enemy 1" },
-        { "$TypeId": 9, "Id": "18140d16546948009a4709810b85c696", "Name": "Enemy 2" },
         { "$TypeId": 9, "Id": "f535df7db2804611bfa45b8a4ec689a3", "Name": "BattleAreaSprite" }
     ]
-},
-{
-    "$TypeId": 5,
-    "Id": "a54cd0ed98bc4be4b34fdda57ef709b8",
-    "Name": "Player 1",
-    "Enabled": true,
-    "Components": [{
-        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }
-    }, {
-        "Type": { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementPlayer" }
-    }, {
-        "Type": { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
-    }, {
-        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
-        "Properties": {
-            "sprite": { "$TypeId": 10, "Guid": "999a4370662aa4f9c99f9e93cad4449b", "FileId": 21300000, "Type": 3 }
-        }
-    }, {
-        "Type": { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
-        "Properties": {
-            "speed": 5
-        }
-    }, {
-        "Type": { "Id": "a89ed5bc29f74a1fae5304517a6f9cfd", "Name": "CircleCollider" },
-        "Properties": {
-            "radius": 0.6
-        }
-    }]
-},
-{
-    "$TypeId": 5,
-    "Id": "9b7a2c3a3abf4a2281a626abca031d30",
-    "Name": "Player 2",
-    "Enabled": true,
-    "Components": [{
-        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
-        "Properties": {
-            "localPosition": {
-                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
-                "Properties": {
-                    "x": -1.588,
-                    "y": 0.021
-                }
-            }
-        }
-    }, {
-        "Type": { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementPlayer" },
-        "Properties": {
-            "playerID": 1
-        }
-    }, {
-        "Type": { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
-    }, {
-        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
-        "Properties": {
-            "sprite": { "$TypeId": 10, "Guid": "92d624e6105b2490e8dfd86fe4d5c1a7", "FileId": 21300000, "Type": 3 }
-        }
-    }, {
-        "Type": { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
-        "Properties": {
-            "speed": 5
-        }
-    }, {
-        "Type": { "Id": "a89ed5bc29f74a1fae5304517a6f9cfd", "Name": "CircleCollider" },
-        "Properties": {
-            "radius": 0.6
-        }
-    }]
 },
 {
     "$TypeId": 5,
@@ -362,98 +320,6 @@
         "Properties": {
             "width": 1,
             "height": 100
-        }
-    }]
-},
-{
-    "$TypeId": 5,
-    "Id": "ed636de84be8448ab6bcb1b3e3fc98d6",
-    "Name": "Enemy 1",
-    "Enabled": true,
-    "Components": [{
-        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
-        "Properties": {
-            "localPosition": {
-                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
-                "Properties": {
-                    "x": -0.76,
-                    "y": 1.54
-                }
-            }
-        }
-    }, {
-        "Type": { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
-    }, {
-        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
-        "Properties": {
-            "sprite": { "$TypeId": 10, "Guid": "999a4370662aa4f9c99f9e93cad4449b", "FileId": 21300000, "Type": 3 },
-            "color": {
-                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
-                "Properties": {
-                    "r": 1,
-                    "g": 0,
-                    "b": 0,
-                    "a": 1
-                }
-            }
-        }
-    }, {
-        "Type": { "Id": "3a3d6d942e4b462b8c179981be5666c6", "Name": "MovementAI" }
-    }, {
-        "Type": { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
-        "Properties": {
-            "speed": 5
-        }
-    }, {
-        "Type": { "Id": "a89ed5bc29f74a1fae5304517a6f9cfd", "Name": "CircleCollider" },
-        "Properties": {
-            "radius": 0.6
-        }
-    }]
-},
-{
-    "$TypeId": 5,
-    "Id": "18140d16546948009a4709810b85c696",
-    "Name": "Enemy 2",
-    "Enabled": true,
-    "Components": [{
-        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
-        "Properties": {
-            "localPosition": {
-                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
-                "Properties": {
-                    "x": -2.094,
-                    "y": 1.502
-                }
-            }
-        }
-    }, {
-        "Type": { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
-    }, {
-        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
-        "Properties": {
-            "sprite": { "$TypeId": 10, "Guid": "999a4370662aa4f9c99f9e93cad4449b", "FileId": 21300000, "Type": 3 },
-            "color": {
-                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
-                "Properties": {
-                    "r": 0.1514984,
-                    "g": 0,
-                    "b": 0.6132076,
-                    "a": 1
-                }
-            }
-        }
-    }, {
-        "Type": { "Id": "3a3d6d942e4b462b8c179981be5666c6", "Name": "MovementAI" }
-    }, {
-        "Type": { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
-        "Properties": {
-            "speed": 5
-        }
-    }, {
-        "Type": { "Id": "a89ed5bc29f74a1fae5304517a6f9cfd", "Name": "CircleCollider" },
-        "Properties": {
-            "radius": 0.6
         }
     }]
 },
@@ -693,7 +559,51 @@
     "Name": "GameManger",
     "Enabled": true,
     "Components": [{
-        "Type": { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" }
+        "Type": { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" },
+        "Properties": {
+            "gameSettings": {
+                "Type": { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" },
+                "Properties": {
+                    "humanCount": 2,
+                    "aiCount": 1
+                }
+            }
+        }
+    }]
+},
+{
+    "$TypeId": 4,
+    "Id": "2a231b746c874e9aa342360b03c9e8ef",
+    "Name": "Player",
+    "Entities": [
+        { "$TypeId": 9, "Id": "a54cd0ed98bc4be4b34fdda57ef709b8", "Name": "Player" }
+    ]
+},
+{
+    "$TypeId": 5,
+    "Id": "a54cd0ed98bc4be4b34fdda57ef709b8",
+    "Name": "Player",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {}
+    }, {
+        "Type": { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
+    }, {
+        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
+        "Properties": {
+            "sprite": { "$TypeId": 10, "Guid": "999a4370662aa4f9c99f9e93cad4449b", "FileId": 21300000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
+        "Properties": {
+            "speed": 5
+        }
+    }, {
+        "Type": { "Id": "a89ed5bc29f74a1fae5304517a6f9cfd", "Name": "CircleCollider" },
+        "Properties": {
+            "radius": 0.6
+        }
     }]
 },
 {

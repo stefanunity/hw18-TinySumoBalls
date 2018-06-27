@@ -1,9 +1,12 @@
 let UIManager = {}
 let sliderValue = 0;
 
-game.GameManagerSystem.update = function (scheduler, world) {
-   world.forEachEntity([game.GameManager], function (entity, manager) {
-      switch (manager.State()) {
+game.GameManagerSystem.update = function (scheduler, world)
+{
+   world.forEachEntity([game.GameManager], function (entity, manager)
+   {
+      switch (manager.State())
+      {
 
          case game.GameState.Init:
             ut.Flow.Service.instantiate('game.StartMenu');
@@ -27,41 +30,57 @@ game.GameManagerSystem.update = function (scheduler, world) {
    });
 }
 
-const StartMenuUpdate = function (world, manager) {
-   if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.Alpha1)) {
+
+const StartMenuUpdate = function (world, manager)
+{
+   if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.Alpha1))
+   {
       console.log("1: StartNoAI");
+      var gameSettings = manager.gameSettings();
+      gameSettings.aiCount = 0;
+      manager.setGameSettings(gameSettings);
       manager.setState(game.GameState.InitGameplay);
    }
 
-   if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.Alpha2)) {
+   if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.Alpha2))
+   {
       console.log("2: StartAI");
+      var gameSettings = manager.gameSettings();
+      gameSettings.aiCount = 200;
+      manager.setGameSettings(gameSettings);
       manager.setState(game.GameState.InitGameplay);
    }
 }
 
 
-const InitGameplay = function (world, manager) {
+const InitGameplay = function (world, manager)
+{
    ut.Flow.Service.destroyAll('game.StartMenu');
    ut.Flow.Service.instantiate('game.Gameplay');
 
    UIManager = ut.Flow.Service.instantiate("Sumo.UI.UI");
-   world.forEachEntity([Sumo.UI.Score], function (entity, manager) {
+   world.forEachEntity([Sumo.UI.Score], function (entity, manager)
+   {
       let score = entity.getComponent(Sumo.UI.Score);
       score.setScore1(0);
       score.setScore2(0);
    });
 
+   SpawnPlayers(world, manager);
 
    manager.setState(game.GameState.Gameplay);
 }
 
-const GameplayUpdate = function (world, manager) {
-   world.forEachEntity([Sumo.UI.Slider], function (entity, manager) {
+const GameplayUpdate = function (world, manager)
+{
+   world.forEachEntity([Sumo.UI.Slider], function (entity, manager)
+   {
       let slider = entity.getComponent(Sumo.UI.Slider);
       slider.setValue(sliderValue);
    });
 
-   if (ut.Runtime.Input.getMouseButtonDown(0)) {
+   if (ut.Runtime.Input.getMouseButtonDown(0))
+   {
       UIManager = ut.Flow.Service.destroyAll("Sumo.UI.UI");
       console.log("Game Over!");
       manager.setState(game.GameState.GameOver);
@@ -69,20 +88,62 @@ const GameplayUpdate = function (world, manager) {
 
 }
 
-const GameOver = function (world, manager) {
-   if (ut.Runtime.Input.getMouseButtonDown(0)) {
+const GameOver = function (world, manager)
+{
+   if (ut.Runtime.Input.getMouseButtonDown(0))
+   {
       console.log("======================================");
-      if (sliderValue < 10) {
+      if (sliderValue < 10)
+      {
          sliderValue++;
-      } else {
+      } else
+      {
          sliderValue = 0;
       }
       // console.log(JSON.stringify(UIManager));
       console.log(sliderValue);
    }
 
-   if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.Alpha1)) {
+   if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.Alpha1))
+   {
       console.log("1: StartNoAI");
       manager.setState(game.GameState.Init);
+   }
+}
+
+
+const SpawnPlayers = function (world, manager)
+{
+   world.forEachEntity([game.MovementPlayer], function (entity, manager)
+   {
+      entity.destroy();
+   });
+   world.forEachEntity([game.MovementAI], function (entity, manager)
+   {
+      entity.destroy();
+   });
+
+   const spawnRadius = 2.5;
+   let gameSettings = manager.gameSettings();
+   let playerCount = gameSettings.aiCount + gameSettings.humanCount;
+   let angleStep = Math.PI * 2 / playerCount;
+   for (let i = 0; i < playerCount; i++)
+   {
+      let group = ut.Flow.Service.instantiate('game.Player');
+      let newPlayer = group.root;
+
+      let transform = newPlayer.getComponent(ut.Core2D.Transform);
+      let position = new Vector3(Math.cos(angleStep * i) * spawnRadius, Math.sin(angleStep * i) * spawnRadius, 0);
+      transform.setLocalPosition(position);
+
+      if (i < gameSettings.humanCount)
+      {
+         let playerControl = newPlayer.getOrAddComponent(game.MovementPlayer);
+         playerControl.setPlayerID(i);
+      }
+      else
+      {
+         let aiControl = newPlayer.getOrAddComponent(game.MovementAI);
+      }
    }
 }
