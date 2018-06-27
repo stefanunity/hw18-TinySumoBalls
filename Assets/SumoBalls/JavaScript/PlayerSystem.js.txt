@@ -1,6 +1,7 @@
-const arenaRadius = 6;
+const arenaRadius = 7;
 
 if (transform.worldPosition().length() > arenaRadius)
 {
    player.setAlive(false);
+   entity.removeComponent(ut.Physics2D.Velocity2D);
 }
