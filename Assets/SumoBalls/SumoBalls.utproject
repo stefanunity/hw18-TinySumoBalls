@@ -265,8 +265,7 @@
         { "$TypeId": 9, "Id": "b1f699a9834b4238a9d943a19ed3a2c2", "Name": "Wall_S" },
         { "$TypeId": 9, "Id": "9aa0e01d5137433ebd0e507e63d462d2", "Name": "Wall_E" },
         { "$TypeId": 9, "Id": "ce514d19f7914184acfe8dc966d77065", "Name": "Wall_W" },
-        { "$TypeId": 9, "Id": "f535df7db2804611bfa45b8a4ec689a3", "Name": "BattleAreaSprite" },
-        { "$TypeId": 9, "Id": "c74f2d0958084b4aa050ea91dc101779", "Name": "GameplayManager" }
+        { "$TypeId": 9, "Id": "f535df7db2804611bfa45b8a4ec689a3", "Name": "BattleAreaSprite" }
     ]
 },
 {
@@ -401,23 +400,6 @@
         "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
         "Properties": {
             "order": -10
-        }
-    }]
-},
-{
-    "$TypeId": 5,
-    "Id": "c74f2d0958084b4aa050ea91dc101779",
-    "Name": "GameplayManager",
-    "Enabled": true,
-    "Components": [{
-        "Type": { "Id": "955dc8dc2c2f482984476e7a1dc29b90", "Name": "GameplayManager" },
-        "Properties": {
-            "scores": {
-                "Type": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" },
-                "Items": [
-                    0
-                ]
-            }
         }
     }]
 },
