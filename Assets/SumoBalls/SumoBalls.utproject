@@ -945,6 +945,7 @@
         "Properties": {
             "text": "Tiny Sumo Balls",
             "fontSize": 40,
+            "bold": false,
             "color": {
                 "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
                 "Properties": {
