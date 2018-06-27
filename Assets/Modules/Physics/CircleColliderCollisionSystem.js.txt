@@ -1,63 +1,58 @@
-Sumo.Physics.CircleColliderCollisionSystem.update = function (scheduler, world)
-{
-   var dt = scheduler.deltaTime();
-   world.forEachEntity([Sumo.Physics.CircleCollider, ut.Physics2D.Velocity2D, ut.Core2D.Transform],
-      function (entity, circlecollider, velocity2d, transform)
-      {
+Sumo.Physics.CircleColliderCollisionSystem.update = function (scheduler, world) {
+      var dt = scheduler.deltaTime();
+      world.forEachEntity([Sumo.Physics.CircleCollider, ut.Physics2D.Velocity2D, ut.Core2D.Transform],
+            function (entity, circlecollider, velocity2d, transform) {
 
-         world.forEachEntity([Sumo.Physics.CircleCollider, ut.Physics2D.Velocity2D, ut.Core2D.Transform],
-            function (otherentity, othercirclecollider, othervelocity2d, othertransform)
-            {
-               let velocity = velocity2d.velocity();
+                  world.forEachEntity([Sumo.Physics.CircleCollider, ut.Physics2D.Velocity2D, ut.Core2D.Transform],
+                        function (otherentity, othercirclecollider, othervelocity2d, othertransform) {
+                              let velocity = velocity2d.velocity();
 
-               let pos = transform.worldPosition();
-               let otherPos = othertransform.worldPosition();
-               let offset = new Vector2(otherPos.x - pos.x, otherPos.y - pos.y);
-               let normalizedOffset = new Vector2(offset.x, offset.y);
-               normalizedOffset.normalize();
-               let distance = offset.length();
-               let radii = circlecollider.radius() + othercirclecollider.radius();
-               let penetration = Math.max(0, (radii - distance));
+                              let pos = transform.worldPosition();
+                              let otherPos = othertransform.worldPosition();
+                              let offset = new Vector2(otherPos.x - pos.x, otherPos.y - pos.y);
+                              let normalizedOffset = new Vector2(offset.x, offset.y);
+                              normalizedOffset.normalize();
+                              let distance = offset.length();
+                              let radii = circlecollider.radius() + othercirclecollider.radius();
+                              let penetration = Math.max(0, (radii - distance));
 
-               if (penetration > 0 && distance > 0.01)
-               {
-                  let tangent = new Vector2(-normalizedOffset.y, normalizedOffset.x);
+                              if (penetration > 0 && distance > 0.01) {
+                                    let tangent = new Vector2(-normalizedOffset.y, normalizedOffset.x);
 
-                  let positionFixup = new Vector2(normalizedOffset.x * penetration, normalizedOffset.y * penetration);
-                  positionFixup.multiplyScalar(-0.51);
+                                    let positionFixup = new Vector2(normalizedOffset.x * penetration, normalizedOffset.y * penetration);
+                                    positionFixup.multiplyScalar(-0.51);
 
-                  let otherVelocity = othervelocity2d.velocity();
+                                    let otherVelocity = othervelocity2d.velocity();
 
-                  let relativeVelocity = new Vector2(otherVelocity.x - velocity.x, otherVelocity.y - velocity.y);
-                  let length = relativeVelocity.dot(tangent);
+                                    let relativeVelocity = new Vector2(otherVelocity.x - velocity.x, otherVelocity.y - velocity.y);
+                                    let length = relativeVelocity.dot(tangent);
 
-                  let velocityProjectionToTangent = new Vector2(tangent.x * length, tangent.y * length);
-                  let velocityComponentPerpendicularToTangent = new Vector2(relativeVelocity.x - velocityProjectionToTangent.x, relativeVelocity.y - velocityProjectionToTangent.y);
+                                    let velocityProjectionToTangent = new Vector2(tangent.x * length, tangent.y * length);
+                                    let velocityComponentPerpendicularToTangent = new Vector2(relativeVelocity.x - velocityProjectionToTangent.x, relativeVelocity.y - velocityProjectionToTangent.y);
 
-                  velocityComponentPerpendicularToTangent.multiplyScalar(1);// BOUNCINESS
-                  velocity.add(velocityComponentPerpendicularToTangent)
-                  velocity2d.setVelocity(velocity);
-                  otherVelocity.sub(velocityComponentPerpendicularToTangent);
-                  othervelocity2d.setVelocity(otherVelocity);
+                                    velocityComponentPerpendicularToTangent.multiplyScalar(1); // BOUNCINESS
+                                    velocity.add(velocityComponentPerpendicularToTangent)
+                                    velocity2d.setVelocity(velocity);
+                                    otherVelocity.sub(velocityComponentPerpendicularToTangent);
+                                    othervelocity2d.setVelocity(otherVelocity);
 
-                  pos.add(positionFixup);
+                                    pos.add(positionFixup);
+                                    transform.setWorldPosition(new Vector3(pos.x, pos.y, 0));
+                                    otherPos.sub(positionFixup);
+                                    othertransform.setWorldPosition(new Vector3(otherPos.x, otherPos.y, 0));
+                              }
+                        }
+                  );
+            });
+
+      world.forEachEntity([Sumo.Physics.CircleCollider, ut.Physics2D.Velocity2D, ut.Core2D.Transform],
+            function (entity, circlecollider, velocity2d, transform) {
+                  let pos = transform.worldPosition();
+                  let velocity = velocity2d.velocity();
+
+                  let steppedPosition = new Vector2(velocity.x, velocity.y);
+                  steppedPosition.multiplyScalar(dt);
+                  pos.add(steppedPosition);
                   transform.setWorldPosition(new Vector3(pos.x, pos.y, 0));
-                  otherPos.sub(positionFixup);
-                  othertransform.setWorldPosition(new Vector3(otherPos.x, otherPos.y, 0));
-               }
-            }
-         );
-      });
-
-   world.forEachEntity([Sumo.Physics.CircleCollider, ut.Physics2D.Velocity2D, ut.Core2D.Transform],
-      function (entity, circlecollider, velocity2d, transform)
-      {
-         let pos = transform.worldPosition();
-         let velocity = velocity2d.velocity();
-
-         let steppedPosition = new Vector2(velocity.x, velocity.y);
-         steppedPosition.multiplyScalar(dt);
-         pos.add(steppedPosition);
-         transform.setWorldPosition(new Vector3(pos.x, pos.y, 0));
-      });
+            });
 }

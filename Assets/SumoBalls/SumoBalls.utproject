@@ -196,6 +196,10 @@
         "Id": "a1cf1faa1deb46039891c99808957b8e",
         "Name": "startPosition",
         "FieldType": { "Id": "3abb69286ddfc2d1c617a173c1eeb35d", "Name": "Vector2" }
+    }, {
+        "Id": "e5fbb54a66874f39a6791e5c2c61a608",
+        "Name": "scoreEntity",
+        "FieldType": { "Id": "5a182d9d039d4dfd8fa96132d05f9ee7", "Name": "EntityReference" }
     }],
     "DefaultValue": {
         "Type": { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" },
@@ -677,7 +681,8 @@
     "Name": "Player",
     "Entities": [
         { "$TypeId": 9, "Id": "a54cd0ed98bc4be4b34fdda57ef709b8", "Name": "Player" },
-        { "$TypeId": 9, "Id": "254aa4a40b294af9ab427a16a38c32e4", "Name": "Face" }
+        { "$TypeId": 9, "Id": "254aa4a40b294af9ab427a16a38c32e4", "Name": "Face" },
+        { "$TypeId": 9, "Id": "42b2cef4dfd141599cb9347d9e8e6e72", "Name": "Score" }
     ]
 },
 {
@@ -707,7 +712,10 @@
     }, {
         "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
     }, {
-        "Type": { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" }
+        "Type": { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" },
+        "Properties": {
+            "scoreEntity": { "$TypeId": 9, "Id": "42b2cef4dfd141599cb9347d9e8e6e72", "Name": "Score" }
+        }
     }]
 },
 {
@@ -735,6 +743,38 @@
         "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
         "Properties": {
             "order": 1
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "42b2cef4dfd141599cb9347d9e8e6e72",
+    "Name": "Score",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "y": 1.14
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.01,
+                    "y": 0.01
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "a54cd0ed98bc4be4b34fdda57ef709b8", "Name": "Player" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "0",
+            "fontSize": 60,
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
         }
     }]
 },

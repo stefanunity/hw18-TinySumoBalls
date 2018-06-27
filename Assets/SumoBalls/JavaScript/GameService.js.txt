@@ -28,33 +28,19 @@ game.GameManagerSystem.update = function (scheduler, world) {
 const InitGameplay = function (world, manager) {
       ut.Flow.Service.destroyAll('Sumo.UI.StartMenu');
       ut.Flow.Service.instantiate('game.Gameplay');
-
-
-      let gameSettings = manager.gameSettings();
-
-      let totalPlayers = gameSettings.humanCount + gameSettings.aiCount;
-
-      if (2 === totalPlayers) {
-            UIManager = ut.Flow.Service.instantiate("Sumo.UI.UI");
-      }
-
-      world.forEachEntity([Sumo.UI.Score], function (entity, manager) {
-            let score = entity.getComponent(Sumo.UI.Score);
-            score.setScore1(0);
-            score.setScore2(0);
-      });
-
       SpawnPlayers(world, manager);
-
       manager.setState(game.GameState.Gameplay);
+
+      // Score Slider, not needed anymore
+      // let gameSettings = manager.gameSettings();
+      // let totalPlayers = gameSettings.humanCount + gameSettings.aiCount;
+      // if (2 === totalPlayers) {
+      //       UIManager = ut.Flow.Service.instantiate("Sumo.UI.UI");
+      // }
+
 }
 
 const GameplayUpdate = function (world, manager) {
-      world.forEachEntity([Sumo.UI.Slider], function (entity, manager) {
-            let slider = entity.getComponent(Sumo.UI.Slider);
-            slider.setValue(sliderValue);
-      });
-
       let livePlayers = 0;
       world.forEachEntity([game.Player], function (entity, player) {
             if (player.alive()) {
@@ -69,7 +55,10 @@ const GameplayUpdate = function (world, manager) {
                   if (player.alive()) {
                         let score = player.score();
                         score++;
+                        // Update player score
                         player.setScore(score);
+                        player.scoreEntity().getComponent(ut.Text.TextRenderer).setText(score.toString());
+
                         if (score >= 3) {
                               gameOver = true;
                         }
@@ -78,9 +67,7 @@ const GameplayUpdate = function (world, manager) {
             });
 
             if (gameOver) {
-                  console.log("Game Over!");
                   manager.setState(game.GameState.GameOver);
-                  SpawnPlayers(world, manager);
                   ut.Flow.Service.instantiate('game.Gameover');
             }
       }
@@ -88,7 +75,7 @@ const GameplayUpdate = function (world, manager) {
 
 const GameOver = function (world, manager) {
       ut.Flow.Service.destroyAll('game.Gameplay');
-      ut.Flow.Service.destroyAll("Sumo.UI.UI");
+      // ut.Flow.Service.destroyAll("Sumo.UI.UI");
       DespawnPlayers(world, manager);
 
       if (ut.Runtime.Input.getMouseButtonDown(0)) {
@@ -101,6 +88,7 @@ const GameOver = function (world, manager) {
 
 const SpawnPlayers = function (world, manager) {
       // Destroy players
+      // TODO why?
       DespawnPlayers(world, manager);
 
       // Load random colors and faces for players
@@ -124,8 +112,13 @@ const SpawnPlayers = function (world, manager) {
             ResetPlayerPosition(entity, player);
 
             // Set colors
+            let randomColor = colors[Math.floor(Math.random() * colors.length)]
+
             let ballSpriteRenderer = entity.getComponent(ut.Core2D.Sprite2DRenderer);
-            ballSpriteRenderer.setColor(colors[Math.floor(Math.random() * colors.length)])
+            ballSpriteRenderer.setColor(randomColor);
+
+            let scoreSpriteRenderer = transform.find("Score").getComponent(ut.Text.TextRenderer).setText("0");
+            // scoreSpriteRenderer.setColor(randomColor);
 
             // Set faces
             let faceSpriteRenderer = transform.find("Face").getComponent(ut.Core2D.Sprite2DRenderer);
@@ -136,7 +129,7 @@ const SpawnPlayers = function (world, manager) {
                   let inputControl = entity.getOrAddComponent(game.MovementInput);
                   inputControl.setInputID(i);
             } else {
-                  let aiControl = entity.getOrAddComponent(game.MovementAI);
+                  let AiControl = entity.getOrAddComponent(game.MovementAI);
             }
       }
 }
