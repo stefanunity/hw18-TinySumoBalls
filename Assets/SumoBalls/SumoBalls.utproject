@@ -77,7 +77,8 @@
         { "Id": "8bc5a67b302148a8ab4556119a5ae083", "Name": "AIInputSystem" },
         { "Id": "b8cd443904ff40c0a6d9c65fe10d0f48", "Name": "GameManagerSystem" },
         { "Id": "3998febc14d6491781556b463c3af125", "Name": "MenuInputSystem" },
-        { "Id": "0600aaa143f243028e631deeed7c0480", "Name": "ButtonClickSystem" }
+        { "Id": "0600aaa143f243028e631deeed7c0480", "Name": "ButtonClickSystem" },
+        { "Id": "4996b3e8299741a3b881f6ad987b682b", "Name": "PlayerSystem" }
     ],
     "Assets": [],
     "StartupEntityGroup": { "Id": "8d782d7f1e9e4e3e9a12c99ea446b386", "Name": "NewEntityGroup" }
@@ -187,9 +188,16 @@
         "Id": "ce708e37e57e44e49257b09b850d76ca",
         "Name": "score",
         "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
+    }, {
+        "Id": "d31e21864dbe411080838e429bd76ef7",
+        "Name": "alive",
+        "FieldType": { "Id": "2b477f505af74487b7092b5617d88d3f", "Name": "Boolean" }
     }],
     "DefaultValue": {
-        "Type": { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" }
+        "Type": { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" },
+        "Properties": {
+            "alive": true
+        }
     }
 },
 {
@@ -886,6 +894,21 @@
     ],
     "ExecuteAfter": [
         { "Id": "624141ac039664daa461faa7328b16fc", "Name": "InputHandler" }
+    ],
+    "ExecuteBefore": []
+},
+{
+    "$TypeId": 7,
+    "Id": "4996b3e8299741a3b881f6ad987b682b",
+    "Name": "PlayerSystem",
+    "Options": 3,
+    "TextAsset": { "$TypeId": 10, "Guid": "f018b2f41ccbdf84b962848ec44c7d7a", "FileId": 4900000, "Type": 3 },
+    "Components": [
+        { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" },
+        { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }
+    ],
+    "ExecuteAfter": [
+        { "Id": "b7f7f4fdfc819e904ab2a0193ed1f613", "Name": "Physics2DSystem" }
     ],
     "ExecuteBefore": []
 },
