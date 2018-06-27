@@ -1,26 +1,80 @@
 Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
-   world.forEachEntity([Sumo.UI.Score], function (entity, score) {
-      score.setScore1(0);
-      score.setScore2(0);
+      world.forEachEntity([Sumo.UI.Score], function (entity, score) {
+            score.setScore1(0);
+            score.setScore2(0);
 
-      //update text
-      score.TextRenderer1()
-         .getComponent(ut.Text.TextRenderer)
-         .setText(score.Score1().toString());
-      score.TextRenderer2()
-         .getComponent(ut.Text.TextRenderer)
-         .setText(score.Score2().toString());
+            //update text
+            score.TextRenderer1()
+                  .getComponent(ut.Text.TextRenderer)
+                  .setText(score.Score1().toString());
+            score.TextRenderer2()
+                  .getComponent(ut.Text.TextRenderer)
+                  .setText(score.Score2().toString());
 
-      // update Slider
-      // we set the current score to player 1 
-      score.Slider()
-         .getComponent(Sumo.UI.Slider)
-         .setValue(score.Score1());
+            // update Slider
+            // we set the current score to player 1 
+            score.Slider()
+                  .getComponent(Sumo.UI.Slider)
+                  .setValue(score.Score1());
 
-      // we set the max to both players so that the slider can automatically calculate the percentage of the pink bar
-      score.Slider()
-         .getComponent(Sumo.UI.Slider)
-         .setMaxValue(score.Score1() + score.Score2());
+            // we set the max to both players so that the slider can automatically calculate the percentage of the pink bar
+            score.Slider()
+                  .getComponent(Sumo.UI.Slider)
+                  .setMaxValue(score.Score1() + score.Score2());
 
-   });
+      });
+
+      world.forEachEntity([Sumo.UI.HumanCountUI], function (entity, countUI) {
+            // score.setScore1(0);
+            // //update text
+            // score.TextRenderer1()
+            //       .getComponent(ut.Text.TextRenderer)
+            //       .setText(score.Score1().toString());
+            // // update Slider
+            // // we set the current score to player 1 
+            // score.Slider()
+            //       .getComponent(Sumo.UI.Slider)
+            //       .setValue(score.Score1());
+
+
+            let transform = countUI.MinusBtn().getComponent(ut.Core2D.Transform);
+            // console.log(JSON.stringify(transform));
+            let position = transform.localPosition();
+            // console.log(position);
+
+            let spriteRenderer = countUI.MinusBtn().getComponent(ut.Core2D.Sprite2DRenderer);
+            console.log(JSON.stringify(spriteRenderer));
+
+
+            // let size = transform.size();
+            // console.log(size);
+
+            // if(ut.Runtime.Input.getMouseP)
+
+
+      });
 };
+
+// var position = transform.localPosition();
+
+// if (ut.Runtime.Input.getMouseButtonDown(0)) {
+//       console.log("what?!");
+//       let size = myComponent.size();
+
+//       let size = transform.size();
+
+//       let xMin = position.x - size.x * 0.5;
+//       let xMax = position.x + size.x * 0.5;
+
+//       let yMin = position.y - size.y * 0.5;
+//       let yMax = position.y + size.y * 0.5;
+
+//       var mouse = ut.Runtime.Input.getWorldInputPosition(world);
+
+//       var x = mouse.x;
+//       var y = mouse.y;
+
+//       if (x > xMin && x < xMax && y > yMin && y < yMax) {
+//          console.log("button!");
+//       }
+// }
