@@ -54,14 +54,13 @@
         { "Id": "1cd9e46e59fe4908a5824526293d20df", "Name": "MenuSystem" },
         { "Id": "7bfa0e0fd33746cfad1194bd3ece7ffb", "Name": "PlayerSprites" },
         { "Id": "6556039b8ff343e48b85dc50945eb057", "Name": "Button" },
-        { "Id": "955dc8dc2c2f482984476e7a1dc29b90", "Name": "GameplayManager" }
+        { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" }
     ],
     "Structs": [
         { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
     ],
     "Enums": [
-        { "Id": "77fd93442d854ef28963349a3644e8de", "Name": "GameState" },
-        { "Id": "a7fe346cad70408e9978aae038834be0", "Name": "GameplayState" }
+        { "Id": "77fd93442d854ef28963349a3644e8de", "Name": "GameState" }
     ],
     "EntityGroups": [
         { "Id": "4b52eb87e8b0406692089585d92d8714", "Name": "Gameplay" },
@@ -71,16 +70,14 @@
         { "Id": "5a559fe683824b5d927d672aa395aa01", "Name": "PlayerAssets" }
     ],
     "Scripts": [
-        { "Id": "8ba620fb0f14454a9a9b42cd75b1e606", "Name": "GameService" },
-        { "Id": "11bc761e0f0643edac33be52599cbcfa", "Name": "GameplayService" }
+        { "Id": "8ba620fb0f14454a9a9b42cd75b1e606", "Name": "GameService" }
     ],
     "Systems": [
         { "Id": "c65ec262e361456d8445bb1077148c14", "Name": "PlayerInputSystem" },
         { "Id": "8bc5a67b302148a8ab4556119a5ae083", "Name": "AIInputSystem" },
         { "Id": "b8cd443904ff40c0a6d9c65fe10d0f48", "Name": "GameManagerSystem" },
         { "Id": "3998febc14d6491781556b463c3af125", "Name": "MenuInputSystem" },
-        { "Id": "0600aaa143f243028e631deeed7c0480", "Name": "ButtonClickSystem" },
-        { "Id": "fe0422ae08aa47a7a45b8dae81af3748", "Name": "GameplayManagerSystem" }
+        { "Id": "0600aaa143f243028e631deeed7c0480", "Name": "ButtonClickSystem" }
     ],
     "Assets": [],
     "StartupEntityGroup": { "Id": "8d782d7f1e9e4e3e9a12c99ea446b386", "Name": "NewEntityGroup" }
@@ -183,21 +180,16 @@
 },
 {
     "$TypeId": 3,
-    "Id": "955dc8dc2c2f482984476e7a1dc29b90",
-    "Name": "GameplayManager",
+    "Id": "64b6ac9d4fce47f0916bea4792508b9c",
+    "Name": "Player",
     "TypeCode": "Component",
     "Fields": [{
-        "Id": "a960415772864bbf9661e48bbb265116",
-        "Name": "scores",
-        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" },
-        "Array": true
-    }, {
-        "Id": "2c6cd293a2304747b61f71061ff3d1bb",
-        "Name": "state",
-        "FieldType": { "Id": "a7fe346cad70408e9978aae038834be0", "Name": "GameplayState" }
+        "Id": "ce708e37e57e44e49257b09b850d76ca",
+        "Name": "score",
+        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
     }],
     "DefaultValue": {
-        "Type": { "Id": "955dc8dc2c2f482984476e7a1dc29b90", "Name": "GameplayManager" }
+        "Type": { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" }
     }
 },
 {
@@ -252,33 +244,6 @@
             "InitGameplay": 4,
             "Gameplay": 2,
             "GameOver": 3
-        }
-    }
-},
-{
-    "$TypeId": 3,
-    "Id": "a7fe346cad70408e9978aae038834be0",
-    "Name": "GameplayState",
-    "TypeCode": "Enum",
-    "BaseType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" },
-    "Fields": [{
-        "Id": "afb3297e5a0a42fb9b7d6afb8d5dfd60",
-        "Name": "Init",
-        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
-    }, {
-        "Id": "54806aa2f6484a53b9e47af383bb35e7",
-        "Name": "Fight",
-        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
-    }, {
-        "Id": "b534d0fb932c43d9a5c6389b0e219b55",
-        "Name": "End",
-        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
-    }],
-    "DefaultValue": {
-        "Type": { "Id": "a7fe346cad70408e9978aae038834be0", "Name": "GameplayState" },
-        "Properties": {
-            "Fight": 1,
-            "End": 2
         }
     }
 },
@@ -747,6 +712,8 @@
         }
     }, {
         "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" }
     }]
 },
 {
@@ -840,12 +807,6 @@
     "TextAsset": { "$TypeId": 10, "Guid": "ecc9fa59c870d4c5cac200eecbdef69f", "FileId": 4900000, "Type": 3 }
 },
 {
-    "$TypeId": 6,
-    "Id": "11bc761e0f0643edac33be52599cbcfa",
-    "Name": "GameplayService",
-    "TextAsset": { "$TypeId": 10, "Guid": "868eaa83e53a4634b81018196de5b111", "FileId": 4900000, "Type": 3 }
-},
-{
     "$TypeId": 7,
     "Id": "c65ec262e361456d8445bb1077148c14",
     "Name": "PlayerInputSystem",
@@ -927,21 +888,6 @@
         { "Id": "624141ac039664daa461faa7328b16fc", "Name": "InputHandler" }
     ],
     "ExecuteBefore": []
-},
-{
-    "$TypeId": 7,
-    "Id": "fe0422ae08aa47a7a45b8dae81af3748",
-    "Name": "GameplayManagerSystem",
-    "Options": 5,
-    "Components": [
-        { "Id": "955dc8dc2c2f482984476e7a1dc29b90", "Name": "GameplayManager" }
-    ],
-    "ExecuteAfter": [
-        { "Id": "6fa7e5feec05fec093042f2a2b9802d4", "Name": "UserCodeStart" }
-    ],
-    "ExecuteBefore": [
-        { "Id": "d016ec3bfdc5a53540e9c71942ee414c", "Name": "UserCodeEnd" }
-    ]
 },
 {
     "$TypeId": 5,

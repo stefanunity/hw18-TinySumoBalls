@@ -22,9 +22,7 @@ game.GameManagerSystem.update = function (scheduler, world)
             GameplayUpdate(world, manager);
             break;
          case game.GameState.GameOver:
-
             GameOver(world, manager);
-
             break;
       }
    });
@@ -160,11 +158,7 @@ const SpawnPlayers = function (world, manager)
 
 const DespawnPlayers = function (world, manager) 
 {
-   world.forEachEntity([game.MovementInput], function (entity, manager)
-   {
-      entity.getComponent(ut.Core2D.Transform).destroyTree(true);
-   });
-   world.forEachEntity([game.MovementAI], function (entity, manager)
+   world.forEachEntity([game.Player], function (entity, manager)
    {
       entity.getComponent(ut.Core2D.Transform).destroyTree(true);
    });
