@@ -164,7 +164,4 @@ const ResetPlayerPosition = function (entity, player) {
       transform.setLocalPosition(new Vector3(position.x, position.y));
       let velocity2D = entity.getOrAddComponent(ut.Physics2D.Velocity2D);
       velocity2D.setVelocity(new Vector2(0, 0));
-
-      console.log("reset position");
-      console.log(player);
 }

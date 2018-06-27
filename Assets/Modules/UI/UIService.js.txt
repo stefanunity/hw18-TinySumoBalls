@@ -43,7 +43,7 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
             // console.log(position);
 
             let spriteRenderer = countUI.MinusBtn().getComponent(ut.Core2D.Sprite2DRenderer);
-            console.log(JSON.stringify(spriteRenderer));
+            // console.log(JSON.stringify(spriteRenderer));
 
 
             // let size = transform.size();
