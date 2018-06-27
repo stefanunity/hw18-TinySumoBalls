@@ -77,7 +77,6 @@
         { "Id": "8bc5a67b302148a8ab4556119a5ae083", "Name": "AIInputSystem" },
         { "Id": "b8cd443904ff40c0a6d9c65fe10d0f48", "Name": "GameManagerSystem" },
         { "Id": "3998febc14d6491781556b463c3af125", "Name": "MenuInputSystem" },
-        { "Id": "0600aaa143f243028e631deeed7c0480", "Name": "ButtonClickSystem" },
         { "Id": "4996b3e8299741a3b881f6ad987b682b", "Name": "PlayerSystem" }
     ],
     "Assets": [],
@@ -867,21 +866,6 @@
     "ExecuteBefore": [
         { "Id": "d016ec3bfdc5a53540e9c71942ee414c", "Name": "UserCodeEnd" }
     ]
-},
-{
-    "$TypeId": 7,
-    "Id": "0600aaa143f243028e631deeed7c0480",
-    "Name": "ButtonClickSystem",
-    "Options": 3,
-    "TextAsset": { "$TypeId": 10, "Guid": "ed4fe0e1fef341b408591ef91bb10782", "FileId": 4900000, "Type": 3 },
-    "Components": [
-        { "Id": "6556039b8ff343e48b85dc50945eb057", "Name": "Button" },
-        { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }
-    ],
-    "ExecuteAfter": [
-        { "Id": "624141ac039664daa461faa7328b16fc", "Name": "InputHandler" }
-    ],
-    "ExecuteBefore": []
 },
 {
     "$TypeId": 7,
