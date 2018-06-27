@@ -148,8 +148,8 @@ const SpawnPlayers = function (world, manager)
       // Set controls depending on if it's human or AI
       if (i < gameSettings.humanCount)
       {
-         let playerControl = newPlayer.getOrAddComponent(game.MovementPlayer);
-         playerControl.setPlayerID(i);
+         let playerControl = newPlayer.getOrAddComponent(game.MovementKeyboard);
+         playerControl.setInputID(i);
       }
       else
       {
@@ -160,7 +160,7 @@ const SpawnPlayers = function (world, manager)
 
 const DespawnPlayers = function (world, manager) 
 {
-   world.forEachEntity([game.MovementPlayer], function (entity, manager)
+   world.forEachEntity([game.MovementKeyboard], function (entity, manager)
    {
       entity.getComponent(ut.Core2D.Transform).destroyTree(true);
    });

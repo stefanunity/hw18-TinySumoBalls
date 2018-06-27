@@ -47,12 +47,13 @@
     ],
     "Configurations": [],
     "Components": [
-        { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementPlayer" },
+        { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementKeyboard" },
         { "Id": "3a3d6d942e4b462b8c179981be5666c6", "Name": "MovementAI" },
         { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
         { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" },
         { "Id": "1cd9e46e59fe4908a5824526293d20df", "Name": "MenuSystem" },
-        { "Id": "7bfa0e0fd33746cfad1194bd3ece7ffb", "Name": "PlayerSprites" }
+        { "Id": "7bfa0e0fd33746cfad1194bd3ece7ffb", "Name": "PlayerSprites" },
+        { "Id": "3e62dd3c91154a3ba867e5276bf782ce", "Name": "RoundManager" }
     ],
     "Structs": [
         { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
@@ -82,15 +83,15 @@
 {
     "$TypeId": 3,
     "Id": "5734579d005f4dc8af924375b0f2e547",
-    "Name": "MovementPlayer",
+    "Name": "MovementKeyboard",
     "TypeCode": "Component",
     "Fields": [{
         "Id": "9c6f7aa6eeb449c5b42b116dfd14aac1",
-        "Name": "playerID",
+        "Name": "inputID",
         "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
     }],
     "DefaultValue": {
-        "Type": { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementPlayer" }
+        "Type": { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementKeyboard" }
     }
 },
 {
@@ -167,6 +168,21 @@
 },
 {
     "$TypeId": 3,
+    "Id": "3e62dd3c91154a3ba867e5276bf782ce",
+    "Name": "RoundManager",
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "c4b0824f24564d4ba3ccffe066e58c21",
+        "Name": "scores",
+        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" },
+        "Array": true
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "3e62dd3c91154a3ba867e5276bf782ce", "Name": "RoundManager" }
+    }
+},
+{
+    "$TypeId": 3,
     "Id": "04fe2884e6b749579a1813397a1d1058",
     "Name": "GameSettings",
     "TypeCode": "Struct",
@@ -230,7 +246,8 @@
         { "$TypeId": 9, "Id": "b1f699a9834b4238a9d943a19ed3a2c2", "Name": "Wall_S" },
         { "$TypeId": 9, "Id": "9aa0e01d5137433ebd0e507e63d462d2", "Name": "Wall_E" },
         { "$TypeId": 9, "Id": "ce514d19f7914184acfe8dc966d77065", "Name": "Wall_W" },
-        { "$TypeId": 9, "Id": "f535df7db2804611bfa45b8a4ec689a3", "Name": "BattleAreaSprite" }
+        { "$TypeId": 9, "Id": "f535df7db2804611bfa45b8a4ec689a3", "Name": "BattleAreaSprite" },
+        { "$TypeId": 9, "Id": "6cc193131901495492f35edf390dae70", "Name": "RoundManager" }
     ]
 },
 {
@@ -366,6 +383,15 @@
         "Properties": {
             "order": -10
         }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "6cc193131901495492f35edf390dae70",
+    "Name": "RoundManager",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "3e62dd3c91154a3ba867e5276bf782ce", "Name": "RoundManager" }
     }]
 },
 {
@@ -765,7 +791,7 @@
     "TextAsset": { "$TypeId": 10, "Guid": "d82188a80027baa4298cdaa3ec79b531", "FileId": 4900000, "Type": 3 },
     "Components": [
         { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
-        { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementPlayer" },
+        { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementKeyboard" },
         { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
     ],
     "ExecuteAfter": [
