@@ -1,6 +1,6 @@
-const arenaRadius = 5;
+const arenaRadius = 6;
 
-if (transform.worldPosition().length > arenaRadius)
+if (transform.worldPosition().length() > arenaRadius)
 {
    player.setAlive(false);
 }
