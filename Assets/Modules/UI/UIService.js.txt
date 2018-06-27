@@ -46,17 +46,17 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
 
             let angleIntensity = 10;
             let angleRange = 0.03;
-            var newAngle = (Math.sin((scheduler.now() + entity.mId) * angleIntensity) * angleRange);
+            let newAngle = (Math.sin((scheduler.now() + entity.mId) * angleIntensity) * angleRange);
 
-            var quat = new Quaternion(0, 0, newAngle, 1);
+            let quat = new Quaternion(0, 0, newAngle, 1);
             transform.setWorldRotation(quat);
 
 
             let yIntensity = 10;
             let moveRange = 0.1;
 
-            var newY = Math.sin((scheduler.now() + entity.mId) * yIntensity) * moveRange + shaker.originalPos().y;
-            var pos = transform.localPosition();
+            let newY = Math.sin((scheduler.now() + entity.mId) * yIntensity) * moveRange + shaker.originalPos().y;
+            let pos = transform.localPosition();
             pos.y = newY;
             transform.setLocalPosition(pos);
 
@@ -74,10 +74,10 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
             let yMin = position.y - size.y * 0.5;
             let yMax = position.y + size.y * 0.5;
 
-            var mouse = ut.Runtime.Input.getWorldInputPosition(world);
+            let mouse = ut.Runtime.Input.getWorldInputPosition(world);
 
-            var x = mouse.x;
-            var y = mouse.y;
+            let x = mouse.x;
+            let y = mouse.y;
 
             let isMouseOverMyRect = x > xMin && x < xMax && y > yMin && y < yMax;
 
@@ -101,23 +101,70 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
 
       });
 
+      //* Human UI
+      world.forEachEntity([Sumo.UI.HumanCountUI, ut.Text.TextRenderer], function (entity, ui, textRenderer) {
+
+            let manager = world.getByName("GameManger").getComponent(game.GameManager);
+            let count = manager.gameSettings().humanCount;
+            if (count !== null) {
+                  textRenderer.setText(count.toString());
+            }
+      });
+      world.forEachEntity([Sumo.UI.AiCountUI, ut.Text.TextRenderer], function (entity, ui, textRenderer) {
+            let manager = world.getByName("GameManger").getComponent(game.GameManager);
+            let count = manager.gameSettings().aiCount;
+            if (count !== null) {
+                  textRenderer.setText(count.toString());
+            }
+      });
+
 };
 
 
 const uiFunction = {
       "Human.minus": () => {
-            console.log("Human.minus");
+            let manager = world.getByName("GameManger").getComponent(game.GameManager);
+            let gameSettings = manager.gameSettings();
+            let count = gameSettings.humanCount;
+            if (0 < count) {
+                  gameSettings.humanCount = (count - 1);
+            }
+            manager.setGameSettings(gameSettings);
+
       },
       "Human.plus": () => {
-            console.log("Human.plus");
+            let manager = world.getByName("GameManger").getComponent(game.GameManager);
+            let gameSettings = manager.gameSettings();
+            let count = gameSettings.humanCount;
+            if (count < 2) {
+                  gameSettings.humanCount = (count + 1);
+            }
+            manager.setGameSettings(gameSettings);
       },
       "Ai.minus": () => {
-            console.log("Ai.minus");
+            let manager = world.getByName("GameManger").getComponent(game.GameManager);
+            let gameSettings = manager.gameSettings();
+            let count = gameSettings.aiCount;
+            if (0 < count) {
+                  gameSettings.aiCount = (count - 1);
+            }
+            manager.setGameSettings(gameSettings);
       },
       "Ai.plus": () => {
-            console.log("Ai.minus");
+            let manager = world.getByName("GameManger").getComponent(game.GameManager);
+            let gameSettings = manager.gameSettings();
+            let count = gameSettings.aiCount;
+            if (count < 50) {
+                  gameSettings.aiCount = (count + 1);
+            }
+            manager.setGameSettings(gameSettings);
       },
       StartGame: () => {
-            console.log("start game");
+            // console.log("start game");
+            let manager = world.getByName("GameManger").getComponent(game.GameManager);
+            let gameSettings = manager.gameSettings();
+            if (gameSettings.humanCount > 0 || gameSettings.aiCount > 0) {
+                  manager.setState(game.GameState.InitGameplay);
+            }
       }
 }

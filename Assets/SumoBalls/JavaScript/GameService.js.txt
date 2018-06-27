@@ -50,6 +50,7 @@ const StartMenuUpdate = function (world, manager) {
 
 const InitGameplay = function (world, manager) {
       ut.Flow.Service.destroyAll('game.StartMenu');
+      ut.Flow.Service.destroyAll('Sumo.UI.StartMenu');
       ut.Flow.Service.instantiate('game.Gameplay');
 
       UIManager = ut.Flow.Service.instantiate("Sumo.UI.UI");

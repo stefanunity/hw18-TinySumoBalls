@@ -21,7 +21,8 @@
         { "Id": "57fb1eab645149209d897f3a03086fd0", "Name": "AiCountUI" },
         { "Id": "3b9cb9301fdf4ee48214816dc1fd52f6", "Name": "Button" },
         { "Id": "3565330e120b4690afd3e85c9cde405f", "Name": "Shaker" },
-        { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" }
+        { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        { "Id": "8bbd0f80cf9546bfbd219cce1ad78b7f", "Name": "VariableHolder" }
     ],
     "Structs": [],
     "Enums": [],
@@ -92,19 +93,7 @@
     "Id": "e0927300bf914b2893059886be73397e",
     "Name": "HumanCountUI",
     "TypeCode": "Component",
-    "Fields": [{
-        "Id": "24618aaf7f14420ca34f6b4d899fde03",
-        "Name": "MinusBtn",
-        "FieldType": { "Id": "5a182d9d039d4dfd8fa96132d05f9ee7", "Name": "EntityReference" }
-    }, {
-        "Id": "6b92aa1ed5034a4a821e126b15f3629b",
-        "Name": "PlusBtn",
-        "FieldType": { "Id": "5a182d9d039d4dfd8fa96132d05f9ee7", "Name": "EntityReference" }
-    }, {
-        "Id": "35566f2fb87243479b2e7aa4c402ab6f",
-        "Name": "CountTxt",
-        "FieldType": { "Id": "5a182d9d039d4dfd8fa96132d05f9ee7", "Name": "EntityReference" }
-    }],
+    "Fields": [],
     "DefaultValue": {
         "Type": { "Id": "e0927300bf914b2893059886be73397e", "Name": "HumanCountUI" }
     }
@@ -114,19 +103,7 @@
     "Id": "57fb1eab645149209d897f3a03086fd0",
     "Name": "AiCountUI",
     "TypeCode": "Component",
-    "Fields": [{
-        "Id": "b2095bbb68da4203bafb900a6820fd85",
-        "Name": "MinusBtn",
-        "FieldType": { "Id": "5a182d9d039d4dfd8fa96132d05f9ee7", "Name": "EntityReference" }
-    }, {
-        "Id": "cb044c109f324a0e804fc24710d03456",
-        "Name": "PlusBtn",
-        "FieldType": { "Id": "5a182d9d039d4dfd8fa96132d05f9ee7", "Name": "EntityReference" }
-    }, {
-        "Id": "a84c945418664a34b3363f08d9819e6e",
-        "Name": "CountTxt",
-        "FieldType": { "Id": "5a182d9d039d4dfd8fa96132d05f9ee7", "Name": "EntityReference" }
-    }],
+    "Fields": [],
     "DefaultValue": {
         "Type": { "Id": "57fb1eab645149209d897f3a03086fd0", "Name": "AiCountUI" }
     }
@@ -207,6 +184,28 @@
                     "a": 1
                 }
             }
+        }
+    }
+},
+{
+    "$TypeId": 3,
+    "Id": "8bbd0f80cf9546bfbd219cce1ad78b7f",
+    "Name": "VariableHolder",
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "d86c41fb601b4dc092a9c5b5ccc64b5e",
+        "Name": "HumanCount",
+        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
+    }, {
+        "Id": "3cccb3ebe4894315b633657ca89e872f",
+        "Name": "AiCount",
+        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "8bbd0f80cf9546bfbd219cce1ad78b7f", "Name": "VariableHolder" },
+        "Properties": {
+            "HumanCount": 1,
+            "AiCount": 1
         }
     }
 },
@@ -451,7 +450,8 @@
         { "$TypeId": 9, "Id": "c97c9e77b7cd4728bcf678563d0c37e2", "Name": "Ai" },
         { "$TypeId": 9, "Id": "d17cc327fc13482b957d1d4b3e6ea910", "Name": "AiMinusBtn" },
         { "$TypeId": 9, "Id": "ed3f88f2be9e493ea88dcc01d03d0ed4", "Name": "AiPlusBtn" },
-        { "$TypeId": 9, "Id": "78a6c68b90f74f59bdf68ea5dd42c0c0", "Name": "AiCountTxt" }
+        { "$TypeId": 9, "Id": "78a6c68b90f74f59bdf68ea5dd42c0c0", "Name": "AiCountTxt" },
+        { "$TypeId": 9, "Id": "fd4239ec8c1e43718990541d8760f220", "Name": "VariableHolder" }
     ]
 },
 {
@@ -565,13 +565,6 @@
         "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
         "Properties": {
             "sprite": { "$TypeId": 10, "Guid": "4ba6fab50ae254fbf899acff537062e5", "FileId": 21300000, "Type": 3 }
-        }
-    }, {
-        "Type": { "Id": "e0927300bf914b2893059886be73397e", "Name": "HumanCountUI" },
-        "Properties": {
-            "MinusBtn": { "$TypeId": 9, "Id": "f5e3350242494d018ef4ed15208fd48a", "Name": "HumanMinusBtn" },
-            "PlusBtn": { "$TypeId": 9, "Id": "7932c0d97d4f49fc9a4de3336dfdf768", "Name": "HumanPlusBtn" },
-            "CountTxt": { "$TypeId": 9, "Id": "14c1ffc5c9c44688a617546e749e1e6b", "Name": "HumanCountTxt" }
         }
     }]
 },
@@ -762,6 +755,8 @@
         "Properties": {
             "InitialValue": "0"
         }
+    }, {
+        "Type": { "Id": "e0927300bf914b2893059886be73397e", "Name": "HumanCountUI" }
     }]
 },
 {
@@ -784,13 +779,6 @@
         "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
         "Properties": {
             "sprite": { "$TypeId": 10, "Guid": "73e05755c3ec543f5b579ca1d039a8ac", "FileId": 21300000, "Type": 3 }
-        }
-    }, {
-        "Type": { "Id": "57fb1eab645149209d897f3a03086fd0", "Name": "AiCountUI" },
-        "Properties": {
-            "MinusBtn": { "$TypeId": 9, "Id": "d17cc327fc13482b957d1d4b3e6ea910", "Name": "AiMinusBtn" },
-            "PlusBtn": { "$TypeId": 9, "Id": "ed3f88f2be9e493ea88dcc01d03d0ed4", "Name": "AiPlusBtn" },
-            "CountTxt": { "$TypeId": 9, "Id": "78a6c68b90f74f59bdf68ea5dd42c0c0", "Name": "AiCountTxt" }
         }
     }]
 },
@@ -981,6 +969,17 @@
         "Properties": {
             "InitialValue": "0"
         }
+    }, {
+        "Type": { "Id": "57fb1eab645149209d897f3a03086fd0", "Name": "AiCountUI" }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "fd4239ec8c1e43718990541d8760f220",
+    "Name": "VariableHolder",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "8bbd0f80cf9546bfbd219cce1ad78b7f", "Name": "VariableHolder" }
     }]
 },
 {
@@ -1012,7 +1011,8 @@
     "Options": 7,
     "TextAsset": { "$TypeId": 10, "Guid": "964ffb291260144fa91dd5d0dda48c76", "FileId": 4900000, "Type": 3 },
     "Components": [
-        { "Id": "868e763a244449fda077e9d07913fb37", "Name": "Score" }
+        { "Id": "868e763a244449fda077e9d07913fb37", "Name": "Score" },
+        { "Id": "301b45e5168992b0907ceeaec4764727", "Name": "Camera2DAxisSort" }
     ],
     "ExecuteAfter": [
         { "Id": "6fa7e5feec05fec093042f2a2b9802d4", "Name": "UserCodeStart" }
