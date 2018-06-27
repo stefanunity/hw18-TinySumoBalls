@@ -43,7 +43,8 @@
         { "Id": "3aa8828c0eaa4fb0a2faaa1ee3f85c59", "Name": "UTiny.Flow" },
         { "Id": "ea76d964fb5f442e936eb51fc3368792", "Name": "Sumo.UI" },
         { "Id": "77db3a3f0ecf4c26a7ba12a90a61e639", "Name": "UTiny.Text" },
-        { "Id": "8f2d1d250fc44206a40af691c1da4eba", "Name": "SumoPhysics" }
+        { "Id": "8f2d1d250fc44206a40af691c1da4eba", "Name": "SumoPhysics" },
+        { "Id": "7a630ae9230a41848287fbe2dc371ade", "Name": "UTiny.Tween" }
     ],
     "Configurations": [],
     "Components": [
@@ -54,7 +55,8 @@
         { "Id": "1cd9e46e59fe4908a5824526293d20df", "Name": "MenuSystem" },
         { "Id": "7bfa0e0fd33746cfad1194bd3ece7ffb", "Name": "PlayerSprites" },
         { "Id": "6556039b8ff343e48b85dc50945eb057", "Name": "Button" },
-        { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" }
+        { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" },
+        { "Id": "b693c52e7b9d44ba839c9736caedaae0", "Name": "PlayerDeath" }
     ],
     "Structs": [
         { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
@@ -136,7 +138,16 @@
         "FieldType": { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
     }],
     "DefaultValue": {
-        "Type": { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" }
+        "Type": { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" },
+        "Properties": {
+            "State": {
+                "$TypeId": 8,
+                "Type": { "Id": "77fd93442d854ef28963349a3644e8de", "Name": "GameState" },
+                "Id": "f4e8a8be486e4471a175e8ac3e4d323c",
+                "Name": "InitGameplay",
+                "Value": 4
+            }
+        }
     }
 },
 {
@@ -204,8 +215,18 @@
     "DefaultValue": {
         "Type": { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" },
         "Properties": {
-            "alive": true
+            "alive": false
         }
+    }
+},
+{
+    "$TypeId": 3,
+    "Id": "b693c52e7b9d44ba839c9736caedaae0",
+    "Name": "PlayerDeath",
+    "TypeCode": "Component",
+    "Fields": [],
+    "DefaultValue": {
+        "Type": { "Id": "b693c52e7b9d44ba839c9736caedaae0", "Name": "NewComponent" }
     }
 },
 {
@@ -665,6 +686,12 @@
     "Components": [{
         "Type": { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" },
         "Properties": {
+            "State": {
+                "$TypeId": 8,
+                "Type": { "Id": "77fd93442d854ef28963349a3644e8de", "Name": "GameState" },
+                "Id": "dff20a2910b5427b98614814e90504fc",
+                "Name": "Init"
+            },
             "gameSettings": {
                 "Type": { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" },
                 "Properties": {
@@ -697,7 +724,16 @@
     }, {
         "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
         "Properties": {
-            "sprite": { "$TypeId": 10, "Guid": "4009faddcadc7d448847aa281637bf89", "FileId": 21300000, "Type": 3 }
+            "sprite": { "$TypeId": 10, "Guid": "4009faddcadc7d448847aa281637bf89", "FileId": 21300000, "Type": 3 },
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.4392157,
+                    "g": 0.8392157,
+                    "b": 1,
+                    "a": 1
+                }
+            }
         }
     }, {
         "Type": { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
@@ -757,7 +793,7 @@
             "localPosition": {
                 "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
                 "Properties": {
-                    "y": 1.14
+                    "y": 0.2
                 }
             },
             "localScale": {
@@ -772,8 +808,8 @@
     }, {
         "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
         "Properties": {
-            "text": "0",
-            "fontSize": 60,
+            "text": "1",
+            "fontSize": 41,
             "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
         }
     }]

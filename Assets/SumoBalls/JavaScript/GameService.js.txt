@@ -23,6 +23,24 @@ game.GameManagerSystem.update = function (scheduler, world) {
                         break;
             }
       });
+
+      // 
+      world.forEachEntity([game.PlayerDeath, ut.Core2D.Transform], function (entity, playerDeath, transform) {
+            console.log("die");
+
+            entity.removeComponent(game.PlayerDeath);
+            let tweenTime = 0.5;
+
+            let start = transform.localScale();
+            let end = new Vector3(0, 0, 0);
+            transform.tween("localScale", start, end)
+                  .setDuration(tweenTime)
+                  .setEase(ut.tween.EaseType.EaseInBack)
+                  .onComplete(function (entity) {
+                        // entity.destroy();
+                        console.log("blergh");
+                  }, entity);
+      });
 }
 
 const InitGameplay = function (world, manager) {
