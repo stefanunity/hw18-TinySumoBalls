@@ -46,7 +46,7 @@ const StartMenuUpdate = function (world, manager)
    {
       console.log("2: StartAI");
       var gameSettings = manager.gameSettings();
-      gameSettings.aiCount = 200;
+      gameSettings.aiCount = 4;
       manager.setGameSettings(gameSettings);
       manager.setState(game.GameState.InitGameplay);
    }
