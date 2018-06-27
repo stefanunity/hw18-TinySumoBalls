@@ -406,6 +406,21 @@
         }
     }, {
         "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "Size": 60,
+            "Color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "InitialValue": "0"
+        }
     }]
 },
 {
@@ -456,6 +471,21 @@
         }
     }, {
         "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "Size": 60,
+            "Color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "InitialValue": "0"
+        }
     }]
 },
 {
