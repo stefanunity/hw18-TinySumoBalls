@@ -193,7 +193,7 @@
         "Array": true
     }, {
         "Id": "2c6cd293a2304747b61f71061ff3d1bb",
-        "Name": "NewField",
+        "Name": "state",
         "FieldType": { "Id": "a7fe346cad70408e9978aae038834be0", "Name": "GameplayState" }
     }],
     "DefaultValue": {

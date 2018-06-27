@@ -1,8 +1,8 @@
 game.GameManagerSystem.update = function (scheduler, world)
 {
-   world.forEachEntity([game.RoundManager], function (entity, manager)
+   world.forEachEntity([game.GameplayManager], function (entity, manager)
    {
-      switch (manager.State())
+      /*switch (manager.State())
       {
 
          case game.GameState.Init:
@@ -23,6 +23,6 @@ game.GameManagerSystem.update = function (scheduler, world)
             GameOver(world, manager);
 
             break;
-      }
+      }*/
    });
 }
