@@ -10,14 +10,18 @@
         { "Id": "e46c24fb4d9a01e79b109bbcf6d24260", "Name": "UTiny.UILayout" },
         { "Id": "30097418841f56d73400bf82ee859ac9", "Name": "UTiny.Core2D" },
         { "Id": "ea76d964fb5f442e936eb51fc3368792", "Name": "Sumo.UI" },
-        { "Id": "77db3a3f0ecf4c26a7ba12a90a61e639", "Name": "UTiny.Text" }
+        { "Id": "77db3a3f0ecf4c26a7ba12a90a61e639", "Name": "UTiny.Text" },
+        { "Id": "36f73ad23c8a63c53fa510f0621474f5", "Name": "UTiny.HitBox2D" }
     ],
     "Configurations": [],
     "Components": [
         { "Id": "54e2ac9c9dc54c399a6e1524cba3d08b", "Name": "Slider" },
         { "Id": "868e763a244449fda077e9d07913fb37", "Name": "Score" },
         { "Id": "e0927300bf914b2893059886be73397e", "Name": "HumanCountUI" },
-        { "Id": "57fb1eab645149209d897f3a03086fd0", "Name": "AiCountUI" }
+        { "Id": "57fb1eab645149209d897f3a03086fd0", "Name": "AiCountUI" },
+        { "Id": "3b9cb9301fdf4ee48214816dc1fd52f6", "Name": "Button" },
+        { "Id": "3565330e120b4690afd3e85c9cde405f", "Name": "Shaker" },
+        { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" }
     ],
     "Structs": [],
     "Enums": [],
@@ -125,6 +129,85 @@
     }],
     "DefaultValue": {
         "Type": { "Id": "57fb1eab645149209d897f3a03086fd0", "Name": "AiCountUI" }
+    }
+},
+{
+    "$TypeId": 3,
+    "Id": "3b9cb9301fdf4ee48214816dc1fd52f6",
+    "Name": "Button",
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "56d7e942a4bc4353ad45d5daad676a12",
+        "Name": "Function",
+        "FieldType": { "Id": "1bff5adddd7c41de98d3329c7c641208", "Name": "String" }
+    }, {
+        "Id": "f4814569a4f540f787d25a532329610e",
+        "Name": "NormalColor",
+        "FieldType": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" }
+    }, {
+        "Id": "f6520e0117c84e02b183d82d07da732a",
+        "Name": "HighlightColor",
+        "FieldType": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" }
+    }, {
+        "Id": "738a0f1782c341cf8477b3716fadaf04",
+        "Name": "PressedColor",
+        "FieldType": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" }
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "3b9cb9301fdf4ee48214816dc1fd52f6", "Name": "Button" }
+    }
+},
+{
+    "$TypeId": 3,
+    "Id": "3565330e120b4690afd3e85c9cde405f",
+    "Name": "Shaker",
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "01633bb4915b4767a4d019bbb7fd7789",
+        "Name": "originalPos",
+        "FieldType": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" }
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "3565330e120b4690afd3e85c9cde405f", "Name": "Shaker" }
+    }
+},
+{
+    "$TypeId": 3,
+    "Id": "b14640dbd5b04c309593a9dfce5e62fc",
+    "Name": "FontLoader",
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "b124d7adb5c741be98a676d84e009115",
+        "Name": "Font",
+        "FieldType": { "Id": "4b1f918c1c564e42a04a0cb8f4ee0665", "Name": "FontEntity" }
+    }, {
+        "Id": "c413e1a0a9fc44d89efa74855ca3ce55",
+        "Name": "Size",
+        "FieldType": { "Id": "86fa32ad22614762afdacbf4dba8180f", "Name": "UInt16" }
+    }, {
+        "Id": "aca7aafac79a4d8fa17551875cf66a62",
+        "Name": "Color",
+        "FieldType": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" }
+    }, {
+        "Id": "fd69d43610ca48aebc04aa491a2d3acf",
+        "Name": "InitialValue",
+        "FieldType": { "Id": "1bff5adddd7c41de98d3329c7c641208", "Name": "String" }
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "Font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 },
+            "Size": 100,
+            "Color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.9372549,
+                    "g": 0.945098,
+                    "b": 0.9294118,
+                    "a": 1
+                }
+            }
+        }
     }
 },
 {
@@ -392,6 +475,8 @@
         "Properties": {
             "sprite": { "$TypeId": 10, "Guid": "54199e3a65c744c53aba5802169e147b", "FileId": 21300000, "Type": 3 }
         }
+    }, {
+        "Type": { "Id": "3565330e120b4690afd3e85c9cde405f", "Name": "Shaker" }
     }]
 },
 {
@@ -414,6 +499,49 @@
         "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
         "Properties": {
             "sprite": { "$TypeId": 10, "Guid": "514f0effd674a4c54a2ad703d0e05c46", "FileId": 21300000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "3b9cb9301fdf4ee48214816dc1fd52f6", "Name": "Button" },
+        "Properties": {
+            "Function": "StartGame",
+            "NormalColor": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.9372549,
+                    "g": 0.945098,
+                    "b": 0.9294118,
+                    "a": 1
+                }
+            },
+            "HighlightColor": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 1,
+                    "g": 0.3019608,
+                    "b": 0.5019608,
+                    "a": 1
+                }
+            },
+            "PressedColor": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.685,
+                    "g": 0.2068432,
+                    "b": 0.3438431,
+                    "a": 1
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "51e8b4dea1443a88d6fdc4d4acac0981", "Name": "Sprite2DRendererOptions" },
+        "Properties": {
+            "size": {
+                "Type": { "Id": "3abb69286ddfc2d1c617a173c1eeb35d", "Name": "Vector2" },
+                "Properties": {
+                    "x": 3.62,
+                    "y": 1.29
+                }
+            }
         }
     }]
 },
@@ -469,6 +597,49 @@
         "Properties": {
             "sprite": { "$TypeId": 10, "Guid": "b719c867765bf40e29b320691540fae5", "FileId": 21300000, "Type": 3 }
         }
+    }, {
+        "Type": { "Id": "51e8b4dea1443a88d6fdc4d4acac0981", "Name": "Sprite2DRendererOptions" },
+        "Properties": {
+            "size": {
+                "Type": { "Id": "3abb69286ddfc2d1c617a173c1eeb35d", "Name": "Vector2" },
+                "Properties": {
+                    "x": 0.91,
+                    "y": 0.91
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "3b9cb9301fdf4ee48214816dc1fd52f6", "Name": "Button" },
+        "Properties": {
+            "Function": "Human.minus",
+            "NormalColor": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.9372549,
+                    "g": 0.945098,
+                    "b": 0.9294118,
+                    "a": 1
+                }
+            },
+            "HighlightColor": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 1,
+                    "g": 0.3019608,
+                    "b": 0.5019608,
+                    "a": 1
+                }
+            },
+            "PressedColor": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.685,
+                    "g": 0.2068432,
+                    "b": 0.3438431,
+                    "a": 1
+                }
+            }
+        }
     }]
 },
 {
@@ -492,6 +663,49 @@
         "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
         "Properties": {
             "sprite": { "$TypeId": 10, "Guid": "e94954507861848c1a2c74446eb0d581", "FileId": 21300000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "51e8b4dea1443a88d6fdc4d4acac0981", "Name": "Sprite2DRendererOptions" },
+        "Properties": {
+            "size": {
+                "Type": { "Id": "3abb69286ddfc2d1c617a173c1eeb35d", "Name": "Vector2" },
+                "Properties": {
+                    "x": 0.91,
+                    "y": 0.91
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "3b9cb9301fdf4ee48214816dc1fd52f6", "Name": "Button" },
+        "Properties": {
+            "Function": "Human.plus",
+            "NormalColor": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.9372549,
+                    "g": 0.945098,
+                    "b": 0.9294118,
+                    "a": 1
+                }
+            },
+            "HighlightColor": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 1,
+                    "g": 0.3019608,
+                    "b": 0.5019608,
+                    "a": 1
+                }
+            },
+            "PressedColor": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.685,
+                    "g": 0.2068432,
+                    "b": 0.3438431,
+                    "a": 1
+                }
+            }
         }
     }]
 },
@@ -543,6 +757,11 @@
         }
     }, {
         "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "InitialValue": "0"
+        }
     }]
 },
 {
@@ -597,6 +816,49 @@
         "Properties": {
             "sprite": { "$TypeId": 10, "Guid": "b719c867765bf40e29b320691540fae5", "FileId": 21300000, "Type": 3 }
         }
+    }, {
+        "Type": { "Id": "51e8b4dea1443a88d6fdc4d4acac0981", "Name": "Sprite2DRendererOptions" },
+        "Properties": {
+            "size": {
+                "Type": { "Id": "3abb69286ddfc2d1c617a173c1eeb35d", "Name": "Vector2" },
+                "Properties": {
+                    "x": 0.91,
+                    "y": 0.91
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "3b9cb9301fdf4ee48214816dc1fd52f6", "Name": "Button" },
+        "Properties": {
+            "Function": "Ai.minus",
+            "NormalColor": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.9372549,
+                    "g": 0.945098,
+                    "b": 0.9294118,
+                    "a": 1
+                }
+            },
+            "HighlightColor": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 1,
+                    "g": 0.3019608,
+                    "b": 0.5019608,
+                    "a": 1
+                }
+            },
+            "PressedColor": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.685,
+                    "g": 0.2068432,
+                    "b": 0.3438431,
+                    "a": 1
+                }
+            }
+        }
     }]
 },
 {
@@ -620,6 +882,49 @@
         "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
         "Properties": {
             "sprite": { "$TypeId": 10, "Guid": "e94954507861848c1a2c74446eb0d581", "FileId": 21300000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "51e8b4dea1443a88d6fdc4d4acac0981", "Name": "Sprite2DRendererOptions" },
+        "Properties": {
+            "size": {
+                "Type": { "Id": "3abb69286ddfc2d1c617a173c1eeb35d", "Name": "Vector2" },
+                "Properties": {
+                    "x": 0.91,
+                    "y": 0.91
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "3b9cb9301fdf4ee48214816dc1fd52f6", "Name": "Button" },
+        "Properties": {
+            "Function": "Ai.plus",
+            "NormalColor": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.9372549,
+                    "g": 0.945098,
+                    "b": 0.9294118,
+                    "a": 1
+                }
+            },
+            "HighlightColor": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 1,
+                    "g": 0.3019608,
+                    "b": 0.5019608,
+                    "a": 1
+                }
+            },
+            "PressedColor": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.685,
+                    "g": 0.2068432,
+                    "b": 0.3438431,
+                    "a": 1
+                }
+            }
         }
     }]
 },
@@ -671,6 +976,11 @@
         }
     }, {
         "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "InitialValue": "0"
+        }
     }]
 },
 {
