@@ -90,6 +90,7 @@ const GameplayUpdate = function (world, manager)
       }
    });
 
+   let gameOver = false;
    if (livePlayers <= 1)
    {
       world.forEachEntity([game.Player], function (entity, player)
@@ -98,19 +99,22 @@ const GameplayUpdate = function (world, manager)
          if (player.alive())
          {
             let score = player.score();
-            player.setScore(score + 1);
-
+            score++;
+            player.setScore(score);
             if (score >= 3)
             {
-               SpawnPlayers(world, manager);
-               console.log("Game Over!");
-               manager.setState(game.GameState.GameOver);
+               gameOver = true;
             }
          }
          player.setAlive(true);
       });
 
-
+      if (gameOver)
+      {
+         console.log("Game Over!");
+         manager.setState(game.GameState.GameOver);
+         SpawnPlayers(world, manager);
+      }
    }
 }
 
