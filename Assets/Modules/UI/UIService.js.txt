@@ -1,4 +1,17 @@
 Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
+      //* FONT LOADER
+      world.forEachEntity([Sumo.UI.FontLoader, ut.Text.TextRenderer], function (entity, fontLoader, textRenderer) {
+
+            textRenderer.setFont(fontLoader.Font());
+            textRenderer.setFontSize(fontLoader.Size());
+            textRenderer.setColor(fontLoader.Color());
+            textRenderer.setText(fontLoader.InitialValue());
+
+            entity.removeComponent(Sumo.UI.FontLoader);
+
+      });
+
+      //* OUTDATE SCORE UI?
       world.forEachEntity([Sumo.UI.Score], function (entity, score) {
             score.setScore1(0);
             score.setScore2(0);
@@ -24,57 +37,87 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
 
       });
 
-      world.forEachEntity([Sumo.UI.HumanCountUI], function (entity, countUI) {
-            // score.setScore1(0);
-            // //update text
-            // score.TextRenderer1()
-            //       .getComponent(ut.Text.TextRenderer)
-            //       .setText(score.Score1().toString());
-            // // update Slider
-            // // we set the current score to player 1 
-            // score.Slider()
-            //       .getComponent(Sumo.UI.Slider)
-            //       .setValue(score.Score1());
+      //* SHAKE
+      world.forEachEntity([Sumo.UI.Shaker, ut.Core2D.Transform], function (entity, shaker, transform) {
+            // Set Original pose
+            if (shaker.originalPos().equals(new Vector3(0, 0, 0))) {
+                  shaker.setOriginalPos(transform.localPosition());
+            }
+
+            let angleIntensity = 10;
+            let angleRange = 0.03;
+            var newAngle = (Math.sin((scheduler.now() + entity.mId) * angleIntensity) * angleRange);
+
+            var quat = new Quaternion(0, 0, newAngle, 1);
+            transform.setWorldRotation(quat);
 
 
-            let transform = countUI.MinusBtn().getComponent(ut.Core2D.Transform);
-            // console.log(JSON.stringify(transform));
-            let position = transform.localPosition();
-            // console.log(position);
+            let yIntensity = 10;
+            let moveRange = 0.1;
 
-            let spriteRenderer = countUI.MinusBtn().getComponent(ut.Core2D.Sprite2DRenderer);
-            // console.log(JSON.stringify(spriteRenderer));
-
-
-            // let size = transform.size();
-            // console.log(size);
-
-            // if(ut.Runtime.Input.getMouseP)
-
+            var newY = Math.sin((scheduler.now() + entity.mId) * yIntensity) * moveRange + shaker.originalPos().y;
+            var pos = transform.localPosition();
+            pos.y = newY;
+            transform.setLocalPosition(pos);
 
       });
+
+      //* BUTTON
+      world.forEachEntity([Sumo.UI.Button, ut.Core2D.Transform, ut.Core2D.Sprite2DRenderer, ut.Core2D.Sprite2DRendererOptions], function (entity, button, transform, sprite, renderer) {
+
+            let position = transform.worldPosition();
+            let size = renderer.size();
+
+            let xMin = position.x - size.x * 0.5;
+            let xMax = position.x + size.x * 0.5;
+
+            let yMin = position.y - size.y * 0.5;
+            let yMax = position.y + size.y * 0.5;
+
+            var mouse = ut.Runtime.Input.getWorldInputPosition(world);
+
+            var x = mouse.x;
+            var y = mouse.y;
+
+            let isMouseOverMyRect = x > xMin && x < xMax && y > yMin && y < yMax;
+
+            if (isMouseOverMyRect) {
+
+                  if (ut.Runtime.Input.getMouseButtonDown(0)) {
+                        let fname = button.Function();
+                        if (uiFunction[fname] !== null) {
+                              uiFunction[fname]();
+                        }
+                        sprite.setColor(button.PressedColor());
+                  }
+                  if (ut.Runtime.Input.getMouseButton(0)) {
+                        sprite.setColor(button.PressedColor());
+                  } else {
+                        sprite.setColor(button.HighlightColor());
+                  }
+            } else {
+                  sprite.setColor(button.NormalColor());
+            }
+
+      });
+
 };
 
-// var position = transform.localPosition();
 
-// if (ut.Runtime.Input.getMouseButtonDown(0)) {
-//       console.log("what?!");
-//       let size = myComponent.size();
-
-//       let size = transform.size();
-
-//       let xMin = position.x - size.x * 0.5;
-//       let xMax = position.x + size.x * 0.5;
-
-//       let yMin = position.y - size.y * 0.5;
-//       let yMax = position.y + size.y * 0.5;
-
-//       var mouse = ut.Runtime.Input.getWorldInputPosition(world);
-
-//       var x = mouse.x;
-//       var y = mouse.y;
-
-//       if (x > xMin && x < xMax && y > yMin && y < yMax) {
-//          console.log("button!");
-//       }
-// }
+const uiFunction = {
+      "Human.minus": () => {
+            console.log("Human.minus");
+      },
+      "Human.plus": () => {
+            console.log("Human.plus");
+      },
+      "Ai.minus": () => {
+            console.log("Ai.minus");
+      },
+      "Ai.plus": () => {
+            console.log("Ai.minus");
+      },
+      StartGame: () => {
+            console.log("start game");
+      }
+}
