@@ -51,7 +51,8 @@
         { "Id": "3a3d6d942e4b462b8c179981be5666c6", "Name": "MovementAI" },
         { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
         { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" },
-        { "Id": "1cd9e46e59fe4908a5824526293d20df", "Name": "MenuSystem" }
+        { "Id": "1cd9e46e59fe4908a5824526293d20df", "Name": "MenuSystem" },
+        { "Id": "7bfa0e0fd33746cfad1194bd3ece7ffb", "Name": "PlayerSprites" }
     ],
     "Structs": [
         { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
@@ -130,12 +131,7 @@
         "FieldType": { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
     }],
     "DefaultValue": {
-        "Type": { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" },
-        "Properties": {
-            "gameSettings": {
-                "Type": { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
-            }
-        }
+        "Type": { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" }
     }
 },
 {
@@ -146,6 +142,26 @@
     "Fields": [],
     "DefaultValue": {
         "Type": { "Id": "1cd9e46e59fe4908a5824526293d20df", "Name": "MenuSystem" }
+    }
+},
+{
+    "$TypeId": 3,
+    "Id": "7bfa0e0fd33746cfad1194bd3ece7ffb",
+    "Name": "PlayerSprites",
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "f87e9018ebbe4eed8ad71f4e6259aab8",
+        "Name": "colors",
+        "FieldType": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+        "Array": true
+    }, {
+        "Id": "82fc41a4867c48adb0646ed1768a6e38",
+        "Name": "faces",
+        "FieldType": { "Id": "cf54a635a25248ab87f2563bb840ed5b", "Name": "SpriteEntity" },
+        "Array": true
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "7bfa0e0fd33746cfad1194bd3ece7ffb", "Name": "PlayerSprites" }
     }
 },
 {
@@ -576,7 +592,9 @@
     "Id": "2a231b746c874e9aa342360b03c9e8ef",
     "Name": "Player",
     "Entities": [
-        { "$TypeId": 9, "Id": "a54cd0ed98bc4be4b34fdda57ef709b8", "Name": "Player" }
+        { "$TypeId": 9, "Id": "a54cd0ed98bc4be4b34fdda57ef709b8", "Name": "Player" },
+        { "$TypeId": 9, "Id": "254aa4a40b294af9ab427a16a38c32e4", "Name": "Face" },
+        { "$TypeId": 9, "Id": "43dbb0f548d14f9482bec175f8d6158b", "Name": "PlayerSprites" }
     ]
 },
 {
@@ -585,14 +603,13 @@
     "Name": "Player",
     "Enabled": true,
     "Components": [{
-        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
-        "Properties": {}
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }
     }, {
         "Type": { "Id": "4877aebd4079748a17f940cbbee5d2e6", "Name": "Velocity2D" }
     }, {
         "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
         "Properties": {
-            "sprite": { "$TypeId": 10, "Guid": "999a4370662aa4f9c99f9e93cad4449b", "FileId": 21300000, "Type": 3 }
+            "sprite": { "$TypeId": 10, "Guid": "4009faddcadc7d448847aa281637bf89", "FileId": 21300000, "Type": 3 }
         }
     }, {
         "Type": { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
@@ -603,6 +620,84 @@
         "Type": { "Id": "a89ed5bc29f74a1fae5304517a6f9cfd", "Name": "CircleCollider" },
         "Properties": {
             "radius": 0.6
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "254aa4a40b294af9ab427a16a38c32e4",
+    "Name": "Face",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "parent": { "$TypeId": 9, "Id": "a54cd0ed98bc4be4b34fdda57ef709b8", "Name": "Player" }
+        }
+    }, {
+        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
+        "Properties": {
+            "sprite": { "$TypeId": 10, "Guid": "999a4370662aa4f9c99f9e93cad4449b", "FileId": 21300000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 1
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "43dbb0f548d14f9482bec175f8d6158b",
+    "Name": "PlayerSprites",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "7bfa0e0fd33746cfad1194bd3ece7ffb", "Name": "PlayerSprites" },
+        "Properties": {
+            "colors": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Items": [{
+                    "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                    "Properties": {
+                        "r": 0.4898986,
+                        "g": 0.4915536,
+                        "b": 0.9528302,
+                        "a": 1
+                    }
+                }, {
+                    "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                    "Properties": {
+                        "r": 0.990566,
+                        "g": 0.4438857,
+                        "b": 0.4438857,
+                        "a": 1
+                    }
+                }, {
+                    "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                    "Properties": {
+                        "r": 0.990566,
+                        "g": 0.8572876,
+                        "b": 0.2756764,
+                        "a": 1
+                    }
+                }, {
+                    "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                    "Properties": {
+                        "r": 0.3121707,
+                        "g": 0.8679245,
+                        "b": 0.2661089,
+                        "a": 1
+                    }
+                }]
+            },
+            "faces": {
+                "Type": { "Id": "cf54a635a25248ab87f2563bb840ed5b", "Name": "SpriteEntity" },
+                "Items": [
+                    { "$TypeId": 10, "Guid": "999a4370662aa4f9c99f9e93cad4449b", "FileId": 21300000, "Type": 3 },
+                    { "$TypeId": 10, "Guid": "92d624e6105b2490e8dfd86fe4d5c1a7", "FileId": 21300000, "Type": 3 }
+                ]
+            }
         }
     }]
 },
