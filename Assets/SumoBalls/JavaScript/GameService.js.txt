@@ -19,16 +19,11 @@ game.GameManagerSystem.update = function (scheduler, world) {
                         GameplayUpdate(world, manager);
                         break;
                   case game.GameState.GameOver:
-
                         GameOver(world, manager);
-
                         break;
             }
       });
 }
-
-
-
 
 const StartMenuUpdate = function (world, manager) {
       if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.Alpha1)) {
@@ -47,7 +42,6 @@ const StartMenuUpdate = function (world, manager) {
             manager.setState(game.GameState.InitGameplay);
       }
 }
-
 
 const InitGameplay = function (world, manager) {
       ut.Flow.Service.destroyAll('game.StartMenu');
@@ -77,25 +71,21 @@ const GameplayUpdate = function (world, manager) {
             manager.setState(game.GameState.GameOver);
       }
 
-   let lastLivePlayer;
-   let livePlayers = 0;
-   world.forEachEntity([game.Player], function (entity, player)
-   {
-      if (player.alive())
-      {
-         livePlayers++;
-         lastLivePlayer = player;
-      }
-   });
-   if (livePlayers <= 1)
-   {
-      let score = lastLivePlayer.score();
-      lastLivePlayer.setScore(score + 1);
-      if (score >= 3)
-      {
+      let lastLivePlayer;
+      let livePlayers = 0;
+      world.forEachEntity([game.Player], function (entity, player) {
+            if (player.alive()) {
+                  livePlayers++;
+                  lastLivePlayer = player;
+            }
+      });
+      if (livePlayers <= 1) {
+            let score = lastLivePlayer.score();
+            lastLivePlayer.setScore(score + 1);
+            if (score >= 3) {
 
+            }
       }
-   }
 }
 
 const GameOver = function (world, manager) {
@@ -115,7 +105,6 @@ const GameOver = function (world, manager) {
             manager.setState(game.GameState.Init);
       }
 }
-
 
 const SpawnPlayers = function (world, manager) {
       // Destroy players
