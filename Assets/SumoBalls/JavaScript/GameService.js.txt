@@ -84,6 +84,25 @@ const GameplayUpdate = function (world, manager)
       manager.setState(game.GameState.GameOver);
    }
 
+   let lastLivePlayer;
+   let livePlayers = 0;
+   world.forEachEntity([game.Player], function (entity, player)
+   {
+      if (player.alive())
+      {
+         livePlayers++;
+         lastLivePlayer = player;
+      }
+   });
+   if (livePlayers <= 1)
+   {
+      let score = lastLivePlayer.score();
+      lastLivePlayer.setScore(score + 1);
+      if (score >= 3)
+      {
+
+      }
+   }
 }
 
 const GameOver = function (world, manager)
