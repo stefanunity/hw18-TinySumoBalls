@@ -36,9 +36,9 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
                   .setMaxValue(score.Score1() + score.Score2());
 
       });
-//region
+      //region
 
-//endregion
+      //endregion
       //* SHAKE
       world.forEachEntity([Sumo.UI.Shaker, ut.Core2D.Transform], function (entity, shaker, transform) {
             // Set Original pose
@@ -46,7 +46,7 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
                   shaker.setOriginalPos(transform.localPosition());
             }
 
-            let angleIntensity = 10;
+            let angleIntensity = 7;
             let angleRange = 0.03;
             let newAngle = (Math.sin((scheduler.now() + entity.mId) * angleIntensity) * angleRange);
 
@@ -55,7 +55,7 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
 
 
             let yIntensity = 10;
-            let moveRange = 0.1;
+            let moveRange = 0.15;
 
             let newY = Math.sin((scheduler.now() + entity.mId) * yIntensity) * moveRange + shaker.originalPos().y;
             let pos = transform.localPosition();

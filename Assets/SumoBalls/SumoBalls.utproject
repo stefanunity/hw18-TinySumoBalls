@@ -718,6 +718,12 @@
     "Components": [{
         "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
         "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "y": -0.147
+                }
+            },
             "parent": { "$TypeId": 9, "Id": "a54cd0ed98bc4be4b34fdda57ef709b8", "Name": "Player" }
         }
     }, {
