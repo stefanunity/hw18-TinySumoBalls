@@ -7,11 +7,10 @@ game.GameManagerSystem.update = function (scheduler, world) {
 
                   case game.GameState.Init:
                         ut.Flow.Service.instantiate('Sumo.UI.StartMenu');
-                        //ut.Flow.Service.instantiate('game.StartMenu');
                         manager.setState(game.GameState.StartMenu);
                         break;
                   case game.GameState.StartMenu:
-                        StartMenuUpdate(world, manager);
+                        // The logic for start menu is in UIService.js.txt
                         break;
                   case game.GameState.InitGameplay:
                         InitGameplay(world, manager);
@@ -26,34 +25,19 @@ game.GameManagerSystem.update = function (scheduler, world) {
       });
 }
 
-
-
-
-const StartMenuUpdate = function (world, manager) {
-      if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.Alpha1)) {
-            console.log("1: StartNoAI");
-            var gameSettings = manager.gameSettings();
-            gameSettings.aiCount = 0;
-            manager.setGameSettings(gameSettings);
-            manager.setState(game.GameState.InitGameplay);
-      }
-
-      if (ut.Runtime.Input.getKey(ut.Core2D.KeyCode.Alpha2)) {
-            console.log("2: StartAI");
-            var gameSettings = manager.gameSettings();
-            gameSettings.aiCount = 4;
-            manager.setGameSettings(gameSettings);
-            manager.setState(game.GameState.InitGameplay);
-      }
-}
-
-
 const InitGameplay = function (world, manager) {
-      ut.Flow.Service.destroyAll('game.StartMenu');
       ut.Flow.Service.destroyAll('Sumo.UI.StartMenu');
       ut.Flow.Service.instantiate('game.Gameplay');
 
-      UIManager = ut.Flow.Service.instantiate("Sumo.UI.UI");
+
+      let gameSettings = manager.gameSettings();
+
+      let totalPlayers = gameSettings.humanCount + gameSettings.aiCount;
+
+      if (2 === totalPlayers) {
+            UIManager = ut.Flow.Service.instantiate("Sumo.UI.UI");
+      }
+
       world.forEachEntity([Sumo.UI.Score], function (entity, manager) {
             let score = entity.getComponent(Sumo.UI.Score);
             score.setScore1(0);
@@ -103,6 +87,10 @@ const GameplayUpdate = function (world, manager) {
 }
 
 const GameOver = function (world, manager) {
+      ut.Flow.Service.destroyAll('game.Gameplay');
+      ut.Flow.Service.destroyAll("Sumo.UI.UI");
+      DespawnPlayers(world, manager);
+
       if (ut.Runtime.Input.getMouseButtonDown(0)) {
             ut.Flow.Service.destroyAll('game.Gameover');
             manager.setState(game.GameState.Init);

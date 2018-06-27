@@ -36,7 +36,9 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
                   .setMaxValue(score.Score1() + score.Score2());
 
       });
+//region
 
+//endregion
       //* SHAKE
       world.forEachEntity([Sumo.UI.Shaker, ut.Core2D.Transform], function (entity, shaker, transform) {
             // Set Original pose
@@ -61,6 +63,7 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
             transform.setLocalPosition(pos);
 
       });
+
 
       //* BUTTON
       world.forEachEntity([Sumo.UI.Button, ut.Core2D.Transform, ut.Core2D.Sprite2DRenderer, ut.Core2D.Sprite2DRendererOptions], function (entity, button, transform, sprite, renderer) {
@@ -163,7 +166,10 @@ const uiFunction = {
             // console.log("start game");
             let manager = world.getByName("GameManger").getComponent(game.GameManager);
             let gameSettings = manager.gameSettings();
-            if (gameSettings.humanCount > 0 || gameSettings.aiCount > 0) {
+
+            let totalPlayers = gameSettings.humanCount + gameSettings.aiCount;
+
+            if (1 < totalPlayers) {
                   manager.setState(game.GameState.InitGameplay);
             }
       }
