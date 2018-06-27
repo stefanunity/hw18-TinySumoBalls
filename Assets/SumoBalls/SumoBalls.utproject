@@ -375,6 +375,7 @@
         { "$TypeId": 9, "Id": "186d4cb1f70748d8a9097bdd4c7a0d60", "Name": "MenuScaler" },
         { "$TypeId": 9, "Id": "43ce5a8e4f4746a5883ec01d5f8233ed", "Name": "Header" },
         { "$TypeId": 9, "Id": "209fdc56a1474f9b8aa9b351635b0697", "Name": "StartNoAI" },
+        { "$TypeId": 9, "Id": "d5358e99ec5b4e51be4d59f46777802b", "Name": "Tutorial" },
         { "$TypeId": 9, "Id": "4fc358240043499d80ee5b9f181b25f7", "Name": "StartAI" }
     ]
 },
@@ -416,7 +417,7 @@
                 "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
                 "Properties": {
                     "x": -6,
-                    "y": 90
+                    "y": 100
                 }
             },
             "localScale": {
@@ -457,7 +458,48 @@
             "localPosition": {
                 "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
                 "Properties": {
-                    "y": 30
+                    "y": 50
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.8,
+                    "y": 0.8
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "186d4cb1f70748d8a9097bdd4c7a0d60", "Name": "Scaler" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "1: Human Balls",
+            "fontSize": 40,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.6886792,
+                    "g": 0.1916607,
+                    "b": 0.2194114,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "d5358e99ec5b4e51be4d59f46777802b",
+    "Name": "Tutorial",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "y": 25
                 }
             },
             "localScale": {
@@ -467,13 +509,13 @@
                     "y": 1
                 }
             },
-            "parent": { "$TypeId": 9, "Id": "186d4cb1f70748d8a9097bdd4c7a0d60", "Name": "Scaler" }
+            "parent": { "$TypeId": 9, "Id": "186d4cb1f70748d8a9097bdd4c7a0d60", "Name": "MenuScaler" }
         }
     }, {
         "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
         "Properties": {
-            "text": "1: StartNoAI",
-            "fontSize": 40,
+            "text": "Player 1: WASD Player 2: IJKL",
+            "fontSize": 15,
             "color": {
                 "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
                 "Properties": {
@@ -498,15 +540,15 @@
             "localPosition": {
                 "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
                 "Properties": {
-                    "x": -25,
+                    "x": 10,
                     "y": -20
                 }
             },
             "localScale": {
                 "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
                 "Properties": {
-                    "x": 1,
-                    "y": 1
+                    "x": 0.8,
+                    "y": 0.8
                 }
             },
             "parent": { "$TypeId": 9, "Id": "186d4cb1f70748d8a9097bdd4c7a0d60", "Name": "Scaler" }
@@ -514,7 +556,7 @@
     }, {
         "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
         "Properties": {
-            "text": "2: StartAI",
+            "text": "2: Balls of Steel",
             "fontSize": 40,
             "color": {
                 "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
