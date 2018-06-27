@@ -52,7 +52,8 @@
         { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
         { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" },
         { "Id": "1cd9e46e59fe4908a5824526293d20df", "Name": "MenuSystem" },
-        { "Id": "7bfa0e0fd33746cfad1194bd3ece7ffb", "Name": "PlayerSprites" }
+        { "Id": "7bfa0e0fd33746cfad1194bd3ece7ffb", "Name": "PlayerSprites" },
+        { "Id": "6556039b8ff343e48b85dc50945eb057", "Name": "Button" }
     ],
     "Structs": [
         { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
@@ -74,7 +75,8 @@
         { "Id": "c65ec262e361456d8445bb1077148c14", "Name": "PlayerInputSystem" },
         { "Id": "8bc5a67b302148a8ab4556119a5ae083", "Name": "AIInputSystem" },
         { "Id": "b8cd443904ff40c0a6d9c65fe10d0f48", "Name": "GameManagerSystem" },
-        { "Id": "3998febc14d6491781556b463c3af125", "Name": "MenuInputSystem" }
+        { "Id": "3998febc14d6491781556b463c3af125", "Name": "MenuInputSystem" },
+        { "Id": "0600aaa143f243028e631deeed7c0480", "Name": "ButtonClickSystem" }
     ],
     "Assets": [],
     "StartupEntityGroup": { "Id": "8d782d7f1e9e4e3e9a12c99ea446b386", "Name": "NewEntityGroup" }
@@ -163,6 +165,16 @@
     }],
     "DefaultValue": {
         "Type": { "Id": "7bfa0e0fd33746cfad1194bd3ece7ffb", "Name": "PlayerSprites" }
+    }
+},
+{
+    "$TypeId": 3,
+    "Id": "6556039b8ff343e48b85dc50945eb057",
+    "Name": "Button",
+    "TypeCode": "Component",
+    "Fields": [],
+    "DefaultValue": {
+        "Type": { "Id": "6556039b8ff343e48b85dc50945eb057", "Name": "NewComponent" }
     }
 },
 {
@@ -487,6 +499,8 @@
             },
             "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
         }
+    }, {
+        "Type": { "Id": "6556039b8ff343e48b85dc50945eb057", "Name": "Button" }
     }]
 },
 {
@@ -824,6 +838,21 @@
     "ExecuteBefore": [
         { "Id": "d016ec3bfdc5a53540e9c71942ee414c", "Name": "UserCodeEnd" }
     ]
+},
+{
+    "$TypeId": 7,
+    "Id": "0600aaa143f243028e631deeed7c0480",
+    "Name": "ButtonClickSystem",
+    "Options": 3,
+    "TextAsset": { "$TypeId": 10, "Guid": "ed4fe0e1fef341b408591ef91bb10782", "FileId": 4900000, "Type": 3 },
+    "Components": [
+        { "Id": "6556039b8ff343e48b85dc50945eb057", "Name": "Button" },
+        { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }
+    ],
+    "ExecuteAfter": [
+        { "Id": "624141ac039664daa461faa7328b16fc", "Name": "InputHandler" }
+    ],
+    "ExecuteBefore": []
 },
 {
     "$TypeId": 5,

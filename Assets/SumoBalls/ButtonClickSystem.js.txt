@@ -1,0 +1,23 @@
+var position = transform.localPosition();
+
+if (ut.Runtime.Input.getMouseButtonDown(0)) {
+   console.log("what?!");
+   // let size = myComponent.size();
+
+   // let size = transform.size();
+
+   // let xMin = position.x - size.x * 0.5;
+   // let xMax = position.x + size.x * 0.5;
+
+   // let yMin = position.y - size.y * 0.5;
+   // let yMax = position.y + size.y * 0.5;
+
+   // var mouse = ut.Runtime.Input.getWorldInputPosition(world);
+
+   // var x = mouse.x;
+   // var y = mouse.y;
+
+   // if (x > xMin && x < xMax && y > yMin && y < yMax) {
+   //    console.log("button!");
+   // }
+}
