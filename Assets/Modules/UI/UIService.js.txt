@@ -94,6 +94,7 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
                   }
                   if (ut.Runtime.Input.getMouseButton(0)) {
                         sprite.setColor(button.PressedColor());
+                        world.getByName("ClickSound").getComponent(ut.Audio.AudioSource).setPlaying(true);
                   } else {
                         sprite.setColor(button.HighlightColor());
                   }

@@ -772,7 +772,8 @@
         { "$TypeId": 9, "Id": "046d0cc2972f48c28762ca96d7c3484e", "Name": "Camera" },
         { "$TypeId": 9, "Id": "9df4483d835a474581dba89977f1cf48", "Name": "GameManger" },
         { "$TypeId": 9, "Id": "f84a793258a94c65831709dd6edde3ab", "Name": "DieSound" },
-        { "$TypeId": 9, "Id": "455edd871da945d6b84261261d5952aa", "Name": "ClickSound" }
+        { "$TypeId": 9, "Id": "455edd871da945d6b84261261d5952aa", "Name": "ClickSound" },
+        { "$TypeId": 9, "Id": "8cc77225f2f04395bbd8545603ccd8aa", "Name": "CollisionSound" }
     ]
 },
 {
@@ -856,6 +857,19 @@
         "Type": { "Id": "a60aa1b9ad84a83eefb0d5382a4d5967", "Name": "AudioSource" },
         "Properties": {
             "clip": { "$TypeId": 10, "Guid": "9e6be2ee77566a84586d1cdb7b6ed082", "FileId": 8300000, "Type": 3 },
+            "volume": 1
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "8cc77225f2f04395bbd8545603ccd8aa",
+    "Name": "CollisionSound",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "a60aa1b9ad84a83eefb0d5382a4d5967", "Name": "AudioSource" },
+        "Properties": {
+            "clip": { "$TypeId": 10, "Guid": "fa1db0f84b080044595151c7a8e1b6bb", "FileId": 8300000, "Type": 3 },
             "volume": 1
         }
     }]
