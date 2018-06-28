@@ -1,0 +1,8 @@
+let manager = world.getByName("GameManger").getComponent(game.GameManager);
+
+let arenaSize = manager.arenaRadius() * 2;
+sprite2drendereroptions.setSize(new Vector2(arenaSize, arenaSize));
+
+let shadowRender = arenaShrink.shadowSpriteRender().getComponent(ut.Core2D.Sprite2DRendererOptions);
+let shadowSize = arenaSize + 1; //the shadow sprite is 100 px bigger.
+shadowRender.setSize(new Vector2(shadowSize, shadowSize));

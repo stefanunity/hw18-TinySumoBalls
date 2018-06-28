@@ -61,9 +61,7 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
             let pos = transform.localPosition();
             pos.y = newY;
             transform.setLocalPosition(pos);
-
       });
-
 
       //* BUTTON
       world.forEachEntity([Sumo.UI.Button, ut.Core2D.Transform, ut.Core2D.Sprite2DRenderer, ut.Core2D.Sprite2DRendererOptions], function (entity, button, transform, sprite, renderer) {
@@ -86,6 +84,7 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
 
             if (isMouseOverMyRect) {
 
+                  //handle highlight color and clicking
                   if (ut.Runtime.Input.getMouseButtonDown(0)) {
                         let fname = button.Function();
                         if (uiFunction[fname] !== null) {
@@ -98,36 +97,10 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
                   } else {
                         sprite.setColor(button.HighlightColor());
                   }
-            } else {
-                  sprite.setColor(button.NormalColor());
-            }
 
-      });
-
-      //* ADD BUTTON TWEEN
-      world.forEachEntity([Sumo.UI.Button, ut.Core2D.Transform, ut.Core2D.Sprite2DRenderer, ut.Core2D.Sprite2DRendererOptions], function (entity, button, transform, sprite, renderer) {
-
-            let position = transform.worldPosition();
-            let size = renderer.size();
-
-            let xMin = position.x - size.x * 0.5;
-            let xMax = position.x + size.x * 0.5;
-
-            let yMin = position.y - size.y * 0.5;
-            let yMax = position.y + size.y * 0.5;
-
-            let mouse = ut.Runtime.Input.getWorldInputPosition(world);
-
-            let x = mouse.x;
-            let y = mouse.y;
-
-            let isMouseOverMyRect = x > xMin && x < xMax && y > yMin && y < yMax;
-
-            if (isMouseOverMyRect) {
-
-                  //if there is no shaker on the button add one
+                  //if there is no shaker on the button add one and start tween
                   if (!entity.hasComponent(Sumo.UI.ButtonTween) && !button.hasShook()) {
-                        button.setHasShook(true);
+                        button.setHasShook(true); //to not shake again with mouse staying over button
                         entity.addComponent(Sumo.UI.ButtonTween);
                         let tweenTime = 0.05;
                         let start = transform.localPosition();
@@ -135,16 +108,20 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
                         transform.tween("localPosition", start, end)
                               .setDuration(tweenTime)
                               .setEase(ut.tween.EaseType.EaseInOutBack)
-                              .setLoop(ut.tween.LoopType.PingPong, 5)
+                              .setLoop(ut.tween.LoopType.PingPong, 3)
                               .onComplete(function (entity) {
                                     entity.getComponent(ut.Core2D.Transform).setLocalPosition(start);
                                     entity.removeComponent(Sumo.UI.ButtonTween);
                               }, entity);
                   }
+
             } else {
+                  sprite.setColor(button.NormalColor());
+
                   //set hasShook to false
                   button.setHasShook(false);
             }
+
       });
 
       //* Human UI
