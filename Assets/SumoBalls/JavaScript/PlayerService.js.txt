@@ -21,7 +21,3 @@ game.PlayerSystem.update = function (scheduler, world) {
       }
    });
 }
-
-// arenaRadius - dt
-// let radius = getbyname gamemanger.arenaRadius()
-// transform.setLocalScale(new vector3(radius/3.5,radius,1))

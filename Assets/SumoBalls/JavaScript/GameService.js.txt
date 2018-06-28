@@ -70,7 +70,6 @@ const StartNewRound = function (world, manager) {
                   }
             }
             player.setAlive(true);
-            entity.removeComponent(game.PlayerDeath);
             transform.setLocalScale(new Vector3(1, 1, 1));
       });
 
