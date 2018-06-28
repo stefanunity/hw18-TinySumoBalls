@@ -126,41 +126,25 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
             if (isMouseOverMyRect) {
 
                   //if there is no shaker on the button add one
-                  if (!entity.getComponent(Sumo.UI.ButtonTween)) {
-
-                        //if it already shook while the mouse is on it do nothing
-                        if (button.hasShook() === true) { }
-
-                        //otherwise set hasShook to true + add tween component
-                        else {
-                              button.setHasShook(true);
-                              entity.addComponent(Sumo.UI.ButtonTween);
-                        }
+                  if (!entity.hasComponent(Sumo.UI.ButtonTween) && !button.hasShook()) {
+                        button.setHasShook(true);
+                        entity.addComponent(Sumo.UI.ButtonTween);
+                        let tweenTime = 0.05;
+                        let start = transform.localPosition();
+                        let end = new Vector3(start.x, start.y + 0.04, 0);
+                        transform.tween("localPosition", start, end)
+                              .setDuration(tweenTime)
+                              .setEase(ut.tween.EaseType.EaseInOutBack)
+                              .setLoop(ut.tween.LoopType.PingPong, 5)
+                              .onComplete(function (entity) {
+                                    entity.getComponent(ut.Core2D.Transform).setLocalPosition(start);
+                                    entity.removeComponent(Sumo.UI.ButtonTween);
+                              }, entity);
                   }
             } else {
                   //set hasShook to false
                   button.setHasShook(false);
             }
-      });
-
-      //* TWEEN BUTTON SHAKE
-      world.forEachEntity([Sumo.UI.Button, Sumo.UI.ButtonTween, ut.Core2D.Transform, ut.Core2D.Sprite2DRenderer, ut.Core2D.Sprite2DRendererOptions], function (entity, button, buttonTween, transform, sprite, renderer) {
-
-            let tweenTime = 0.05;
-
-            let start = transform.localPosition();
-            let end = new Vector3(start.x, start.y + 0.04, 0);
-
-            transform.tween("localPosition", start, end)
-                  .setDuration(tweenTime)
-                  .setEase(ut.tween.EaseType.EaseInOutBack)
-                  .setLoop(ut.tween.LoopType.PingPong, 5)
-                  .onComplete(function (entity) {
-
-                        entity.getComponent(ut.Core2D.Transform).setLocalPosition(start);
-                        entity.removeComponent(Sumo.UI.ButtonTween);
-
-                  }, entity);
       });
 
       //* Human UI
