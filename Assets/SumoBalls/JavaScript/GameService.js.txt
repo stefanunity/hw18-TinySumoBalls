@@ -16,7 +16,7 @@ game.GameManagerSystem.update = function (scheduler, world) {
                         InitGameplay(world, manager);
                         break;
                   case game.GameState.Gameplay:
-                        GameplayUpdate(world, manager);
+                        GameplayUpdate(scheduler, world, manager);
                         break;
                   case game.GameState.GameOver:
                         GameOver(world, manager);
@@ -29,6 +29,8 @@ const InitGameplay = function (world, manager) {
       ut.Flow.Service.destroyAll('Sumo.UI.StartMenu');
       ut.Flow.Service.instantiate('game.Gameplay');
       SpawnPlayers(world, manager);
+      let startArenaRadius = 7;
+      manager.setArenaRadius(startArenaRadius);
       manager.setState(game.GameState.Gameplay);
 
       // Score Slider, not needed anymore
@@ -40,12 +42,13 @@ const InitGameplay = function (world, manager) {
 
 }
 
-const GameplayUpdate = function (world, manager) {
+const GameplayUpdate = function (scheduler, orld, manager) {
       let deadPlayers = 0;
       world.forEachEntity([game.Player, game.PlayerDead], function (entity, player, playerDead) {
             deadPlayers++;
       });
-
+      let newRadius = manager.arenaRadius() - (scheduler.deltaTime() * 0.1);
+      manager.setArenaRadius(newRadius);
       let gameSettings = manager.gameSettings();
       let totalPlayers = gameSettings.humanCount + gameSettings.aiCount;
       if (totalPlayers - deadPlayers <= 1) {
