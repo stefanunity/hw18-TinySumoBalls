@@ -219,11 +219,7 @@
     "Id": "4e1c5299e77e4b35b4f72aa605564154",
     "Name": "ButtonTween",
     "TypeCode": "Component",
-    "Fields": [{
-        "Id": "3927ce3e8f714b4d8af2f861ee3b1dc6",
-        "Name": "originalSPos",
-        "FieldType": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" }
-    }],
+    "Fields": [],
     "DefaultValue": {
         "Type": { "Id": "4e1c5299e77e4b35b4f72aa605564154", "Name": "ButtonTween" }
     }
