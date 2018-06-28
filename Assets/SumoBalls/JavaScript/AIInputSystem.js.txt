@@ -1,6 +1,51 @@
 var dt = sched.deltaTime();
+var position = transform.worldPosition();
 var direction = transform.worldPosition();
+direction.multiplyScalar(-1);
+
+
+let aiType = Math.floor(movementai.seed() * 4);
+const maxValue = 9999999;
+let distanceToOtherPlayer = maxValue;
+let offsetToClosestPlayer;
+
+if (aiType >= 1)
+{
+   world.forEachEntity([ut.Core2D.Transform, game.Player],
+      function (entity, otherTransform, otherPlayer)
+      {
+         var otherPosition = otherTransform.worldPosition();
+         var offset = otherPosition.sub(position);
+         var distance = offset.length();
+         if (distance < distanceToOtherPlayer && distance > 0.01)
+         {
+            distanceToOtherPlayer = distance;
+            offsetToClosestPlayer = offset;
+         }
+      });
+
+   if (distanceToOtherPlayer < maxValue)
+   {
+      if (aiType === 1)
+      {
+         if (offsetToClosestPlayer.dot(direction) < 0)
+         {
+            direction = offsetToClosestPlayer;
+         }
+      } else if (aiType === 2)
+      {
+         if (offsetToClosestPlayer.dot(direction) > 0)
+         {
+            direction = offsetToClosestPlayer;
+         }
+      }else if (aiType === 3)
+      {
+         direction = offsetToClosestPlayer;
+      }
+   }
+}
+console.log(aiType);
 direction.normalize();
-direction.multiplyScalar(movement.speed() * dt * -1);
+direction.multiplyScalar(movement.speed() * dt);
 direction.add(velocity2d.velocity());
 velocity2d.setVelocity(direction);
