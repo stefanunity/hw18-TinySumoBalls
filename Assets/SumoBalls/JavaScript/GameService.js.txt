@@ -139,7 +139,8 @@ const SpawnPlayers = function (world, manager) {
                   let inputControl = entity.getOrAddComponent(game.MovementInput);
                   inputControl.setInputID(i);
             } else {
-                  let AiControl = entity.getOrAddComponent(game.MovementAI);
+                  let aiControl = entity.getOrAddComponent(game.MovementAI);
+                  aiControl.setSeed(Math.random());
             }
       }
 }

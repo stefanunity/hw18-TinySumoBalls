@@ -117,7 +117,7 @@
     "Fields": [{
         "Id": "30b00b96ebc04df588aea2c64c9c0d3b",
         "Name": "seed",
-        "FieldType": { "Id": "1da58c8ba95a4c85a2b5920bd0663f70", "Name": "UInt32" }
+        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" }
     }],
     "DefaultValue": {
         "Type": { "Id": "3a3d6d942e4b462b8c179981be5666c6", "Name": "MovementAI" }
