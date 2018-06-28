@@ -44,7 +44,8 @@
         { "Id": "ea76d964fb5f442e936eb51fc3368792", "Name": "Sumo.UI" },
         { "Id": "77db3a3f0ecf4c26a7ba12a90a61e639", "Name": "UTiny.Text" },
         { "Id": "8f2d1d250fc44206a40af691c1da4eba", "Name": "SumoPhysics" },
-        { "Id": "7a630ae9230a41848287fbe2dc371ade", "Name": "UTiny.Tween" }
+        { "Id": "7a630ae9230a41848287fbe2dc371ade", "Name": "UTiny.Tween" },
+        { "Id": "2f4cf8687da14c1db800bcd6bbfefd52", "Name": "Sumo.Screenshake" }
     ],
     "Configurations": [],
     "Components": [
@@ -793,6 +794,8 @@
             },
             "depth": -1
         }
+    }, {
+        "Type": { "Id": "829ddad394c44993978f016f4519fb70", "Name": "Screenshaker" }
     }]
 },
 {
