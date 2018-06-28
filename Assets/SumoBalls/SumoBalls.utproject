@@ -56,7 +56,7 @@
         { "Id": "7bfa0e0fd33746cfad1194bd3ece7ffb", "Name": "PlayerSprites" },
         { "Id": "6556039b8ff343e48b85dc50945eb057", "Name": "Button" },
         { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" },
-        { "Id": "b693c52e7b9d44ba839c9736caedaae0", "Name": "PlayerDeath" }
+        { "Id": "d610dd70ccdc4edeb504138bf9e8008e", "Name": "ArenaShrink" }
     ],
     "Structs": [
         { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
@@ -73,7 +73,8 @@
         { "Id": "391d800b763c4e77b5879313693df50d", "Name": "Gameover" }
     ],
     "Scripts": [
-        { "Id": "8ba620fb0f14454a9a9b42cd75b1e606", "Name": "GameService" }
+        { "Id": "8ba620fb0f14454a9a9b42cd75b1e606", "Name": "GameService" },
+        { "Id": "b1e4cd3f674e45aa92b502e88358405e", "Name": "PlayerService" }
     ],
     "Systems": [
         { "Id": "c65ec262e361456d8445bb1077148c14", "Name": "PlayerInputSystem" },
@@ -104,7 +105,11 @@
     "Id": "3a3d6d942e4b462b8c179981be5666c6",
     "Name": "MovementAI",
     "TypeCode": "Component",
-    "Fields": [],
+    "Fields": [{
+        "Id": "30b00b96ebc04df588aea2c64c9c0d3b",
+        "Name": "seed",
+        "FieldType": { "Id": "1da58c8ba95a4c85a2b5920bd0663f70", "Name": "UInt32" }
+    }],
     "DefaultValue": {
         "Type": { "Id": "3a3d6d942e4b462b8c179981be5666c6", "Name": "MovementAI" }
     }
@@ -136,6 +141,10 @@
         "Id": "4bbca02ae5af45a7a905cf8cf3b5f650",
         "Name": "gameSettings",
         "FieldType": { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
+    }, {
+        "Id": "f512012daa314b089a210f7a59a53ab6",
+        "Name": "arenaRadius",
+        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" }
     }],
     "DefaultValue": {
         "Type": { "Id": "643b95a68110437c9f67a141a1d722ca", "Name": "GameManager" },
@@ -146,6 +155,9 @@
                 "Id": "f4e8a8be486e4471a175e8ac3e4d323c",
                 "Name": "InitGameplay",
                 "Value": 4
+            },
+            "gameSettings": {
+                "Type": { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
             }
         }
     }
@@ -221,12 +233,16 @@
 },
 {
     "$TypeId": 3,
-    "Id": "b693c52e7b9d44ba839c9736caedaae0",
-    "Name": "PlayerDeath",
+    "Id": "d610dd70ccdc4edeb504138bf9e8008e",
+    "Name": "ArenaShrink",
     "TypeCode": "Component",
-    "Fields": [],
+    "Fields": [{
+        "Id": "39af544429894867ae55450d0e2919e3",
+        "Name": "ShadowSpriteRender",
+        "FieldType": { "Id": "5a182d9d039d4dfd8fa96132d05f9ee7", "Name": "EntityReference" }
+    }],
     "DefaultValue": {
-        "Type": { "Id": "b693c52e7b9d44ba839c9736caedaae0", "Name": "NewComponent" }
+        "Type": { "Id": "d610dd70ccdc4edeb504138bf9e8008e", "Name": "ArenaShrink" }
     }
 },
 {
@@ -237,11 +253,11 @@
     "Fields": [{
         "Id": "880734cc2bc24d7689063450d8571cc1",
         "Name": "humanCount",
-        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
+        "FieldType": { "Id": "7112767112f747e2a340404a5ceb31b5", "Name": "UInt8" }
     }, {
         "Id": "e075995d84a24544b7a18073de7a2c66",
         "Name": "aiCount",
-        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
+        "FieldType": { "Id": "7112767112f747e2a340404a5ceb31b5", "Name": "UInt8" }
     }],
     "DefaultValue": {
         "Type": { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
@@ -294,7 +310,8 @@
         { "$TypeId": 9, "Id": "b1f699a9834b4238a9d943a19ed3a2c2", "Name": "Wall_S" },
         { "$TypeId": 9, "Id": "9aa0e01d5137433ebd0e507e63d462d2", "Name": "Wall_E" },
         { "$TypeId": 9, "Id": "ce514d19f7914184acfe8dc966d77065", "Name": "Wall_W" },
-        { "$TypeId": 9, "Id": "f535df7db2804611bfa45b8a4ec689a3", "Name": "BattleAreaSprite" }
+        { "$TypeId": 9, "Id": "032cab8620f64f1b91e7944491bb7943", "Name": "area" },
+        { "$TypeId": 9, "Id": "b2d74b81b2ff41bc9eb1f3a1c3001eef", "Name": "shadow" }
     ]
 },
 {
@@ -406,29 +423,83 @@
 },
 {
     "$TypeId": 5,
-    "Id": "f535df7db2804611bfa45b8a4ec689a3",
-    "Name": "BattleAreaSprite",
+    "Id": "032cab8620f64f1b91e7944491bb7943",
+    "Name": "area",
     "Enabled": true,
     "Components": [{
-        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
-        "Properties": {
-            "localScale": {
-                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
-                "Properties": {
-                    "x": 2,
-                    "y": 2
-                }
-            }
-        }
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }
     }, {
         "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
         "Properties": {
-            "sprite": { "$TypeId": 10, "Guid": "f5a8d948b44e34e91871463421f15bd5", "FileId": 21300000, "Type": 3 }
+            "sprite": { "$TypeId": 10, "Guid": "8a7e3c9d3b3d94375962ff07d867d6ae", "FileId": 21300000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "51e8b4dea1443a88d6fdc4d4acac0981", "Name": "Sprite2DRendererOptions" },
+        "Properties": {
+            "size": {
+                "Type": { "Id": "3abb69286ddfc2d1c617a173c1eeb35d", "Name": "Vector2" },
+                "Properties": {
+                    "x": 7,
+                    "y": 7
+                }
+            },
+            "drawMode": {
+                "$TypeId": 8,
+                "Type": { "Id": "dbb623f024f6130ce60520cb8c7612ce", "Name": "DrawMode" },
+                "Id": "60e868a91560d055193e93bfaa1c7192",
+                "Name": "Stretch",
+                "Value": 2
+            }
         }
     }, {
         "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
         "Properties": {
-            "order": -10
+            "order": -1
+        }
+    }, {
+        "Type": { "Id": "d610dd70ccdc4edeb504138bf9e8008e", "Name": "ArenaShrink" },
+        "Properties": {
+            "ShadowSpriteRender": { "$TypeId": 9, "Id": "b2d74b81b2ff41bc9eb1f3a1c3001eef", "Name": "shadow" }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "b2d74b81b2ff41bc9eb1f3a1c3001eef",
+    "Name": "shadow",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "parent": { "$TypeId": 9, "Id": "032cab8620f64f1b91e7944491bb7943", "Name": "area" }
+        }
+    }, {
+        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
+        "Properties": {
+            "sprite": { "$TypeId": 10, "Guid": "21c14de7f93614d93b2007a367704599", "FileId": 21300000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "51e8b4dea1443a88d6fdc4d4acac0981", "Name": "Sprite2DRendererOptions" },
+        "Properties": {
+            "size": {
+                "Type": { "Id": "3abb69286ddfc2d1c617a173c1eeb35d", "Name": "Vector2" },
+                "Properties": {
+                    "x": 8,
+                    "y": 8
+                }
+            },
+            "drawMode": {
+                "$TypeId": 8,
+                "Type": { "Id": "dbb623f024f6130ce60520cb8c7612ce", "Name": "DrawMode" },
+                "Id": "60e868a91560d055193e93bfaa1c7192",
+                "Name": "Stretch",
+                "Value": 2
+            }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": -2
         }
     }]
 },
@@ -696,10 +767,13 @@
                 "Type": { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" },
                 "Properties": {
                     "humanCount": 2,
-                    "aiCount": 1
+                    "aiCount": 0
                 }
-            }
+            },
+            "arenaRadius": 7
         }
+    }, {
+        "Type": { "Id": "d610dd70ccdc4edeb504138bf9e8008e", "Name": "ArenaShrink" }
     }]
 },
 {
@@ -1176,6 +1250,12 @@
     "TextAsset": { "$TypeId": 10, "Guid": "ecc9fa59c870d4c5cac200eecbdef69f", "FileId": 4900000, "Type": 3 }
 },
 {
+    "$TypeId": 6,
+    "Id": "b1e4cd3f674e45aa92b502e88358405e",
+    "Name": "PlayerService",
+    "TextAsset": { "$TypeId": 10, "Guid": "609a2f0636ed04f7d88dab73c3bdee57", "FileId": 4900000, "Type": 3 }
+},
+{
     "$TypeId": 7,
     "Id": "c65ec262e361456d8445bb1077148c14",
     "Name": "PlayerInputSystem",
@@ -1247,8 +1327,7 @@
     "$TypeId": 7,
     "Id": "4996b3e8299741a3b881f6ad987b682b",
     "Name": "PlayerSystem",
-    "Options": 3,
-    "TextAsset": { "$TypeId": 10, "Guid": "f018b2f41ccbdf84b962848ec44c7d7a", "FileId": 4900000, "Type": 3 },
+    "Options": 7,
     "Components": [
         { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" },
         { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }

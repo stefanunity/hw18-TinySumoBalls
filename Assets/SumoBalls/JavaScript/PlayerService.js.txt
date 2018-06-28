@@ -1,0 +1,27 @@
+game.PlayerSystem.update = function (scheduler, world) {
+   world.forEachEntity([game.Player, ut.Core2D.Transform], function (entity, player, transform) {
+      let manager = world.getByName("GameManger").getComponent(game.GameManager);
+      let arenaRadius = manager.arenaRadius();
+
+      if (transform.worldPosition().length() > arenaRadius && player.alive()) {
+         player.setAlive(false);
+         entity.removeComponent(ut.Physics2D.Velocity2D);
+         let tweenTime = 0.5;
+
+         let start = transform.localScale();
+         let end = new Vector3(0, 0, 0);
+         transform.tween("localScale", start, end)
+            .setDuration(tweenTime)
+            .setEase(ut.tween.EaseType.EaseInBack)
+            .onComplete(function (entity) {
+               // entity.destroy();
+               console.log("blergh");
+            }, entity);
+
+      }
+   });
+}
+
+// arenaRadius - dt
+// let radius = getbyname gamemanger.arenaRadius()
+// transform.setLocalScale(new vector3(radius/3.5,radius,1))
