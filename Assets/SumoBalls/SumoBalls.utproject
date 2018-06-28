@@ -45,7 +45,8 @@
         { "Id": "77db3a3f0ecf4c26a7ba12a90a61e639", "Name": "UTiny.Text" },
         { "Id": "8f2d1d250fc44206a40af691c1da4eba", "Name": "SumoPhysics" },
         { "Id": "7a630ae9230a41848287fbe2dc371ade", "Name": "UTiny.Tween" },
-        { "Id": "2f4cf8687da14c1db800bcd6bbfefd52", "Name": "Sumo.Screenshake" }
+        { "Id": "2f4cf8687da14c1db800bcd6bbfefd52", "Name": "Sumo.Screenshake" },
+        { "Id": "251df5ef6819533f94e1cbf3181f722e", "Name": "UTiny.Audio" }
     ],
     "Configurations": [],
     "Components": [
@@ -453,6 +454,12 @@
     "Components": [{
         "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
         "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": -0.6
+                }
+            },
             "localScale": {
                 "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
                 "Properties": {
