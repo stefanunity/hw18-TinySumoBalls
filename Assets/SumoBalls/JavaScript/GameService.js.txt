@@ -79,17 +79,18 @@ const StartNewRound = function (world, manager) {
 
       if (gameOver) {
             manager.setState(game.GameState.GameOver);
-            ut.Flow.Service.instantiate('game.Gameover');
+            ut.Flow.Service.instantiate('Sumo.UI.EndMenu');
       }
 }
 
 const GameOver = function (world, manager) {
       ut.Flow.Service.destroyAll('game.Gameplay');
       // ut.Flow.Service.destroyAll("Sumo.UI.UI");
+      // ut.Flow.Service.instantiate('Sumo.UI.EndMenu');
       DespawnPlayers(world, manager);
 
       if (ut.Runtime.Input.getMouseButtonDown(0)) {
-            ut.Flow.Service.destroyAll('game.Gameover');
+            ut.Flow.Service.destroyAll('Sumo.UI.EndMenu');
             manager.setState(game.GameState.Init);
       }
 

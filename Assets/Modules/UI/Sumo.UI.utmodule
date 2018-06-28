@@ -29,7 +29,8 @@
     "Enums": [],
     "EntityGroups": [
         { "Id": "3e71f7eb575549de8d00a89e62ca47d4", "Name": "UI" },
-        { "Id": "38c356705cff492cbf849939c1c2a8af", "Name": "StartMenu" }
+        { "Id": "38c356705cff492cbf849939c1c2a8af", "Name": "StartMenu" },
+        { "Id": "782ab1eb8aad4ba2a9e5d2b6a30b3155", "Name": "EndMenu" }
     ],
     "Scripts": [
         { "Id": "77a36f5b9b924859b05b70cf6c94a623", "Name": "UIService" }
@@ -1029,6 +1030,1003 @@
     "Enabled": true,
     "Components": [{
         "Type": { "Id": "8bbd0f80cf9546bfbd219cce1ad78b7f", "Name": "VariableHolder" }
+    }]
+},
+{
+    "$TypeId": 4,
+    "Id": "782ab1eb8aad4ba2a9e5d2b6a30b3155",
+    "Name": "EndMenu",
+    "Entities": [
+        { "$TypeId": 9, "Id": "14f12a803b424b6f9b2d6c615345bf71", "Name": "Title" },
+        { "$TypeId": 9, "Id": "27af4eaec59c4fa6889b8d304b29aeed", "Name": "gameover" },
+        { "$TypeId": 9, "Id": "cb1c8b01ec56493c8c74493ba4b8746d", "Name": "Dominykas" },
+        { "$TypeId": 9, "Id": "a6565736a67047fd90aed43dfe291a85", "Name": "surname" },
+        { "$TypeId": 9, "Id": "f18ff7ad8cd54bd0b975bf5c156f6757", "Name": "nameShadow" },
+        { "$TypeId": 9, "Id": "1df5fc6fad984c6bb2855ae8f32efedc", "Name": "surnameShadow" },
+        { "$TypeId": 9, "Id": "492e9ffe23dc4a7d9c4fa5d4c22376f8", "Name": "Stefan" },
+        { "$TypeId": 9, "Id": "7f4480a10522436aa3ec7658cf9d6322", "Name": "surname" },
+        { "$TypeId": 9, "Id": "55889e09d832429bbcd2c3c4781014fd", "Name": "nameShadow" },
+        { "$TypeId": 9, "Id": "b8662cd579b04a6d8326ffebe6aff3cc", "Name": "surnameShadow" },
+        { "$TypeId": 9, "Id": "6e17a73c64dd4194b4c3c1ef26c01d7f", "Name": "Mykolas" },
+        { "$TypeId": 9, "Id": "b186d51f0c2c4f97a481451f0cc2bcc8", "Name": "surname" },
+        { "$TypeId": 9, "Id": "aca73255bc37415baac77035358ff899", "Name": "nameShadow" },
+        { "$TypeId": 9, "Id": "1950ccfeafff49a58b03d7f06c9c3622", "Name": "surnameShadow" },
+        { "$TypeId": 9, "Id": "83274fca6b4f47d7ac90939d4fd32f56", "Name": "Restart" },
+        { "$TypeId": 9, "Id": "f2caef4b6659424294fdc7c272f8bc57", "Name": "nameShadow" }
+    ]
+},
+{
+    "$TypeId": 5,
+    "Id": "14f12a803b424b6f9b2d6c615345bf71",
+    "Name": "Title",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.74,
+                    "y": -2.19
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
+        "Properties": {
+            "sprite": { "$TypeId": 10, "Guid": "54199e3a65c744c53aba5802169e147b", "FileId": 21300000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "3565330e120b4690afd3e85c9cde405f", "Name": "Shaker" }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 10
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "27af4eaec59c4fa6889b8d304b29aeed",
+    "Name": "gameover",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 2,
+                    "y": 2
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "b5907cf00b180b2af76f9af8c4d3408b", "Name": "Sprite2DRenderer" },
+        "Properties": {
+            "sprite": { "$TypeId": 10, "Guid": "00a456b7445ad499ba458320b51a5367", "FileId": 21300000, "Type": 3 }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "cb1c8b01ec56493c8c74493ba4b8746d",
+    "Name": "Dominykas",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": -7.29,
+                    "y": -1.16,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.015,
+                    "y": 0.015
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Dominykas",
+            "fontSize": 60,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 10
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "Size": 60,
+            "Color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "InitialValue": "Dominykas"
+        }
+    }, {
+        "Type": { "Id": "3565330e120b4690afd3e85c9cde405f", "Name": "Shaker" }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "a6565736a67047fd90aed43dfe291a85",
+    "Name": "surname",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0,
+                    "y": -78,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "cb1c8b01ec56493c8c74493ba4b8746d", "Name": "Dominykas" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Kiauleikis",
+            "fontSize": 60,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 10
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "Size": 60,
+            "Color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "InitialValue": "Kiauleikis"
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "f18ff7ad8cd54bd0b975bf5c156f6757",
+    "Name": "nameShadow",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0,
+                    "y": -2,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "cb1c8b01ec56493c8c74493ba4b8746d", "Name": "Dominykas" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Dominykas",
+            "fontSize": 60,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.4392157,
+                    "g": 0.8392157,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 9
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "Size": 60,
+            "Color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.4392157,
+                    "g": 0.8392157,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "InitialValue": "Dominykas"
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "1df5fc6fad984c6bb2855ae8f32efedc",
+    "Name": "surnameShadow",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0,
+                    "y": -80,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "cb1c8b01ec56493c8c74493ba4b8746d", "Name": "Dominykas" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Kiauleikis",
+            "fontSize": 60,
+            "bold": true,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.4392157,
+                    "g": 0.8392157,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 9
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "Size": 60,
+            "Color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.4392157,
+                    "g": 0.8392157,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "InitialValue": "Kiauleikis"
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "492e9ffe23dc4a7d9c4fa5d4c22376f8",
+    "Name": "Stefan",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.98,
+                    "y": 5.49,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.015,
+                    "y": 0.015
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Stefan",
+            "fontSize": 60,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 10
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "Size": 60,
+            "Color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "InitialValue": "Stefan"
+        }
+    }, {
+        "Type": { "Id": "3565330e120b4690afd3e85c9cde405f", "Name": "Shaker" }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "7f4480a10522436aa3ec7658cf9d6322",
+    "Name": "surname",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0,
+                    "y": -78,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "492e9ffe23dc4a7d9c4fa5d4c22376f8", "Name": "Dominykas1" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Schubert",
+            "fontSize": 60,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 10
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "Size": 60,
+            "Color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "InitialValue": "Schubert"
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "55889e09d832429bbcd2c3c4781014fd",
+    "Name": "nameShadow",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0,
+                    "y": -2,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "492e9ffe23dc4a7d9c4fa5d4c22376f8", "Name": "Dominykas1" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Stefan",
+            "fontSize": 60,
+            "bold": true,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.4392157,
+                    "g": 0.8392157,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 9
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "Size": 60,
+            "Color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.4392157,
+                    "g": 0.8392157,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "InitialValue": "Stefan"
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "b8662cd579b04a6d8326ffebe6aff3cc",
+    "Name": "surnameShadow",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0,
+                    "y": -80,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "492e9ffe23dc4a7d9c4fa5d4c22376f8", "Name": "Dominykas1" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Schubert",
+            "fontSize": 60,
+            "bold": true,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.4392157,
+                    "g": 0.8392157,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 9
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "Size": 60,
+            "Color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.4392157,
+                    "g": 0.8392157,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "InitialValue": "Schubert"
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "6e17a73c64dd4194b4c3c1ef26c01d7f",
+    "Name": "Mykolas",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 6.98,
+                    "y": -0.89,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.015,
+                    "y": 0.015
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Mykolas",
+            "fontSize": 60,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 10
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "Size": 60,
+            "Color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "InitialValue": "Mykolas"
+        }
+    }, {
+        "Type": { "Id": "3565330e120b4690afd3e85c9cde405f", "Name": "Shaker" }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "b186d51f0c2c4f97a481451f0cc2bcc8",
+    "Name": "surname",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0,
+                    "y": -78,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "6e17a73c64dd4194b4c3c1ef26c01d7f", "Name": "Stefan1" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Mankevicius",
+            "fontSize": 60,
+            "bold": false,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 10
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "Size": 60,
+            "Color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "InitialValue": "Mankevicius"
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "aca73255bc37415baac77035358ff899",
+    "Name": "nameShadow",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0,
+                    "y": -2,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "6e17a73c64dd4194b4c3c1ef26c01d7f", "Name": "Stefan1" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Mykolas",
+            "fontSize": 60,
+            "bold": true,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.4392157,
+                    "g": 0.8392157,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 9
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "Size": 60,
+            "Color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.4392157,
+                    "g": 0.8392157,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "InitialValue": "Mykolas"
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "1950ccfeafff49a58b03d7f06c9c3622",
+    "Name": "surnameShadow",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0,
+                    "y": -80,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "6e17a73c64dd4194b4c3c1ef26c01d7f", "Name": "Stefan1" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Mankevcius",
+            "fontSize": 60,
+            "bold": true,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.4392157,
+                    "g": 0.8392157,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 9
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "Size": 60,
+            "Color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.4392157,
+                    "g": 0.8392157,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "InitialValue": "Mankevicius"
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "83274fca6b4f47d7ac90939d4fd32f56",
+    "Name": "Restart",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.22,
+                    "y": -5.84,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.015,
+                    "y": 0.015
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Click to restart",
+            "fontSize": 60,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 100
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "Size": 60,
+            "Color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.1647059,
+                    "g": 0.1686275,
+                    "b": 0.1647059,
+                    "a": 1
+                }
+            },
+            "InitialValue": "Click to restart"
+        }
+    }, {
+        "Type": { "Id": "3565330e120b4690afd3e85c9cde405f", "Name": "Shaker" }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "f2caef4b6659424294fdc7c272f8bc57",
+    "Name": "nameShadow",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0,
+                    "y": -2,
+                    "z": 0
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 1,
+                    "y": 1
+                }
+            },
+            "parent": { "$TypeId": 9, "Id": "83274fca6b4f47d7ac90939d4fd32f56", "Name": "Mykolas1" }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "Click to restart",
+            "fontSize": 60,
+            "bold": true,
+            "color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.4392157,
+                    "g": 0.8392157,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }, {
+        "Type": { "Id": "b1e5348389156b7a260d6ed393754fba", "Name": "LayerSorting" },
+        "Properties": {
+            "order": 0
+        }
+    }, {
+        "Type": { "Id": "288a861a8ca311346faecf4c20a2da76", "Name": "SortingGroup" }
+    }, {
+        "Type": { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
+        "Properties": {
+            "Size": 60,
+            "Color": {
+                "Type": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" },
+                "Properties": {
+                    "r": 0.4392157,
+                    "g": 0.8392157,
+                    "b": 1,
+                    "a": 1
+                }
+            },
+            "InitialValue": "Click to restart"
+        }
     }]
 },
 {
