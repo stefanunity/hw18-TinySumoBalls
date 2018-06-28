@@ -29,8 +29,6 @@ const InitGameplay = function (world, manager) {
       ut.Flow.Service.destroyAll('Sumo.UI.StartMenu');
       ut.Flow.Service.instantiate('game.Gameplay');
       SpawnPlayers(world, manager);
-      let startArenaRadius = 7;
-      manager.setArenaRadius(startArenaRadius);
       manager.setState(game.GameState.Gameplay);
 
       // Score Slider, not needed anymore
@@ -58,6 +56,9 @@ const GameplayUpdate = function (scheduler, orld, manager) {
 
 const StartNewRound = function (world, manager) {
       let gameOver = false;
+
+      let startArenaRadius = 7;
+      manager.setArenaRadius(startArenaRadius);
 
       world.forEachEntity([game.Player, ut.Core2D.Transform], function (entity, player, transform) {
             entity.addComponent(game.PlayerRespawn);
