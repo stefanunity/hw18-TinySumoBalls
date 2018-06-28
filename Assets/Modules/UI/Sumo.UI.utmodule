@@ -23,7 +23,7 @@
         { "Id": "3565330e120b4690afd3e85c9cde405f", "Name": "Shaker" },
         { "Id": "b14640dbd5b04c309593a9dfce5e62fc", "Name": "FontLoader" },
         { "Id": "8bbd0f80cf9546bfbd219cce1ad78b7f", "Name": "VariableHolder" },
-        { "Id": "4e1c5299e77e4b35b4f72aa605564154", "Name": "ButtonShakeTimer" }
+        { "Id": "4e1c5299e77e4b35b4f72aa605564154", "Name": "ButtonTween" }
     ],
     "Structs": [],
     "Enums": [],
@@ -130,9 +130,20 @@
         "Id": "738a0f1782c341cf8477b3716fadaf04",
         "Name": "PressedColor",
         "FieldType": { "Id": "83c08479d9d6e46c88247df9dbae2e1b", "Name": "Color" }
+    }, {
+        "Id": "bc6730e52ba84236bb6ec566cc047bf6",
+        "Name": "MouseHover",
+        "FieldType": { "Id": "2b477f505af74487b7092b5617d88d3f", "Name": "Boolean" }
+    }, {
+        "Id": "4e85751cad504d99b45eed74f2fc3c2e",
+        "Name": "hasShook",
+        "FieldType": { "Id": "2b477f505af74487b7092b5617d88d3f", "Name": "Boolean" }
     }],
     "DefaultValue": {
-        "Type": { "Id": "3b9cb9301fdf4ee48214816dc1fd52f6", "Name": "Button" }
+        "Type": { "Id": "3b9cb9301fdf4ee48214816dc1fd52f6", "Name": "Button" },
+        "Properties": {
+            "MouseHover": false
+        }
     }
 },
 {
@@ -213,22 +224,11 @@
 {
     "$TypeId": 3,
     "Id": "4e1c5299e77e4b35b4f72aa605564154",
-    "Name": "ButtonShakeTimer",
+    "Name": "ButtonTween",
     "TypeCode": "Component",
-    "Fields": [{
-        "Id": "8b5d7479fa254e6ca8a78807a6e1c8d3",
-        "Name": "startTime",
-        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" }
-    }, {
-        "Id": "7c8f07c71b074a41acbf5857543ca502",
-        "Name": "shakeTime",
-        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" }
-    }],
+    "Fields": [],
     "DefaultValue": {
-        "Type": { "Id": "4e1c5299e77e4b35b4f72aa605564154", "Name": "ButtonShakeTimer" },
-        "Properties": {
-            "shakeTime": 0.5
-        }
+        "Type": { "Id": "4e1c5299e77e4b35b4f72aa605564154", "Name": "ButtonTween" }
     }
 },
 {
@@ -683,7 +683,9 @@
                     "b": 0.3438431,
                     "a": 1
                 }
-            }
+            },
+            "MouseHover": false,
+            "hasShook": false
         }
     }]
 },
@@ -750,7 +752,9 @@
                     "b": 0.3438431,
                     "a": 1
                 }
-            }
+            },
+            "MouseHover": false,
+            "hasShook": false
         }
     }]
 },
@@ -897,7 +901,9 @@
                     "b": 0.3438431,
                     "a": 1
                 }
-            }
+            },
+            "MouseHover": false,
+            "hasShook": false
         }
     }]
 },
@@ -964,7 +970,9 @@
                     "b": 0.3438431,
                     "a": 1
                 }
-            }
+            },
+            "MouseHover": false,
+            "hasShook": false
         }
     }]
 },

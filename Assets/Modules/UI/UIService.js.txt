@@ -104,7 +104,7 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
 
       });
 
-      //* BUTTON SHAKE
+      //* ADD BUTTON TWEEN
       world.forEachEntity([Sumo.UI.Button, ut.Core2D.Transform, ut.Core2D.Sprite2DRenderer, ut.Core2D.Sprite2DRendererOptions], function (entity, button, transform, sprite, renderer) {
 
             let position = transform.worldPosition();
@@ -124,30 +124,40 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
             let isMouseOverMyRect = x > xMin && x < xMax && y > yMin && y < yMax;
 
             if (isMouseOverMyRect) {
+
                   //if there is no shaker on the button add one
-                  if (!entity.getComponent(Sumo.UI.Shaker)) {
-                        entity.addComponent(Sumo.UI.Shaker);
-                  }
+                  if (!entity.getComponent(Sumo.UI.ButtonTween)) {
+                        if (button.MouseHover) { }
+                        else {
+                              entity.addComponent(Sumo.UI.ButtonTween);
+                              button.MouseHover = true;
+                        }
 
+
+
+                  }
             } else {
-                  //the mouse is not on button but it has a shaker
-                  if (entity.getComponent(Sumo.UI.Shaker)) {
-
-                        let position = entity.getComponent(Sumo.UI.Shaker).originalPos;
-                        //let originalShakerPos = entity.getComponent(Sumo.UI.Shaker).originalPos;
-
-                        entity.removeComponent(Sumo.UI.Shaker);
-                        let transform = new Vector3(1, 0, 0);
-                        //entity.getComponent(ut.Core2D.Transform).setLocalPosition(position);
-                        //console.log(JSON.stringify(transform.localPosition()));
-
-
-                        //todo: get the original position and rotation to apply again after leaving button
-                        //entity.transform.position = new Vector3(0, 0, 0);
-                        //console.log(position);
-
-                  }
+                  button.MouseHover = false;
             }
+
+      });
+
+      //* TWEEN BUTTON
+      world.forEachEntity([Sumo.UI.Button, Sumo.UI.ButtonTween, ut.Core2D.Transform, ut.Core2D.Sprite2DRenderer, ut.Core2D.Sprite2DRendererOptions], function (entity, button, buttonTween, transform, sprite, renderer) {
+
+            entity.removeComponent(Sumo.UI.ButtonTween);
+            let tweenTime = 0.2;
+
+            let start = transform.localPosition();
+            let end = new Vector3(start.x, start.y + 0.1, 0);
+            transform.tween("localPosition", start, end)
+                  .setDuration(tweenTime)
+                  .setEase(ut.tween.EaseType.EaseInBack)
+                  .onComplete(function (entity) {
+
+
+                  }, entity);
+
 
       });
 
