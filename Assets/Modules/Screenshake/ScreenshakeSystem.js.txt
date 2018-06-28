@@ -1,0 +1,17 @@
+const shakeDuration = 0.01;
+let maxForce = 0;
+let time = sched.now();
+world.forEachEntity([Sumo.Screenshake.ShakeEvent],
+   function (entity, shakeEvent)
+   {
+      let timePassed = time - shakeEvent.startTime();
+      let force = shakeEvent.force();
+      let totalForce = Math.max(0, (shakeDuration * Math.pow(force, 0.5)) - timePassed) * force / (shakeDuration);
+      maxForce = Math.max(totalForce, maxForce);
+   });
+
+
+let shakeOffset = new Vector2(Math.random() * 2 - 1, Math.random() * 2 - 1);
+shakeOffset.normalize();
+shakeOffset.multiplyScalar(Math.pow(maxForce, 0.8) * 0.01);
+transform.setLocalPosition(new Vector3(shakeOffset.x, shakeOffset.y, 1));

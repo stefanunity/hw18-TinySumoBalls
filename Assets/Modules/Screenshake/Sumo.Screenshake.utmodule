@@ -1,0 +1,90 @@
+﻿[{
+    "$TypeId": 2,
+    "Id": "2f4cf8687da14c1db800bcd6bbfefd52",
+    "Name": "Sumo.Screenshake",
+    "Namespace": "Sumo.Screenshake",
+    "Dependencies": [
+        { "Id": "a1b50987659c653138795a8f4079fc10", "Name": "UTiny.Math" },
+        { "Id": "2af0cd3b47a732bf738688ceab312689", "Name": "UTiny.Core" },
+        { "Id": "ce3f1bd7050540b70d450a606e226ea2", "Name": "UTiny.Shared" },
+        { "Id": "30097418841f56d73400bf82ee859ac9", "Name": "UTiny.Core2D" }
+    ],
+    "Configurations": [],
+    "Components": [
+        { "Id": "652f26453d364641a6ad98fa6d091d9a", "Name": "ShakeEvent" },
+        { "Id": "829ddad394c44993978f016f4519fb70", "Name": "Screenshaker" }
+    ],
+    "Structs": [],
+    "Enums": [],
+    "EntityGroups": [],
+    "Scripts": [],
+    "Systems": [
+        { "Id": "0afc5c5737d1427696dae203f16cda39", "Name": "ScreenshakeSystem" },
+        { "Id": "4fe23c75939d4c22a7ee36af83571aca", "Name": "ScreenshakeCleanupSystem" }
+    ],
+    "Assets": []
+},
+{
+    "$TypeId": 3,
+    "Id": "652f26453d364641a6ad98fa6d091d9a",
+    "Name": "ShakeEvent",
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "7a33d996390a40adaaa55e3222d38b12",
+        "Name": "startTime",
+        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" }
+    }, {
+        "Id": "80153aa738234080afeee6ed77ab64fa",
+        "Name": "force",
+        "FieldType": { "Id": "67325dccf2f047c19c7ef4a045354e67", "Name": "Float32" }
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "652f26453d364641a6ad98fa6d091d9a", "Name": "ShakeEvent" },
+        "Properties": {
+            "force": 1
+        }
+    }
+},
+{
+    "$TypeId": 3,
+    "Id": "829ddad394c44993978f016f4519fb70",
+    "Name": "Screenshaker",
+    "TypeCode": "Component",
+    "Fields": [],
+    "DefaultValue": {
+        "Type": { "Id": "829ddad394c44993978f016f4519fb70", "Name": "Screenshaker" }
+    }
+},
+{
+    "$TypeId": 7,
+    "Id": "0afc5c5737d1427696dae203f16cda39",
+    "Name": "ScreenshakeSystem",
+    "Options": 3,
+    "TextAsset": { "$TypeId": 10, "Guid": "0c041a9e769804c45bd6197f294ecb11", "FileId": 4900000, "Type": 3 },
+    "Components": [
+        { "Id": "829ddad394c44993978f016f4519fb70", "Name": "Screenshaker" },
+        { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }
+    ],
+    "ExecuteAfter": [
+        { "Id": "6fa7e5feec05fec093042f2a2b9802d4", "Name": "UserCodeStart" }
+    ],
+    "ExecuteBefore": [
+        { "Id": "d016ec3bfdc5a53540e9c71942ee414c", "Name": "UserCodeEnd" }
+    ]
+},
+{
+    "$TypeId": 7,
+    "Id": "4fe23c75939d4c22a7ee36af83571aca",
+    "Name": "ScreenshakeCleanupSystem",
+    "Options": 3,
+    "TextAsset": { "$TypeId": 10, "Guid": "7c4995c6bb4529d47af7c3673e23f130", "FileId": 4900000, "Type": 3 },
+    "Components": [
+        { "Id": "652f26453d364641a6ad98fa6d091d9a", "Name": "ShakeEvent" }
+    ],
+    "ExecuteAfter": [
+        { "Id": "6fa7e5feec05fec093042f2a2b9802d4", "Name": "UserCodeStart" }
+    ],
+    "ExecuteBefore": [
+        { "Id": "d016ec3bfdc5a53540e9c71942ee414c", "Name": "UserCodeEnd" }
+    ]
+}]

@@ -1,0 +1,7 @@
+let force = shakeevent.force();
+let startTime = shakeevent.startTime();
+let passedTime = sched.now() - startTime;
+if (passedTime > 2)
+{
+   entity.destroy();
+}
