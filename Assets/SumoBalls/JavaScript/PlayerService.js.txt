@@ -1,21 +1,22 @@
 game.PlayerSystem.update = function (scheduler, world) {
-   world.forEachEntity([game.Player, ut.Core2D.Transform], function (entity, player, transform) {
-      let manager = world.getByName("GameManger").getComponent(game.GameManager);
-      let arenaRadius = manager.arenaRadius();
+      world.forEachEntity([game.Player, ut.Core2D.Transform], function (entity, player, transform) {
+            let manager = world.getByName("GameManger").getComponent(game.GameManager);
+            let arenaRadius = manager.arenaRadius();
 
-      if (transform.worldPosition().length() > arenaRadius && player.alive()) {
-         player.setAlive(false);
-         entity.removeComponent(ut.Physics2D.Velocity2D);
-         let tweenTime = 0.5;
+            if (transform.worldPosition().length() > arenaRadius && player.alive()) {
+                  player.setAlive(false);
+                  world.getByName("DieSound").getComponent(ut.Audio.AudioSource).setPlaying(true);
+                  entity.removeComponent(ut.Physics2D.Velocity2D);
+                  let tweenTime = 0.5;
 
-         let start = transform.localScale();
-         let end = new Vector3(0, 0, 0);
-         transform.tween("localScale", start, end)
-            .setDuration(tweenTime)
-            .setEase(ut.tween.EaseType.EaseInBack)
-            .onComplete(function (entity) {
-               entity.addComponent(game.PlayerDead);
-            }, entity);
-      }
-   });
+                  let start = transform.localScale();
+                  let end = new Vector3(0, 0, 0);
+                  transform.tween("localScale", start, end)
+                        .setDuration(tweenTime)
+                        .setEase(ut.tween.EaseType.EaseInBack)
+                        .onComplete(function (entity) {
+                              entity.addComponent(game.PlayerDead);
+                        }, entity);
+            }
+      });
 }
