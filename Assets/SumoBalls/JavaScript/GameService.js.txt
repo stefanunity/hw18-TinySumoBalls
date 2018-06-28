@@ -66,28 +66,35 @@ const GameplayUpdate = function (world, manager) {
             }
       });
 
-      let gameOver = false;
       if (livePlayers <= 1) {
-            world.forEachEntity([game.Player], function (entity, player) {
-                  ResetPlayerPosition(entity, player);
-                  if (player.alive()) {
-                        let score = player.score();
-                        score++;
-                        // Update player score
-                        player.setScore(score);
-                        player.scoreEntity().getComponent(ut.Text.TextRenderer).setText(score.toString());
+            StartNewRound(world, manager);
+      }
+}
 
-                        if (score >= 3) {
-                              gameOver = true;
-                        }
+const StartNewRound = function (world, manager) {
+      let gameOver = false;
+
+      world.forEachEntity([game.Player, ut.Core2D.Transform], function (entity, player, transform) {
+            ResetPlayerPosition(entity, player);
+            if (player.alive()) {
+                  let score = player.score();
+                  score++;
+                  // Update player score
+                  player.setScore(score);
+                  player.scoreEntity().getComponent(ut.Text.TextRenderer).setText(score.toString());
+
+                  if (score >= 3) {
+                        gameOver = true;
                   }
-                  player.setAlive(true);
-            });
-
-            if (gameOver) {
-                  manager.setState(game.GameState.GameOver);
-                  ut.Flow.Service.instantiate('game.Gameover');
             }
+            player.setAlive(true);
+            entity.removeComponent(game.PlayerDeath);
+            transform.setLocalScale(new Vector3(1,1,1));
+      });
+
+      if (gameOver) {
+            manager.setState(game.GameState.GameOver);
+            ut.Flow.Service.instantiate('game.Gameover');
       }
 }
 

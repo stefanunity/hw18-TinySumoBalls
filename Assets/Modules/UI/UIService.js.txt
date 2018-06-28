@@ -138,7 +138,7 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
 
                         entity.removeComponent(Sumo.UI.Shaker);
                         let transform = new Vector3(1, 0, 0);
-                        entity.getComponent(ut.Core2D.Transform).setLocalPosition(position);
+                        //entity.getComponent(ut.Core2D.Transform).setLocalPosition(position);
                         //console.log(JSON.stringify(transform.localPosition()));
 
 
