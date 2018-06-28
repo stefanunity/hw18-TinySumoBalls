@@ -2,4 +2,7 @@ let shakeEntity = world.create("Shake Entity");
 let shakeEvent = shakeEntity.addComponent(Sumo.Screenshake.ShakeEvent);
 shakeEvent.setStartTime(sched.now());
 shakeEvent.setForce(collision.force());
-world.getByName("CollisionSound").getComponent(ut.Audio.AudioSource).setPlaying(true);
+
+let audio = world.getByName("CollisionSound").getComponent(ut.Audio.AudioSource);
+audio.setVolume(Math.min(1, collision.force() * 0.1));
+audio.setPlaying(true);

@@ -1,0 +1,3 @@
+let audio = world.getByName("AiCollisionSound").getComponent(ut.Audio.AudioSource);
+audio.setVolume(Math.min(1, collision.force() * 0.1));
+audio.setPlaying(true);
