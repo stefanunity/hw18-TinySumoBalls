@@ -41,14 +41,14 @@ const InitGameplay = function (world, manager) {
 }
 
 const GameplayUpdate = function (world, manager) {
-      let livePlayers = 0;
-      world.forEachEntity([game.Player], function (entity, player) {
-            if (player.alive()) {
-                  livePlayers++;
-            }
+      let deadPlayers = 0;
+      world.forEachEntity([game.Player, game.PlayerDead], function (entity, player, playerDead) {
+            deadPlayers++;
       });
 
-      if (livePlayers <= 1) {
+      let gameSettings = manager.gameSettings();
+      let totalPlayers = gameSettings.humanCount + gameSettings.aiCount;
+      if (totalPlayers - deadPlayers <= 1) {
             StartNewRound(world, manager);
       }
 }

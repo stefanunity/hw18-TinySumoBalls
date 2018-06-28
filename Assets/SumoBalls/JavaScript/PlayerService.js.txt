@@ -9,15 +9,13 @@ game.PlayerSystem.update = function (scheduler, world) {
          let tweenTime = 0.5;
 
          let start = transform.localScale();
-         //let end = new Vector3(0, 0, 0);
-         let end = new Vector3(1, 1, 1); // TEMP FIX
+         let end = new Vector3(0, 0, 0);
          transform.tween("localScale", start, end)
             .setDuration(tweenTime)
             .setEase(ut.tween.EaseType.EaseInBack)
             .onComplete(function (entity) {
                entity.addComponent(game.PlayerDead);
             }, entity);
-
       }
    });
 }
