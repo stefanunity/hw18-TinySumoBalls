@@ -124,28 +124,39 @@ Sumo.UI.UIManagerSystem.update = function (scheduler, world) {
             let isMouseOverMyRect = x > xMin && x < xMax && y > yMin && y < yMax;
 
             if (isMouseOverMyRect) {
+
                   //if there is no shaker on the button add one
                   if (!entity.getComponent(Sumo.UI.ButtonTween)) {
-                        entity.addComponent(Sumo.UI.ButtonTween);
+                        if (button.MouseHover) { }
+                        else {
+                              entity.addComponent(Sumo.UI.ButtonTween);
+                              button.MouseHover = true;
+                        }
+
+
+
                   }
+            } else {
+                  button.MouseHover = false;
             }
+
       });
 
       //* TWEEN BUTTON
       world.forEachEntity([Sumo.UI.Button, Sumo.UI.ButtonTween, ut.Core2D.Transform, ut.Core2D.Sprite2DRenderer, ut.Core2D.Sprite2DRendererOptions], function (entity, button, buttonTween, transform, sprite, renderer) {
 
-            // entity.removeComponent(Sumo.UI.ButtonTween);
-            // let tweenTime = 0.2;
-            // console.log(transform);
-            // let start = transform.localPosition();
-            // let end = new Vector3(start.x, start.y + 0.1, 0);
-            // transform.tween("localPosition", start, end)
-            //       .setDuration(tweenTime)
-            //       .setEase(ut.tween.EaseType.EaseInBack)
-            //       .onComplete(function (entity) {
+            entity.removeComponent(Sumo.UI.ButtonTween);
+            let tweenTime = 0.2;
+
+            let start = transform.localPosition();
+            let end = new Vector3(start.x, start.y + 0.1, 0);
+            transform.tween("localPosition", start, end)
+                  .setDuration(tweenTime)
+                  .setEase(ut.tween.EaseType.EaseInBack)
+                  .onComplete(function (entity) {
 
 
-            //       }, entity);
+                  }, entity);
 
 
       });
