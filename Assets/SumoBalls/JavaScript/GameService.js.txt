@@ -57,7 +57,7 @@ const StartNewRound = function (world, manager) {
       let gameOver = false;
 
       world.forEachEntity([game.Player, ut.Core2D.Transform], function (entity, player, transform) {
-            ResetPlayerPosition(entity, player);
+            entity.addComponent(game.PlayerRespawn);
             if (player.alive()) {
                   let score = player.score();
                   score++;
@@ -115,7 +115,7 @@ const SpawnPlayers = function (world, manager) {
             // Set position to be in a circle
             let player = entity.getComponent(game.Player);
             player.setStartPosition(new Vector2(Math.cos(angleStep * i) * spawnRadius, Math.sin(angleStep * i) * spawnRadius));
-            ResetPlayerPosition(entity, player);
+            entity.addComponent(game.PlayerRespawn);
 
             // Set colors
             let randomColor = colors[Math.floor(Math.random() * colors.length)]
@@ -144,12 +144,4 @@ const DespawnPlayers = function (world, manager) {
       world.forEachEntity([game.Player, ut.Core2D.Transform], function (entity, player, transform) {
             transform.destroyTree(true);
       });
-}
-
-const ResetPlayerPosition = function (entity, player) {
-      let transform = entity.getComponent(ut.Core2D.Transform);
-      let position = player.startPosition();
-      transform.setLocalPosition(new Vector3(position.x, position.y));
-      let velocity2D = entity.getOrAddComponent(ut.Physics2D.Velocity2D);
-      velocity2D.setVelocity(new Vector2(0, 0));
 }

@@ -1,0 +1,6 @@
+let position = player.startPosition();
+transform.setLocalPosition(new Vector3(position.x, position.y));
+let velocity2D = entity.getOrAddComponent(ut.Physics2D.Velocity2D);
+velocity2D.setVelocity(new Vector2(0, 0));
+player.setAlive(true);
+entity.removeComponent(game.PlayerRespawn);

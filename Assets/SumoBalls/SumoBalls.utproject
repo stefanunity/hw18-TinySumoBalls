@@ -56,7 +56,9 @@
         { "Id": "7bfa0e0fd33746cfad1194bd3ece7ffb", "Name": "PlayerSprites" },
         { "Id": "6556039b8ff343e48b85dc50945eb057", "Name": "Button" },
         { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" },
-        { "Id": "d610dd70ccdc4edeb504138bf9e8008e", "Name": "ArenaShrink" }
+        { "Id": "d610dd70ccdc4edeb504138bf9e8008e", "Name": "ArenaShrink" },
+        { "Id": "1e760cf06a3b415e9718fb53f9a8493b", "Name": "PlayerDead" },
+        { "Id": "29173df8f9834c7b8686e88872bf1c70", "Name": "PlayerRespawn" }
     ],
     "Structs": [
         { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
@@ -81,7 +83,9 @@
         { "Id": "8bc5a67b302148a8ab4556119a5ae083", "Name": "AIInputSystem" },
         { "Id": "b8cd443904ff40c0a6d9c65fe10d0f48", "Name": "GameManagerSystem" },
         { "Id": "3998febc14d6491781556b463c3af125", "Name": "MenuInputSystem" },
-        { "Id": "4996b3e8299741a3b881f6ad987b682b", "Name": "PlayerSystem" }
+        { "Id": "4996b3e8299741a3b881f6ad987b682b", "Name": "PlayerSystem" },
+        { "Id": "317098e2d3304574b8a605bb0843150f", "Name": "PlayerDeathSystem" },
+        { "Id": "0d585386e13c43a297469ee1f24180d5", "Name": "PlayerRespawnSystem" }
     ],
     "Assets": [],
     "StartupEntityGroup": { "Id": "8d782d7f1e9e4e3e9a12c99ea446b386", "Name": "NewEntityGroup" }
@@ -155,9 +159,6 @@
                 "Id": "f4e8a8be486e4471a175e8ac3e4d323c",
                 "Name": "InitGameplay",
                 "Value": 4
-            },
-            "gameSettings": {
-                "Type": { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" }
             }
         }
     }
@@ -243,6 +244,26 @@
     }],
     "DefaultValue": {
         "Type": { "Id": "d610dd70ccdc4edeb504138bf9e8008e", "Name": "ArenaShrink" }
+    }
+},
+{
+    "$TypeId": 3,
+    "Id": "1e760cf06a3b415e9718fb53f9a8493b",
+    "Name": "PlayerDead",
+    "TypeCode": "Component",
+    "Fields": [],
+    "DefaultValue": {
+        "Type": { "Id": "1e760cf06a3b415e9718fb53f9a8493b", "Name": "NewComponent" }
+    }
+},
+{
+    "$TypeId": 3,
+    "Id": "29173df8f9834c7b8686e88872bf1c70",
+    "Name": "PlayerRespawn",
+    "TypeCode": "Component",
+    "Fields": [],
+    "DefaultValue": {
+        "Type": { "Id": "29173df8f9834c7b8686e88872bf1c70", "Name": "NewComponent1" }
     }
 },
 {
@@ -761,7 +782,8 @@
                 "$TypeId": 8,
                 "Type": { "Id": "77fd93442d854ef28963349a3644e8de", "Name": "GameState" },
                 "Id": "dff20a2910b5427b98614814e90504fc",
-                "Name": "Init"
+                "Name": "Init",
+                "Value": 4
             },
             "gameSettings": {
                 "Type": { "Id": "04fe2884e6b749579a1813397a1d1058", "Name": "GameSettings" },
@@ -1336,6 +1358,41 @@
         { "Id": "b7f7f4fdfc819e904ab2a0193ed1f613", "Name": "Physics2DSystem" }
     ],
     "ExecuteBefore": []
+},
+{
+    "$TypeId": 7,
+    "Id": "317098e2d3304574b8a605bb0843150f",
+    "Name": "PlayerDeathSystem",
+    "Options": 3,
+    "TextAsset": { "$TypeId": 10, "Guid": "51ed56f213630b34a947c362935f3c09", "FileId": 4900000, "Type": 3 },
+    "Components": [
+        { "Id": "1e760cf06a3b415e9718fb53f9a8493b", "Name": "PlayerDead" },
+        { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" }
+    ],
+    "ExecuteAfter": [
+        { "Id": "6fa7e5feec05fec093042f2a2b9802d4", "Name": "UserCodeStart" }
+    ],
+    "ExecuteBefore": [
+        { "Id": "d016ec3bfdc5a53540e9c71942ee414c", "Name": "UserCodeEnd" }
+    ]
+},
+{
+    "$TypeId": 7,
+    "Id": "0d585386e13c43a297469ee1f24180d5",
+    "Name": "PlayerRespawnSystem",
+    "Options": 3,
+    "TextAsset": { "$TypeId": 10, "Guid": "7402cb0798abf4d409e4bc04fefd32ff", "FileId": 4900000, "Type": 3 },
+    "Components": [
+        { "Id": "29173df8f9834c7b8686e88872bf1c70", "Name": "PlayerRespawn" },
+        { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" }
+    ],
+    "ExecuteAfter": [
+        { "Id": "6fa7e5feec05fec093042f2a2b9802d4", "Name": "UserCodeStart" }
+    ],
+    "ExecuteBefore": [
+        { "Id": "d016ec3bfdc5a53540e9c71942ee414c", "Name": "UserCodeEnd" }
+    ]
 },
 {
     "$TypeId": 5,
