@@ -12,7 +12,8 @@
     ],
     "Configurations": [],
     "Components": [
-        { "Id": "a89ed5bc29f74a1fae5304517a6f9cfd", "Name": "CircleCollider" }
+        { "Id": "a89ed5bc29f74a1fae5304517a6f9cfd", "Name": "CircleCollider" },
+        { "Id": "7782fe8d54294ce3a85cabf54b7665e1", "Name": "Collision" }
     ],
     "Structs": [],
     "Enums": [],
@@ -21,7 +22,8 @@
         { "Id": "872d49a38be442cbaccd2f728766d0ca", "Name": "CircleColliderCollisionSystem" }
     ],
     "Systems": [
-        { "Id": "eaab648c07fa4e8f90125c2739453ca1", "Name": "CircleColliderCollisionSystem" }
+        { "Id": "eaab648c07fa4e8f90125c2739453ca1", "Name": "CircleColliderCollisionSystem" },
+        { "Id": "389f10a79c50447f8e16a43dd3d803ec", "Name": "CollisionRemovalSystem" }
     ],
     "Assets": []
 },
@@ -40,6 +42,20 @@
         "Properties": {
             "radius": 1
         }
+    }
+},
+{
+    "$TypeId": 3,
+    "Id": "7782fe8d54294ce3a85cabf54b7665e1",
+    "Name": "Collision",
+    "TypeCode": "Component",
+    "Fields": [{
+        "Id": "5239eb573d844d73946f453cdd7b6a75",
+        "Name": "force",
+        "FieldType": { "Id": "9633c95a0a68473682f09ed6a01194b4", "Name": "Int32" }
+    }],
+    "DefaultValue": {
+        "Type": { "Id": "7782fe8d54294ce3a85cabf54b7665e1", "Name": "Collision" }
     }
 },
 {
@@ -63,4 +79,18 @@
         { "Id": "b7f7f4fdfc819e904ab2a0193ed1f613", "Name": "Physics2DSystem" }
     ],
     "ExecuteBefore": []
+},
+{
+    "$TypeId": 7,
+    "Id": "389f10a79c50447f8e16a43dd3d803ec",
+    "Name": "CollisionRemovalSystem",
+    "Options": 3,
+    "TextAsset": { "$TypeId": 10, "Guid": "2264a1a6615012342a0ce5099f07fb66", "FileId": 4900000, "Type": 3 },
+    "Components": [
+        { "Id": "7782fe8d54294ce3a85cabf54b7665e1", "Name": "Collision" }
+    ],
+    "ExecuteAfter": [],
+    "ExecuteBefore": [
+        { "Id": "eaab648c07fa4e8f90125c2739453ca1", "Name": "CircleColliderCollisionSystem" }
+    ]
 }]

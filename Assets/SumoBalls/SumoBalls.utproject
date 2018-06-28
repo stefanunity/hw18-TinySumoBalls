@@ -88,7 +88,8 @@
         { "Id": "4996b3e8299741a3b881f6ad987b682b", "Name": "PlayerSystem" },
         { "Id": "317098e2d3304574b8a605bb0843150f", "Name": "PlayerDeathSystem" },
         { "Id": "0d585386e13c43a297469ee1f24180d5", "Name": "PlayerRespawnSystem" },
-        { "Id": "ba7f3bbbe73c4386a9a39c1c8373782d", "Name": "ShrinkSystem" }
+        { "Id": "ba7f3bbbe73c4386a9a39c1c8373782d", "Name": "ShrinkSystem" },
+        { "Id": "e9c7204bb2904a619b7ed38736f29b7a", "Name": "PlayerFX" }
     ],
     "Assets": [],
     "StartupEntityGroup": { "Id": "8d782d7f1e9e4e3e9a12c99ea446b386", "Name": "NewEntityGroup" }
@@ -1464,6 +1465,24 @@
     "Components": [
         { "Id": "d610dd70ccdc4edeb504138bf9e8008e", "Name": "ArenaShrink" },
         { "Id": "51e8b4dea1443a88d6fdc4d4acac0981", "Name": "Sprite2DRendererOptions" }
+    ],
+    "ExecuteAfter": [
+        { "Id": "6fa7e5feec05fec093042f2a2b9802d4", "Name": "UserCodeStart" }
+    ],
+    "ExecuteBefore": [
+        { "Id": "d016ec3bfdc5a53540e9c71942ee414c", "Name": "UserCodeEnd" }
+    ]
+},
+{
+    "$TypeId": 7,
+    "Id": "e9c7204bb2904a619b7ed38736f29b7a",
+    "Name": "PlayerFX",
+    "Options": 3,
+    "TextAsset": { "$TypeId": 10, "Guid": "cea1b3b6e7573d748a98ad89fb1cd113", "FileId": 4900000, "Type": 3 },
+    "Components": [
+        { "Id": "64b6ac9d4fce47f0916bea4792508b9c", "Name": "Player" },
+        { "Id": "5734579d005f4dc8af924375b0f2e547", "Name": "MovementInput" },
+        { "Id": "7782fe8d54294ce3a85cabf54b7665e1", "Name": "Collision" }
     ],
     "ExecuteAfter": [
         { "Id": "6fa7e5feec05fec093042f2a2b9802d4", "Name": "UserCodeStart" }

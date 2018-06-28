@@ -30,10 +30,8 @@ Sumo.Physics.CircleColliderCollisionSystem.update = function (scheduler, world) 
                                     let velocityProjectionToTangent = new Vector2(tangent.x * length, tangent.y * length);
                                     let velocityComponentPerpendicularToTangent = new Vector2(relativeVelocity.x - velocityProjectionToTangent.x, relativeVelocity.y - velocityProjectionToTangent.y);
 
-                                    let shakeEntity = world.create("Shake Entity");
-                                    let shakeEvent = shakeEntity.addComponent(Sumo.Screenshake.ShakeEvent);
-                                    shakeEvent.setStartTime(scheduler.now());
-                                    shakeEvent.setForce(velocityComponentPerpendicularToTangent.length());
+                                    var collision = entity.addComponent(Sumo.Physics.Collision);
+                                    collision.setForce(velocityComponentPerpendicularToTangent.length());
 
                                     velocityComponentPerpendicularToTangent.multiplyScalar(1); // BOUNCINESS
                                     velocity.add(velocityComponentPerpendicularToTangent)

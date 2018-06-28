@@ -1,0 +1,4 @@
+let shakeEntity = world.create("Shake Entity");
+let shakeEvent = shakeEntity.addComponent(Sumo.Screenshake.ShakeEvent);
+shakeEvent.setStartTime(sched.now());
+shakeEvent.setForce(collision.force());
