@@ -860,7 +860,7 @@
     }, {
         "Type": { "Id": "259a7a70533f45f19e85706ca64a9467", "Name": "Movement" },
         "Properties": {
-            "speed": 5
+            "speed": 10
         }
     }, {
         "Type": { "Id": "a89ed5bc29f74a1fae5304517a6f9cfd", "Name": "CircleCollider" },
