@@ -7,7 +7,7 @@ game.PlayerSystem.update = function (scheduler, world) {
                   player.setAlive(false);
                   world.getByName("DieSound").getComponent(ut.Audio.AudioSource).setPlaying(true);
                   entity.removeComponent(ut.Physics2D.Velocity2D);
-                  let tweenTime = 0.5;
+                  let tweenTime = 0.55;
 
                   let start = transform.localScale();
                   let end = new Vector3(0, 0, 0);
