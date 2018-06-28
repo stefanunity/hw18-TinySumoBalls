@@ -105,8 +105,8 @@ const SpawnPlayers = function (world, manager) {
       // Load random colors and faces for players
       let playerAssets = ut.Flow.Service.instantiate('game.PlayerAssets');
       let sprites = playerAssets.root.getComponent(game.PlayerSprites);
-      let colors = sprites.colors();
-      let faces = sprites.faces();
+      let colors = shuffle(sprites.colors());
+      let faces = shuffle(sprites.faces());
 
       const spawnRadius = 2.5;
       let gameSettings = manager.gameSettings();
@@ -123,7 +123,7 @@ const SpawnPlayers = function (world, manager) {
             entity.addComponent(game.PlayerRespawn);
 
             // Set colors
-            let randomColor = colors[Math.floor(Math.random() * colors.length)]
+            let randomColor = colors[i % colors.length]
 
             let ballSpriteRenderer = entity.getComponent(ut.Core2D.Sprite2DRenderer);
             ballSpriteRenderer.setColor(randomColor);
@@ -133,7 +133,7 @@ const SpawnPlayers = function (world, manager) {
 
             // Set faces
             let faceSpriteRenderer = transform.find("Face").getComponent(ut.Core2D.Sprite2DRenderer);
-            faceSpriteRenderer.setSprite(faces[Math.floor(Math.random() * faces.length)])
+            faceSpriteRenderer.setSprite(faces[i % faces.length])
 
             // Set controls depending on if it's human or AI
             if (i < gameSettings.humanCount) {
@@ -151,3 +151,14 @@ const DespawnPlayers = function (world, manager) {
             transform.destroyTree(true);
       });
 }
+
+function shuffle(a) {
+      var j, x, i;
+      for (i = a.length - 1; i > 0; i--) {
+          j = Math.floor(Math.random() * (i + 1));
+          x = a[i];
+          a[i] = a[j];
+          a[j] = x;
+      }
+      return a;
+  }
