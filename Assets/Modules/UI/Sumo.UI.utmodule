@@ -497,6 +497,8 @@
         { "$TypeId": 9, "Id": "d17cc327fc13482b957d1d4b3e6ea910", "Name": "AiMinusBtn" },
         { "$TypeId": 9, "Id": "ed3f88f2be9e493ea88dcc01d03d0ed4", "Name": "AiPlusBtn" },
         { "$TypeId": 9, "Id": "78a6c68b90f74f59bdf68ea5dd42c0c0", "Name": "AiCountTxt" },
+        { "$TypeId": 9, "Id": "2903ff835dc34ff0ba8bf771c7881a11", "Name": "P1 Control hint" },
+        { "$TypeId": 9, "Id": "1b1ac7b7246f40ca811812b756f6e5b6", "Name": "P2 Control hint" },
         { "$TypeId": 9, "Id": "fd4239ec8c1e43718990541d8760f220", "Name": "VariableHolder" }
     ]
 },
@@ -1021,6 +1023,70 @@
         }
     }, {
         "Type": { "Id": "57fb1eab645149209d897f3a03086fd0", "Name": "AiCountUI" }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "2903ff835dc34ff0ba8bf771c7881a11",
+    "Name": "P1 Control hint",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 6.42,
+                    "y": 3.23
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.01,
+                    "y": 0.01
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "P1: WASD",
+            "fontSize": 43,
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
+    }]
+},
+{
+    "$TypeId": 5,
+    "Id": "1b1ac7b7246f40ca811812b756f6e5b6",
+    "Name": "P2 Control hint",
+    "Enabled": true,
+    "Components": [{
+        "Type": { "Id": "10b758a472c3be3e0885538510d60803", "Name": "Transform" },
+        "Properties": {
+            "localPosition": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 6.23,
+                    "y": 2.6
+                }
+            },
+            "localScale": {
+                "Type": { "Id": "f139194553e8ae4a3250c5527d6de169", "Name": "Vector3" },
+                "Properties": {
+                    "x": 0.01,
+                    "y": 0.01
+                }
+            }
+        }
+    }, {
+        "Type": { "Id": "de741c68b67240148cdb8aa42a46bfdf", "Name": "TextRenderer" },
+        "Properties": {
+            "text": "P2: IJKL",
+            "fontSize": 43,
+            "font": { "$TypeId": 10, "Guid": "a4d4864050e1d4990930596136dc6da1", "FileId": 12800000, "Type": 3 }
+        }
     }]
 },
 {

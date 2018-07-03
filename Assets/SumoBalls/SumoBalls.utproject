@@ -10,6 +10,7 @@
         "CanvasAutoResize": true,
         "DefaultTextureSettings": {
             "Embedded": true,
+            "FormatType": 1,
             "JpgCompressionQuality": 75,
             "WebPCompressionQuality": 60
         },
@@ -19,7 +20,6 @@
         "LocalWSServerPort": 17700,
         "LocalHTTPServerPort": 19050,
         "MemorySize": 16,
-        "IncludeWSClient": true,
         "RunBabel": true,
         "LinkToSource": true
     },
